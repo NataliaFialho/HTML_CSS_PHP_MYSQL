@@ -36,3 +36,4 @@ include '../includes/header.php';
     <a class="btn btn-perigo" href="index.php">Cancelar</a>
 </form>
 <?php include '../includes/footer.php'; ?>
+// Criar uma função em PHP para cadastrar ações

@@ -1,0 +1,3 @@
+// Criar uma função em PHP para pegar todo o LOG
+
+// Criar uma função em PHP para pegar todas as ações criadas por todos os pesquisadores

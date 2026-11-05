@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS acao(
     matricula_pesquisador INT NOT NULL,
     titulo VARCHAR(50) NOT NULL,
     descricao VARCHAR(100) NOT NULL,
-    data_ DATA NOT NULL,
-    status_ VARCHAR(10) NOT NULL,
+    data DATE NOT NULL,
+    status VARCHAR(10) NOT NULL,
     FOREIGN KEY id_categoria REFERENCES categoria(id),
     FOREIGN KEY matricula_pesquisador REFERENCES usuarios(matricula)
 );
@@ -23,12 +23,12 @@ CREATE TABLE IF NOT EXISTS usuarios(
 );
 
 CREATE TABLE cargo(
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY ,
     cargo  VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE categoria(
-    id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY ,
     nome VARCHAR(50) NOT NULL
 );
 

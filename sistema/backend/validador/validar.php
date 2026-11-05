@@ -1,0 +1,1 @@
+// Criar uma função em PHP para validar ações
