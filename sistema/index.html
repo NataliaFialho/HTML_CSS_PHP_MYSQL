@@ -16,7 +16,7 @@
 
             <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
 
-            <form action="backend/administrador/cadastrar.php" method="post">
+            <form action="administrador/cadastrar.php" method="post">
                 <div class="campo">
                     <label for="matricula">Matrícula</label>
                     <input type="number" id="matricula" name="matricula" min="1" step="1" placeholder="Ex.: 12345" required>
@@ -42,6 +42,12 @@
 
                 <button class="botao" type="submit">Cadastrar usuário</button>
             </form>
+
+            <p>
+                <a href="administrador/editar.php?matricula=12345">
+                    Testar edição do usuário de exemplo (matrícula 12345)
+                </a>
+            </p>
         </section>
     </main>
 
@@ -56,7 +62,7 @@
             mensagem.classList.add('mensagem-sucesso');
         }
 
-        fetch('backend/administrador/cadastrar.php')
+        fetch('administrador/cadastrar.php')
             .then(async (resposta) => {
                 const dados = await resposta.json();
                 if (!resposta.ok) {

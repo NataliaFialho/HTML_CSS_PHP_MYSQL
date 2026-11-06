@@ -34,7 +34,7 @@ if ($metodo === 'POST') {
             ':email' => $_POST['email'],
             ':id_cargo' => $_POST['id_cargo'],
         ]);
-        header('Location: ../../index.html?cadastro=sucesso');
+        header('Location: ../index.html?cadastro=sucesso');
         exit;
     } catch (PDOException $e) {
         error_log($e->getMessage());
