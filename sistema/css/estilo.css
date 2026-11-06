@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.header-painel-pesquisador {
+    background-color: #386492;
+    width: 100vw;
+    height: 10vh;
+    align-items: center;
+    display: flex;
+}
+
+.txt-header-painel-pesquisador{
+    color: white;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-sair-painel-pesquisador{
+    width: 10%;
+    height: 60%;
+    border-radius: 40%;
+    background-color: green;
+    color: white;
+    border: 0;
+}
