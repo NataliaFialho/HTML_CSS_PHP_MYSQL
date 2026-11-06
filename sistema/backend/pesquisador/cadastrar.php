@@ -1,6 +1,8 @@
 <?php
 require '../conexao.php';
 
+$categorias = $pdo->query('SELECT id, nome_categoria FROM categorias ORDER BY nome_categoria')->fetchAll();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare('INSERT INTO acao (id_categoria, matricula_pesquisador, titulo, descricao, data_, status_) VALUES (:id_categoria, :matricula_pesquisador, :titulo, :descricao, :data_, :status_)');
     $stmt->execute([
@@ -22,6 +24,21 @@ include '../includes/header.php';
 <form method="post">
     <label for="titulo">Título</label>
     <input type="text" id="titulo" name="titulo" required>
+
+    <label for="data_">Data</label>
+    <input type="date" id="data_" name="data_" required>
+
+    
+
+    <label for="id_categoria">Categoria</label>
+    <select id="id_categoria" name="id_categoria" required>
+    <option value="">Selecione...</option>
+    <?php foreach ($categorias as $cat): ?>
+        <option value="<?= $cat['id'] ?>">
+            <?= htmlspecialchars($cat['nome']) ?>
+        </option>
+    <?php endforeach; ?>
+    </select>
 
     <label for="cpf">CPF</label>
     <input type="text" id="cpf" name="cpf" maxlength="14" required>
