@@ -33,3 +33,13 @@ CREATE TABLE categoria(
 );
 
 
+INSERT INTO cargo VALUES (
+    (1, "Administrador")
+    (2, "Validador")
+    (3, "Comitê")
+    (4, "Pesquisador")
+)
+
+INSERT INTO usuarios VALUES(
+    (12345, "admin", "admin@gmail.com", 1)
+)
