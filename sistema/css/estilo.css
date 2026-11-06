@@ -7,13 +7,32 @@ body{
     background-color: #004e7a;
 }
 .logo-embrapa{
+    display: flex;
     width: 40%;
     height: 20%;
-    
+    justify-content: center;
+    padding-bottom: 60px;
 }
 .botao{
-    width: 40%;
+    width: 25%;
     height: 20%;
     border-radius: 40px;
     background-color: #00bf15;
+    margin: 40px;
+    text-align: center;
+}
+
+.texto-formatacao{
+    font-size: 30px;
+    color: #000000;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.formatacao-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
