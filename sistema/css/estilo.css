@@ -11,10 +11,11 @@ body {
 }
 
 .pagina-principal {
-    width: 100%;
+    width: 72%;
     min-height: 100vh;
-    background-color: #004e7a;
+    background-color: #356394;
     display: flex;
+    margin: auto;
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
