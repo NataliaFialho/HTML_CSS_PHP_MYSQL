@@ -17,21 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 include '../includes/header.php';
 ?>
-<h2>Novo cliente</h2>
+<h2>Nova ação</h2>
 
 <form method="post">
     <label for="titulo">Título</label>
     <input type="text" id="titulo" name="titulo" required>
 
-    <label for="cpf">CPF</label>
-    <input type="text" id="cpf" name="cpf" maxlength="14" required>
+    <label for="descricao">Descrição</label>
+    <input type="text" id="descricao" name="descricao" required>
 
-    <label for="email">E-mail</label>
-    <input type="email" id="email" name="email">
+    <label for="data">Data de execução</label>
+    <input type="date" id="data" name="data", required>
 
-    <label for="telefone">Telefone</label>
-    <input type="text" id="telefone" name="telefone">
-
+    <label for="categoria">Categoria</label>
+    <input type="select" id="categoria" name="categoria" required>
+    
     <button class="btn" type="submit">Salvar</button>
     <a class="btn btn-perigo" href="index.php">Cancelar</a>
 </form>
