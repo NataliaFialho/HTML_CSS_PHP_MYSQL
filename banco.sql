@@ -32,6 +32,15 @@ CREATE TABLE IF NOT EXISTS acao(
     FOREIGN KEY (matricula_pesquisador) REFERENCES usuarios(matricula)
 );
 
+CREATE TABLE IF NOT EXISTS log(
+    id_log INT PRIMARY KEY AUTO_INCREMENT,
+    operacao VARCHAR(50) NOT NULL,
+    matricula_usuario INT NOT NULL,
+    tabela_afetada VARCHAR(50) NOT NULL,
+    data_hora DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (matricula_usuario) REFERENCES usuarios(matricula)
+);
+
 INSERT INTO cargo VALUES
     (1, "Administrador"),
     (2, "Validador"),

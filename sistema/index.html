@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de usuário | Administração</title>
+</head>
+<body>
+    <main class="pagina">
+        <section class="cartao" aria-labelledby="titulo">
+            <header class="cabecalho">
+                <p class="identificador">Painel administrativo</p>
+                <h1 id="titulo">Cadastrar usuário</h1>
+                <p class="descricao">Preencha os dados abaixo para adicionar um usuário ao sistema.</p>
+            </header>
+
+            <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+
+            <form action="backend/administrador/cadastrar.php" method="post">
+                <div class="campo">
+                    <label for="matricula">Matrícula</label>
+                    <input type="number" id="matricula" name="matricula" min="1" step="1" placeholder="Ex.: 12345" required>
+                </div>
+
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" maxlength="50" autocomplete="name" placeholder="Digite o nome do usuário" required>
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" maxlength="100" autocomplete="email" placeholder="nome@exemplo.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="id_cargo">Cargo</label>
+                    <select id="id_cargo" name="id_cargo" required disabled>
+                        <option value="">Carregando cargos...</option>
+                    </select>
+                    <small id="status-cargos" class="ajuda">Os cargos são carregados do banco de dados.</small>
+                </div>
+
+                <button class="botao" type="submit">Cadastrar usuário</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const cargoSelect = document.querySelector('#id_cargo');
+        const statusCargos = document.querySelector('#status-cargos');
+        const mensagem = document.querySelector('#mensagem');
+
+        const parametros = new URLSearchParams(window.location.search);
+        if (parametros.get('cadastro') === 'sucesso') {
+            mensagem.textContent = 'Usuário cadastrado com sucesso.';
+            mensagem.classList.add('mensagem-sucesso');
+        }
+
+        fetch('backend/administrador/cargos.php')
+            .then(async (resposta) => {
+                const dados = await resposta.json();
+                if (!resposta.ok) {
+                    throw new Error(dados.erro || `Erro HTTP ${resposta.status}`);
+                }
+                if (!Array.isArray(dados)) {
+                    throw new Error('A resposta do servidor está em um formato inesperado.');
+                }
+                return dados;
+            })
+            .then((cargos) => {
+                cargoSelect.replaceChildren(new Option('Selecione um cargo', ''));
+
+                cargos.forEach((cargo) => {
+                    cargoSelect.add(new Option(cargo.cargo, cargo.id));
+                });
+
+                cargoSelect.disabled = cargos.length === 0;
+                statusCargos.textContent = cargos.length
+                    ? 'Selecione o cargo que será associado ao usuário.'
+                    : 'Nenhum cargo cadastrado no banco de dados.';
+            })
+            .catch((erro) => {
+                console.error('Falha ao carregar os cargos:', erro);
+                cargoSelect.replaceChildren(new Option('Cargos indisponíveis', ''));
+                statusCargos.textContent = `Não foi possível carregar os cargos: ${erro.message} Verifique se a página está aberta pelo servidor PHP e se a conexão com o banco está correta.`;
+                statusCargos.classList.add('texto-erro');
+            });
+    </script>
+</body>
+</html>

@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':email' => $_POST['email'],
         ':id_cargo' => $_POST['id_cargo'],
     ]);
-    header('Location: index.php');
+    header('Location: ../../index.html?cadastro=sucesso');
     exit;
 }
 
