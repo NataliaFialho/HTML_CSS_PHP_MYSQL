@@ -56,7 +56,7 @@
             mensagem.classList.add('mensagem-sucesso');
         }
 
-        fetch('backend/administrador/cargos.php')
+        fetch('backend/administrador/cadastrar.php')
             .then(async (resposta) => {
                 const dados = await resposta.json();
                 if (!resposta.ok) {
