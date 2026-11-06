@@ -3,16 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-    <title>Login</title>
+    <title>Embrapa - Gado de Corte</title>
+    <link rel="stylesheet" href="../sistema/css/estilo.css">
 </head>
 <body>
+
     <main class="pagina-principal">
+
         <div class="logo-embrapa">
-            <h1><span>Em</span><strong>brapa</strong></h1>
-            <div class="linha-logo"></div>
-            <h2>Gado de Corte</h2>a
+            <img src="img/logo-embrapa.png" alt="Embrapa Gado de Corte">
         </div>
+
+        <section class="caixa-login">
+
+            <h1 class="titulo-login">Tela de Login</h1>
+
+            <form class="formulario-login">
+
+                <input
+                    type="text"
+                    class="input-usuario"
+                    placeholder="Usuário"
+                >
+
+                <input
+                    type="password"
+                    class="input-senha"
+                    placeholder="Senha"
+                >
+
+                <button type="button" id="btn-login">
+                    Entrar
+                </button>
+
+            </form>
+
+        </section>
+
     </main>
+
 </body>
 </html>
