@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS acao(
     descricao VARCHAR(100) NOT NULL,
     data DATE NOT NULL,
     status VARCHAR(10) NOT NULL,
-    FOREIGN KEY id_categoria REFERENCES categoria(id),
-    FOREIGN KEY matricula_pesquisador REFERENCES usuarios(matricula)
+    FOREIGN KEY (id_categoria) REFERENCES categoria(id),
+    FOREIGN KEY (matricula_pesquisador) REFERENCES usuarios(matricula)
 );
 
 CREATE TABLE IF NOT EXISTS usuarios(
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     nome VARCHAR (50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     id_cargo INT NOT NULL,
-    FOREIGN KEY id_cargo REFERENCES cargo(id)
+    FOREIGN KEY (id_cargo) REFERENCES cargo(id)
 );
 
 CREATE TABLE cargo(
