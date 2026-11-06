@@ -9,11 +9,16 @@
 <body>
     <header>
         <div class="header-painel-pesquisador">
+            <img class="img-header-painel-pesquisador" src="../../sistema/imagens/logo-embrapa.png" alt="">
             <p class="txt-header-painel-pesquisador">Painel do Pesquisador</p>
             <button class="btn-sair-painel-pesquisador">Sair</button>
         </div>
 
     </header>
+    <div class="container-do-painel">
+
+
+    </div>
     
 </body>
 </html>

@@ -4,11 +4,16 @@
     box-sizing: border-box;
 
 }
+header{
+    width: 100vw;
+    height: 10vh;
+}
+
 .header-painel-pesquisador {
     background-color: #386492;
     width: 100vw;
     height: 10vh;
-    align-items: center;
+    align-items: center;   
     display: flex;
 }
 
@@ -16,13 +21,120 @@
     color: white;
     font-size: 2rem;
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-left: 2%;
 }
 
 .btn-sair-painel-pesquisador{
-    width: 10%;
-    height: 60%;
+    width: 5%;
+    height: 50%;
     border-radius: 40%;
     background-color: green;
     color: white;
     border: 0;
+    margin-left: auto;
+    margin-right: 5%;
+    
 }
+
+.img-header-painel-pesquisador{
+    width: 7%;
+    margin-left: 2%;
+}
+.container-do-painel{
+    width: 100vw;
+    height: 90vh;
+    
+}
+
+.painel-dos-botoes{
+    
+}
+
+/* popup de acesso negado */
+
+.popupdeacessonegado-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.17vw;
+    background-color: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.popupdeacessonegado-container {
+    width: 100%;
+    max-width: 31.67vw;
+    min-height: 17.08vw;
+    padding: 1.68vw 1.76vw 0.51vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #3b6791;
+    border: 0.073vw solid #111111;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.popupdeacessonegado-icone {
+    width: 4.10vw;
+    height: 4.10vw;
+    margin-bottom: 1.32vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupdeacessonegado-icone-imagem {
+    display: block;
+    width: 4.10vw;
+    height: 4.10vw;
+    object-fit: contain;
+}
+
+.popupdeacessonegado-titulo {
+    margin: 0 0 1.24vw;
+    color: #ffffff;
+    font-size: 1.46vw;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.popupdeacessonegado-mensagem {
+    margin: 0 0 1.24vw;
+    color: #ffffff;
+    font-size: 1.025vw;
+    line-height: 1.39vw;
+    font-weight: 400;
+}
+
+.popupdeacessonegado-btn {
+    width: 9.37vw;
+    min-height: 2.34vw;
+    padding: 0.51vw 1.17vw;
+    border: 0;
+    border-radius: 1.46vw;
+    background-color: #078b19;
+    color: #ffffff;
+    font-size: 0.95vw;
+    line-height: 1.32vw;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.popupdeacessonegado-btn:hover {
+    background-color: #067515;
+}
+
+.popupdeacessonegado-btn:focus-visible {
+    outline: 0.15vw solid #ffffff;
+    outline-offset: 0.22vw;
+}
+
+/* popup de acesso negado */
