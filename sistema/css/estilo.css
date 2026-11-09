@@ -265,8 +265,6 @@ h1 {
     border: none;
     border-radius: 30px;
     font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
 }
 
 .botao-desativar-popup-confirmar {
@@ -277,8 +275,7 @@ h1 {
     border: none;
     border-radius: 30px;
     font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
+
 }
 
 .botao-cancelar-popup-confirmar:hover {
@@ -289,7 +286,595 @@ h1 {
     background-color: rgb(70, 70, 70);
 }
 
-
-
-
 /*======================================*/
+
+/* PAINEL DE CRIAR AÇÕES */
+
+body.paineldecriaracoes-pagina {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: #3b6791;
+    font-family: Verdana, Geneva, sans-serif;
+    box-sizing: border-box;
+}
+
+.paineldecriaracoes-pagina *,
+.paineldecriaracoes-pagina *::before,
+.paineldecriaracoes-pagina *::after {
+    box-sizing: border-box;
+}
+
+.paineldecriaracoes-cabecalho {
+    width: 100%;
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background-color: #3b6791;
+}
+
+.paineldecriaracoes-logo {
+    width: clamp(105px, 16vw, 145px);
+    height: 58px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.paineldecriaracoes-titulo-pesquisador {
+    margin: 0 0 0 0;
+    color: #ffffff;
+    font-size: clamp(20px, 2.7vw, 30px);
+    font-weight: bold;
+}
+
+.paineldecriaracoes-btn-sair {
+    width: clamp(85px, 13vw, 110px);
+    height: 52px;
+    margin-left: auto;
+    border: none;
+    border-radius: 30px;
+    background-color: #19c42e;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.paineldecriaracoes-btn-sair:hover { background-color: #12a925; }
+
+.paineldecriaracoes-barra-titulo {
+    width: 100%;
+    min-height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.paineldecriaracoes-titulo-acoes {
+    margin: 0;
+    color: #000000;
+    font-size: clamp(19px, 2.4vw, 26px);
+    font-weight: bold;
+    text-align: center;
+}
+
+.paineldecriaracoes-barra-nova-acao {
+    width: 100%;
+    min-height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #168b24;
+}
+
+.paineldecriaracoes-titulo-nova-acao {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: bold;
+}
+
+.paineldecriaracoes-conteudo {
+    width: 100%;
+    padding: 6px;
+}
+
+.paineldecriaracoes-formulario {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 312px;
+    margin: 0 auto;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    background-color: #ffffff;
+    border-radius: 42px;
+}
+
+.paineldecriaracoes-linha-superior {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.paineldecriaracoes-campo-titulo,
+.paineldecriaracoes-campo-data,
+.paineldecriaracoes-campo-descricao,
+.paineldecriaracoes-campo-categoria {
+    min-width: 0;
+    min-height: 41px;
+    padding: 8px 14px;
+    border: 2px solid #000000;
+    border-radius: 24px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: inherit;
+    font-size: 11px;
+    text-align: center;
+    outline: none;
+}
+
+.paineldecriaracoes-campo-titulo { width: 58%; }
+.paineldecriaracoes-campo-data { width: 23%; }
+.paineldecriaracoes-campo-descricao {
+    width: 100%;
+    height: 41px;
+    resize: vertical;
+}
+.paineldecriaracoes-campo-categoria {
+    width: 100%;
+    font-weight: bold;
+    text-align-last: center;
+    cursor: pointer;
+}
+.paineldecriaracoes-campo-categoria option {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 12px;
+}
+
+.paineldecriaracoes-campo-titulo:focus,
+.paineldecriaracoes-campo-data:focus,
+.paineldecriaracoes-campo-descricao:focus,
+.paineldecriaracoes-campo-categoria:focus {
+    border-color: #3b6791;
+}
+
+.paineldecriaracoes-aviso-categorias {
+    margin: -10px 8px 0;
+    color: #b00020;
+    font-size: 12px;
+    text-align: center;
+}
+
+.paineldecriaracoes-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 0 18px 8px;
+}
+
+.paineldecriaracoes-btn-cancelar,
+.paineldecriaracoes-btn-confirmar {
+    width: 36%;
+    min-height: 32px;
+    border: none;
+    border-radius: 22px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.paineldecriaracoes-btn-cancelar { background-color: #ff3030; }
+.paineldecriaracoes-btn-cancelar:hover { background-color: #d91f1f; }
+.paineldecriaracoes-btn-confirmar { background-color: #168b24; }
+.paineldecriaracoes-btn-confirmar:hover { background-color: #056510; }
+
+@media (max-width: 600px) {
+    .paineldecriaracoes-cabecalho { min-height: 68px; }
+    .paineldecriaracoes-logo { width: 92px; height: 48px; }
+    .paineldecriaracoes-titulo-pesquisador { font-size: 17px; }
+    .paineldecriaracoes-btn-sair { width: 66px; height: 38px; font-size: 10px; }
+    .paineldecriaracoes-formulario { border-radius: 25px; padding: 16px; gap: 15px; }
+    .paineldecriaracoes-linha-superior { flex-direction: column; }
+    .paineldecriaracoes-campo-titulo,
+    .paineldecriaracoes-campo-data { width: 100%; }
+    .paineldecriaracoes-btn { padding: 0; gap: 12px; }
+    .paineldecriaracoes-btn-cancelar,
+    .paineldecriaracoes-btn-confirmar { width: 50%; }
+}
+
+/* PAINEL DE CRIAR AÇÕES */
+
+/* POPUP DE CADASTRO DE USUARIO REALIZADO COM SUCESSO */
+
+.popupusuariosucesso-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.popupusuariosucesso-container {
+    width: min(100%, 435px);
+    min-height: 207px;
+    padding: 14px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #3b6791;
+    border: 2px solid #111111;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.popupusuariosucesso-icone {
+    width: 74px;
+    height: 74px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupusuariosucesso-icone-imagem {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.popupusuariosucesso-titulo {
+    margin: 0 0 2px;
+    color: #ffffff;
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.popupusuariosucesso-mensagem {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 400;
+}
+
+.popupusuariosucesso-btn {
+    min-width: 195px;
+    min-height: 32px;
+    padding: 7px 18px;
+    border: 0;
+    border-radius: 24px;
+    background-color: #078b19;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.3;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.popupusuariosucesso-btn:hover {
+    background-color: #067515;
+}
+
+.popupusuariosucesso-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .popupusuariosucesso-container {
+        min-height: 0;
+        padding: 18px 14px;
+    }
+
+    .popupusuariosucesso-titulo {
+        font-size: 18px;
+    }
+
+    .popupusuariosucesso-mensagem {
+        font-size: 13px;
+    }
+}
+
+/* POPUP DE CADASTRO DE USUARIO REALIZADO COM SUCESSO */
+
+/* CADASTRO DE CATEGORIA DE AÇÃO */
+
+body.cadastrocategoria-pagina {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: #3b6791;
+    font-family: Verdana, Geneva, sans-serif;
+    box-sizing: border-box;
+}
+
+.cadastrocategoria-pagina *,
+.cadastrocategoria-pagina *::before,
+.cadastrocategoria-pagina *::after {
+    box-sizing: border-box;
+}
+
+.cadastrocategoria-cabecalho {
+    width: 100%;
+    min-height: 82px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #3b6791;
+}
+
+.cadastrocategoria-logo {
+    width: clamp(105px, 16vw, 145px);
+    height: 58px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.cadastrocategoria-titulo-administrador {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(20px, 2.7vw, 30px);
+    font-weight: bold;
+}
+
+.cadastrocategoria-btn-sair {
+    width: clamp(85px, 13vw, 110px);
+    height: 52px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 30px;
+    background-color: #19c42e;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.cadastrocategoria-btn-sair:hover {
+    background-color: #12a925;
+}
+
+.cadastrocategoria-faixa-titulo {
+    width: 100%;
+    min-height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.cadastrocategoria-titulo-acoes {
+    margin: 0;
+    color: #000000;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: bold;
+    text-align: center;
+}
+
+.cadastrocategoria-area-principal {
+    width: calc(100% - 44p);
+    max-width: 100vw;
+    min-height: 343px;
+    margin: 0 auto 12px;
+    padding: 0 0 15px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #3b6791;
+}
+
+.cadastrocategoria-barra-adicionar {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #168b24;
+}
+
+.cadastrocategoria-barra-adicionar h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cadastrocategoria-painel {
+    width: calc(100% - 54px);
+    min-height: 267px;
+    margin: 11px auto 0;
+    padding: 30px 21px 12px;
+    display: flex;
+    align-items: stretch;
+    border-radius: 24px;
+    background-color: #ffffff;
+}
+
+.cadastrocategoria-formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.cadastrocategoria-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.cadastrocategoria-campo-nome {
+    width: 100%;
+    min-height: 34px;
+    margin-top: 47px;
+    padding: 7px 15px;
+    border: 2px solid #000000;
+    border-radius: 24px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: inherit;
+    font-size: 12px;
+    text-align: center;
+    outline: none;
+}
+
+.cadastrocategoria-campo-nome::placeholder {
+    color: #000000;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.cadastrocategoria-campo-nome:focus {
+    border-color: #3b6791;
+}
+
+.cadastrocategoria-mensagem {
+    width: 100%;
+    margin: 0;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cadastrocategoria-sucesso {
+    background-color: #e4f5e7;
+    color: #08751a;
+}
+
+.cadastrocategoria-erro {
+    background-color: #ffe6e6;
+    color: #b00020;
+}
+
+.cadastrocategoria-botoes {
+    width: 100%;
+    margin-top: auto;
+    padding: 0 3px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cadastrocategoria-btn-cancelar,
+.cadastrocategoria-btn-confirmar {
+    width: 40%;
+    min-height: 33px;
+    border: none;
+    border-radius: 22px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cadastrocategoria-btn-cancelar {
+    background-color: #ff3030;
+}
+
+.cadastrocategoria-btn-cancelar:hover {
+    background-color: #d91f1f;
+}
+
+.cadastrocategoria-btn-confirmar {
+    background-color: #168b24;
+}
+
+.cadastrocategoria-btn-confirmar:hover {
+    background-color: #056510;
+}
+
+@media (max-width: 600px) {
+    .cadastrocategoria-cabecalho {
+        min-height: 68px;
+    }
+
+    .cadastrocategoria-logo {
+        width: 92px;
+        height: 48px;
+    }
+
+    .cadastrocategoria-titulo-administrador {
+        font-size: 17px;
+    }
+
+    .cadastrocategoria-btn-sair {
+        width: 66px;
+        height: 38px;
+        font-size: 10px;
+    }
+
+    .cadastrocategoria-area-principal {
+        width: calc(100% - 24px);
+        min-height: 330px;
+    }
+
+    .cadastrocategoria-painel {
+        width: calc(100% - 24px);
+        min-height: 260px;
+        padding: 25px 14px 12px;
+        border-radius: 20px;
+    }
+
+    .cadastrocategoria-campo-nome {
+        margin-top: 35px;
+    }
+
+    .cadastrocategoria-botoes {
+        gap: 12px;
+        padding: 0;
+    }
+
+    .cadastrocategoria-btn-cancelar,
+    .cadastrocategoria-btn-confirmar {
+        width: 50%;
+    }
+}
+
+/* CADASTRO DE CATEGORIA DE AÇÃO */
