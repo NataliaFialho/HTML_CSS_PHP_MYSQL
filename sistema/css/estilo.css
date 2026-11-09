@@ -110,6 +110,25 @@ body {
 }
 
 /*=============*/
+/* tela de dois cargos */
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #004e7a;
+}
+.logo-embrapa{
+    width: 40%;
+    height: 20%;
+    
+}
+.botao{
+    width: 40%;
+    height: 20%;
+    border-radius: 40px;
+    background-color: #00bf15;
+}
 /* popup de acesso negado */
 
 .popupdeacessonegado-overlay {
