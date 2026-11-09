@@ -428,4 +428,11 @@ body.paineldecriaracoes-pagina {
     .paineldecriaracoes-btn-confirmar { width: 50%; }
 }
 
+.paineldecadastrarusuarios-conteudo{
+    justify-content: center;
+    display: flex;
+    height: 25%;
+    width: 50%;
+    background-color: white;
+}
 /* PAINEL DE CRIAR AÇÕES */
