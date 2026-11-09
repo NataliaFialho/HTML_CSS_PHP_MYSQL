@@ -466,9 +466,23 @@ body.paineldecriaracoes-pagina {
 .cadastrousuario-checkbox{
     width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+}
+
+#cargos-disponiveis{
+    display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px 8px;
+    gap: 14px 24px;
+}
+
+#cargos-disponiveis label{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
 }
 
 .cadastrousuario-checkbox input[type="checkbox"]{
