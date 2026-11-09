@@ -216,3 +216,63 @@ body{
 }
 
 /* popup de acesso negado */
+
+
+/* popup confirmar desativacao */
+ 
+.popup {
+    width: 850px;
+    height: 350px;
+    padding: 30px;
+    background-color: #0878c9;
+    border: 3px solid #075eaa;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+.icone-erro {
+    margin-bottom: 10px;
+}
+
+.icone-erro img {
+    width: 80px;
+    height: 80px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.mensagem {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botao {
+    width: 245px;
+    height: 55px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: darkred;
+}
+
+
+
+
+/*======================================*/
