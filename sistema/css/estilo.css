@@ -428,6 +428,102 @@ body.paineldecriaracoes-pagina {
     .paineldecriaracoes-btn-confirmar { width: 50%; }
 }
 
+.paineldecadastrarusuarios-pagina{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastrodeusuario-formulario{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    gap: 14px;
+    padding: 28px;
+    margin: 40px auto 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.cadastrodeusuario-formulario input{
+    width: 100%;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid #b7c3ce;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.cadastrodeusuario-formulario input:focus{
+    border-color: #356394;
+    outline: 3px solid rgba(42, 96, 155, 0.18);
+    background-color: #ffffff;
+}
+
+.cadastrousuario-checkbox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+}
+
+#cargos-disponiveis{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 24px;
+}
+
+#cargos-disponiveis label{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.cadastrousuario-checkbox input[type="checkbox"]{
+    flex: 0 0 20px;
+    width: 20px;
+    min-height: 20px;
+    height: 20px;
+    padding: 0;
+    justify-content: center;
+}
+
+.cadastrodeusuario-buttons{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.cadastrodeusuario-buttons button{
+    height:50px;
+    width: 200px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cadastrodeusuario-buttons button:hover{
+    opacity: 70%;
+}
+
+.cadastrousuario-submitbutton{
+    background-color: #109f23;
+}
+
+.cadastrousuario-cancelbutton{
+    background-color: gray;
+}
+/* PAINEL DE CRIAR AÇÕES */
 /* PAINEL DE CRIAR AÇÕES */
 
 /* POPUP DE CADASTRO DE USUARIO REALIZADO COM SUCESSO */
