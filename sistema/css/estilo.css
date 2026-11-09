@@ -216,3 +216,216 @@ body{
 }
 
 /* popup de acesso negado */
+
+
+
+/* PAINEL DE CRIAR AÇÕES */
+
+body.paineldecriaracoes-pagina {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: #3b6791;
+    font-family: Verdana, Geneva, sans-serif;
+    box-sizing: border-box;
+}
+
+.paineldecriaracoes-pagina *,
+.paineldecriaracoes-pagina *::before,
+.paineldecriaracoes-pagina *::after {
+    box-sizing: border-box;
+}
+
+.paineldecriaracoes-cabecalho {
+    width: 100%;
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background-color: #3b6791;
+}
+
+.paineldecriaracoes-logo {
+    width: clamp(105px, 16vw, 145px);
+    height: 58px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.paineldecriaracoes-titulo-pesquisador {
+    margin: 0 0 0 0;
+    color: #ffffff;
+    font-size: clamp(20px, 2.7vw, 30px);
+    font-weight: bold;
+}
+
+.paineldecriaracoes-btn-sair {
+    width: clamp(85px, 13vw, 110px);
+    height: 52px;
+    margin-left: auto;
+    border: none;
+    border-radius: 30px;
+    background-color: #19c42e;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.paineldecriaracoes-btn-sair:hover { background-color: #12a925; }
+
+.paineldecriaracoes-barra-titulo {
+    width: 100%;
+    min-height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.paineldecriaracoes-titulo-acoes {
+    margin: 0;
+    color: #000000;
+    font-size: clamp(19px, 2.4vw, 26px);
+    font-weight: bold;
+    text-align: center;
+}
+
+.paineldecriaracoes-barra-nova-acao {
+    width: 100%;
+    min-height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #168b24;
+}
+
+.paineldecriaracoes-titulo-nova-acao {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: bold;
+}
+
+.paineldecriaracoes-conteudo {
+    width: 100%;
+    padding: 6px;
+}
+
+.paineldecriaracoes-formulario {
+    width: 100%;
+    max-width: 1100px;
+    min-height: 312px;
+    margin: 0 auto;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    background-color: #ffffff;
+    border-radius: 42px;
+}
+
+.paineldecriaracoes-linha-superior {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.paineldecriaracoes-campo-titulo,
+.paineldecriaracoes-campo-data,
+.paineldecriaracoes-campo-descricao,
+.paineldecriaracoes-campo-categoria {
+    min-width: 0;
+    min-height: 41px;
+    padding: 8px 14px;
+    border: 2px solid #000000;
+    border-radius: 24px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: inherit;
+    font-size: 11px;
+    text-align: center;
+    outline: none;
+}
+
+.paineldecriaracoes-campo-titulo { width: 58%; }
+.paineldecriaracoes-campo-data { width: 23%; }
+.paineldecriaracoes-campo-descricao {
+    width: 100%;
+    height: 41px;
+    resize: vertical;
+}
+.paineldecriaracoes-campo-categoria {
+    width: 100%;
+    font-weight: bold;
+    text-align-last: center;
+    cursor: pointer;
+}
+.paineldecriaracoes-campo-categoria option {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 12px;
+}
+
+.paineldecriaracoes-campo-titulo:focus,
+.paineldecriaracoes-campo-data:focus,
+.paineldecriaracoes-campo-descricao:focus,
+.paineldecriaracoes-campo-categoria:focus {
+    border-color: #3b6791;
+}
+
+.paineldecriaracoes-aviso-categorias {
+    margin: -10px 8px 0;
+    color: #b00020;
+    font-size: 12px;
+    text-align: center;
+}
+
+.paineldecriaracoes-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 0 18px 8px;
+}
+
+.paineldecriaracoes-btn-cancelar,
+.paineldecriaracoes-btn-confirmar {
+    width: 36%;
+    min-height: 32px;
+    border: none;
+    border-radius: 22px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.paineldecriaracoes-btn-cancelar { background-color: #ff3030; }
+.paineldecriaracoes-btn-cancelar:hover { background-color: #d91f1f; }
+.paineldecriaracoes-btn-confirmar { background-color: #168b24; }
+.paineldecriaracoes-btn-confirmar:hover { background-color: #056510; }
+
+@media (max-width: 600px) {
+    .paineldecriaracoes-cabecalho { min-height: 68px; }
+    .paineldecriaracoes-logo { width: 92px; height: 48px; }
+    .paineldecriaracoes-titulo-pesquisador { font-size: 17px; }
+    .paineldecriaracoes-btn-sair { width: 66px; height: 38px; font-size: 10px; }
+    .paineldecriaracoes-formulario { border-radius: 25px; padding: 16px; gap: 15px; }
+    .paineldecriaracoes-linha-superior { flex-direction: column; }
+    .paineldecriaracoes-campo-titulo,
+    .paineldecriaracoes-campo-data { width: 100%; }
+    .paineldecriaracoes-btn { padding: 0; gap: 12px; }
+    .paineldecriaracoes-btn-cancelar,
+    .paineldecriaracoes-btn-confirmar { width: 50%; }
+}
+
+/* PAINEL DE CRIAR AÇÕES */

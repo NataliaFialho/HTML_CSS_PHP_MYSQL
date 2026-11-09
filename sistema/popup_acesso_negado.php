@@ -13,19 +13,15 @@ if (isset($mostrarPopupAcessoNegado) && $mostrarPopupAcessoNegado === true):
         </div>
 
         <h2 class="popupdeacessonegado-titulo" id="popupdeacessonegado-titulo"> Acesso negado!</h2>
-
         <p class="popupdeacessonegado-mensagem" id="popupdeacessonegado-mensagem"> Seu email ou senha estão incorretos! Ou, você<br class="popupdeacessonegado-quebra"> não tem acesso ao sistema.</p>
-
         <button type="button" class="popupdeacessonegado-btn" id="popupdeacessonegado-btn-ok">OK</button>
     </section>
 </div>
 
 <script>
     document
-        .getElementById('popupdeacessonegado-btn-ok')
-        .addEventListener('click', function () {
-            document.getElementById('popupdeacessonegado-overlay').remove();
-        });
+        .getElementById('popupdeacessonegado-btn-ok').addEventListener('click', function () {
+            document.getElementById('popupdeacessonegado-overlay').remove();});
 </script>
 
 <?php endif; ?>
