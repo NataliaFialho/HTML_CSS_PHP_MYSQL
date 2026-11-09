@@ -20,11 +20,15 @@
 
     <div class="painel-minhas-acoes-container-card">
         <div class="painel-minhas-acoes-card-pesquisa">
-            <h3>Título</h3>
-            <p>
+            <h3 class="card-titulo">Título</h3>
+            <p class="card-categoria"></p>
+            <p class="card-data"></p>
+
+            <p class="card-descricao">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ut sunt, et exercitationem necessitatibus nihil fugit soluta labore iusto eum eos quo aperiam tenetur hic assumenda est eveniet minus. Et.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam sunt impedit laudantium officiis quos exercitationem, repellendus aperiam vel ea rerum, quo quod qui assumenda temporibus explicabo. Eaque tenetur enim sed.
             </p>
+            
+            <p class="card-status"></p>
         </div>
     </div>
 </body>

@@ -153,6 +153,12 @@ body {
     margin-left: 1%;
     color: rgb(0, 0, 0);
 }
+
+.card h3,
+.card p {
+  margin: 0;
+}
+
 /*  */
 
 /*=============*/
