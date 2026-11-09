@@ -1005,3 +1005,289 @@ body.cadastrocategoria-pagina {
 }
 
 /* CADASTRO DE CATEGORIA DE AÇÃO */
+
+/* GERENCIAMENTO DE CATEGORIAS DE AÇÃO */
+
+.gerenciacategoria-pagina {
+    min-height: 100vh;
+    margin: 0;
+    border: 2px solid #111111;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #3b6791;
+    color: #000000;
+}
+
+.gerenciacategoria-pagina * {
+    box-sizing: border-box;
+}
+
+.gerenciacategoria-cabecalho {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #3b6791;
+}
+
+.gerenciacategoria-logo {
+    width: 137px;
+    height: 59px;
+    object-fit: contain;
+    background-color: #ffffff;
+}
+
+.gerenciacategoria-titulo-administrador {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(19px, 3vw, 30px);
+    font-weight: 700;
+}
+
+.gerenciacategoria-btn-sair {
+    width: 110px;
+    height: 54px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background-color: #19c42e;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.gerenciacategoria-btn-sair:hover {
+    background-color: #12a925;
+}
+
+.gerenciacategoria-faixa-titulo {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.gerenciacategoria-titulo-acoes {
+    margin: 0;
+    color: #000000;
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: bold;
+    text-align: center;
+}
+
+.gerenciacategoria-area-principal {
+    width: 100%;
+    min-height: calc(100vh - 132px);
+    padding: 54px 20px 35px;
+    background-color: #3b6791;
+}
+
+.gerenciacategoria-lista {
+    width: min(100%, 900px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.gerenciacategoria-card {
+    width: 100%;
+    min-height: 96px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    background-color: #ffffff;
+}
+
+.gerenciacategoria-card-inativa {
+    background-color: #eeeeee;
+}
+
+.gerenciacategoria-nome {
+    margin: 4px 0 0;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.gerenciacategoria-acoes-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.gerenciacategoria-form-desativar {
+    margin: 0;
+}
+
+.gerenciacategoria-btn-desativar,
+.gerenciacategoria-btn-editar,
+.gerenciacategoria-btn-cancelar,
+.gerenciacategoria-btn-salvar {
+    width: 113px;
+    min-height: 27px;
+    padding: 6px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 20px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.gerenciacategoria-btn-desativar,
+.gerenciacategoria-btn-cancelar {
+    background-color: #ff3030;
+}
+
+.gerenciacategoria-btn-desativar:hover,
+.gerenciacategoria-btn-cancelar:hover {
+    background-color: #d91f1f;
+}
+
+.gerenciacategoria-btn-editar,
+.gerenciacategoria-btn-salvar {
+    background-color: #168b24;
+}
+
+.gerenciacategoria-btn-editar:hover,
+.gerenciacategoria-btn-salvar:hover {
+    background-color: #056510;
+}
+
+.gerenciacategoria-status-inativa {
+    margin-right: auto;
+    color: #777777;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.gerenciacategoria-form-edicao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gerenciacategoria-label-edicao {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.gerenciacategoria-input-edicao {
+    width: 100%;
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.gerenciacategoria-input-edicao:focus {
+    border-color: #3b6791;
+    outline: none;
+}
+
+.gerenciacategoria-acoes-edicao {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.gerenciacategoria-mensagem,
+.gerenciacategoria-vazio {
+    width: min(100%, 900px);
+    margin: 0 auto 20px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.gerenciacategoria-sucesso {
+    color: #08751a;
+}
+
+.gerenciacategoria-erro {
+    color: #b00020;
+}
+
+.gerenciacategoria-vazio {
+    color: #333333;
+}
+
+@media (max-width: 600px) {
+    .gerenciacategoria-cabecalho {
+        min-height: 68px;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .gerenciacategoria-logo {
+        width: 92px;
+        height: 48px;
+    }
+
+    .gerenciacategoria-titulo-administrador {
+        font-size: 17px;
+    }
+
+    .gerenciacategoria-btn-sair {
+        width: 66px;
+        height: 38px;
+        font-size: 10px;
+    }
+
+    .gerenciacategoria-area-principal {
+        min-height: calc(100vh - 118px);
+        padding: 30px 14px;
+    }
+
+    .gerenciacategoria-lista {
+        gap: 16px;
+    }
+
+    .gerenciacategoria-card {
+        min-height: 100px;
+        padding: 13px;
+    }
+
+    .gerenciacategoria-acoes-card,
+    .gerenciacategoria-acoes-edicao {
+        gap: 10px;
+    }
+
+    .gerenciacategoria-btn-desativar,
+    .gerenciacategoria-btn-editar,
+    .gerenciacategoria-btn-cancelar,
+    .gerenciacategoria-btn-salvar {
+        width: 105px;
+        font-size: 10px;
+    }
+}
+
+/* GERENCIAMENTO DE CATEGORIAS DE AÇÃO */
