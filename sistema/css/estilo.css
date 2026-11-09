@@ -220,17 +220,18 @@ body{
 
 /* popup confirmar desativacao */
  
-.popup {
-    width: 850px;
-    height: 350px;
-    padding: 30px;
-    background-color: #0878c9;
-    border: 3px solid #075eaa;
+.popup-confirmar-desativacao {
+    width: 100%;
+    max-width: 31.67vw;
+    min-height: 17.08vw;
+    padding: 1.68vw 1.76vw 0.51vw;
+    background-color: #356394;
+    border: 0.073vw solid #000000;
     border-radius: 5px;
     text-align: center;
     color: white;
+    box-sizing: border-box;
 }
-
 .icone-erro {
     margin-bottom: 10px;
 }
@@ -256,11 +257,11 @@ h1 {
     justify-content: space-between;
 }
 
-.botao {
+.botao-cancelar {
     width: 245px;
     height: 55px;
-    background-color: red;
     color: white;
+    background-color: #ff3131;
     border: none;
     border-radius: 30px;
     font-size: 20px;
@@ -268,8 +269,24 @@ h1 {
     cursor: pointer;
 }
 
-.botao:hover {
+.botao-desativar {
+    width: 245px;
+    height: 55px;
+    color: white;
+    background-color: grey;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-cancelar:hover {
     background-color: darkred;
+}
+
+.botao-desativar:hover {
+    background-color: rgb(70, 70, 70);
 }
 
 
