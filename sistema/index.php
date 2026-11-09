@@ -26,22 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($usuario) {
 
-                $senhaCorreta = password_verify($senha, $usuario["senha"]);
-
-                if (!$senhaCorreta && hash_equals($usuario["senha"], $senha)) {
-                    $senhaCorreta = true;
-
-                    $novaSenha = password_hash($senha, PASSWORD_DEFAULT);
-
-                    $atualizar = $pdo->prepare(
-                        "UPDATE usuarios SET senha = :senha WHERE matricula = :matricula"
-                    );
-
-                    $atualizar->execute([
-                        "senha" => $novaSenha,
-                        "matricula" => $usuario["matricula"]
-                    ]);
-                }
+                $senhaCorreta = hash_equals($usuario["senha"], $senha);
 
                 if ($senhaCorreta && (int)$usuario["status"] === 1) {
 
@@ -137,4 +122,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
-
