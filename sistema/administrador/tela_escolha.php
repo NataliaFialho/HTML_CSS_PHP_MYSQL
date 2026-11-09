@@ -7,11 +7,11 @@
     <link rel="stylesheet" href=" ../../sistema/css/estilo.css">
 </head>
 <body>
-    <div class="logo-container">
-        <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="logo-embrapa--tela_escolha">
-        <h1 class="titulo-painel">ADMINISTRADOR</h1>
-        <button class="botao btn-sair">Sair</button>
-    </div>
+<header class="paineldecriaracoes-cabecalho">
+        <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
+        <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
+        <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
+    </header>
 
 
 

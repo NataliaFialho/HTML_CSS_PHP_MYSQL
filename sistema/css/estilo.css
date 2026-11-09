@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    justify-content: space-evenly;
 }
 
 body {
@@ -116,7 +117,7 @@ body {
 body{
     width: 100vw;
     height: 100vh;
-    background-color: #004e7a;
+    background-color: #ffffff;
 }
 .logo-embrapa--tela_dois_cargos{
     width: 40%;
@@ -245,7 +246,7 @@ body{
 }
 
 .titulo-painel {
-    color: #ffffff;
+    color: #070707;
     font-size: 2.5vw;
     font-weight: 700;
     margin: 0;
@@ -259,32 +260,34 @@ body{
 }
 
 .conteudo-principal {
-    flex: 1;
+    width: 100%;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4vw;
-    padding: 2vw;
 }
 
 .card-painel {
     background-color: #3b6791;
-    width: 35vw;
-    height: 30vw;
+    width: 60%;
+    height: 100%;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2vw;
     box-sizing: border-box;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+
 }
 
 .card-titulo {
     color: #ffffff;
     font-size: 3vw;
-    margin: 0 0 4vw 0;
+    margin: 2% 0 2% 0;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -294,13 +297,16 @@ body{
     display: flex;
     flex-direction: column;
     gap: 3vw;
+    gap: 3vh;
     width: 60%; 
+    height: 60%;
 }
 .card-botoes .botao{
     width: 100%;
     padding: 1.2vw 0;
     font-size: 1.2vw;
     letter-spacing: 1px;
+    margin: 2% 0 2% 0;
 }
 
 /* popup de acesso negado */
