@@ -5,6 +5,7 @@ session_start();
 require_once "conexao.php";
 
 $mostrarPopupAcessoNegado = false;
+$erroSistema = false;
 $loginSucesso = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,42 +13,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $senha = $_POST["senha"];
 
-    $sql = "SELECT * FROM usuarios WHERE email = :email";
+    if (isset($pdo) && $pdo instanceof PDO) {
 
-    $consulta = $pdo->prepare($sql);
+        $sql = "SELECT * FROM usuarios WHERE email = :email";
 
-    $consulta->execute([
-        "email" => $email
-    ]);
+        $consulta = $pdo->prepare($sql);
 
-    $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
+        $consulta->execute([
+            "email" => $email
+        ]);
 
-    if (
-        $usuario &&
-        password_verify($senha, $usuario["senha"]) &&
-        $usuario["status"] == 1
-    ) {
+        $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
-        session_regenerate_id(true);
+        if (
+            $usuario &&
+            password_verify($senha, $usuario["senha"]) &&
+            $usuario["status"] == 1
+        ) {
 
-        $_SESSION["matricula"] = $usuario["matricula"];
-        $_SESSION["nome"] = $usuario["nome"];
-        $_SESSION["email"] = $usuario["email"];
-        $_SESSION["id_cargo"] = $usuario["id_cargo"];
+            session_regenerate_id(true);
 
-        $loginSucesso = true;
+            $_SESSION["matricula"] = $usuario["matricula"];
+            $_SESSION["nome"] = $usuario["nome"];
+            $_SESSION["email"] = $usuario["email"];
+            $loginSucesso = true;
+
+        } else {
+
+            $mostrarPopupAcessoNegado = true;
+
+        }
 
     } else {
 
-        $mostrarPopupAcessoNegado = true;
+        $erroSistema = true;
 
     }
 }
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -55,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Embrapa - Gado de Corte</title>
@@ -76,12 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <section class="caixa-login">
 
             <h1 class="titulo-login">Tela de Login</h1>
-
-            <?php if ($loginSucesso): ?>
-
-                <p>Login realizado com sucesso!</p>
-
-            <?php endif; ?>
 
             <form class="formulario-login" method="POST" action="index.php">
 
@@ -106,6 +105,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </button>
 
             </form>
+
+            <?php if ($loginSucesso): ?>
+
+                <p>Login realizado com sucesso!</p>
+
+            <?php endif; ?>
+
+            <?php if ($erroSistema): ?>
+
+                <p>Não foi possível conectar ao banco de dados.</p>
+
+            <?php endif; ?>
 
         </section>
 
