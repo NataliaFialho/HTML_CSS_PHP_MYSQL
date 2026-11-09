@@ -21,14 +21,14 @@ if ($metodo === 'POST') {
     $matriculaInformada = $_POST['matricula'] ?? null;
     $nomeInformado = $_POST['nome'] ?? null;
     $emailInformado = $_POST['email'] ?? null;
-    $senha = $_POST['senha'] ?? null;
+    $senhaUsuario = $_POST['senha'] ?? null;
     $cargos = $_POST['cargos'] ?? [];
 
     if (
         !is_string($matriculaInformada) ||
         !is_string($nomeInformado) ||
         !is_string($emailInformado) ||
-        !is_string($senha) ||
+        !is_string($senhaUsuario) ||
         !is_array($cargos) || $cargos === []
     ) {
         http_response_code(400);
@@ -56,7 +56,7 @@ if ($metodo === 'POST') {
         $nome === '' || strlen($nome) > 50 ||
         filter_var($email, FILTER_VALIDATE_EMAIL) === false ||
         strlen($email) > 100 ||
-        strlen($senha) < 8
+        strlen($senhaUsuario) < 8
     ) {
         http_response_code(400);
         echo 'Confira os dados informados e selecione ao menos um cargo.';
@@ -83,7 +83,7 @@ if ($metodo === 'POST') {
             ':matricula' => $matricula,
             ':nome' => $nome,
             ':email' => $email,
-            ':senha' => $senha,
+            ':senha' => $senhaUsuario,
         ]);
 
         $usuarioCargoStmt = $pdo->prepare(
