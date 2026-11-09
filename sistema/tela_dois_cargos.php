@@ -6,10 +6,10 @@ session_start();
 require_once "conexao.php";
 
 // 1. Verifica se existe uma matrícula na sessão
-if (!isset($_SESSION["matricula"])) {
-    header("Location: index.php");
-    exit;
-}
+// if (!isset($_SESSION["matricula"])) {
+//     header("Location: index.php");
+//     exit;
+// }
 
 // 2. Recupera a matrícula do usuário
 $matricula = $_SESSION["matricula"];
