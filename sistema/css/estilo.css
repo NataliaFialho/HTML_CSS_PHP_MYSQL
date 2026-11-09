@@ -301,14 +301,19 @@ body{
     width: 60%; 
     height: 60%;
 }
-.card-botoes .botao{
+.card-botoes .botao {
+    display: flex;            
+    align-items: center;      
+    justify-content: center;   
+    text-decoration: none;    
     width: 100%;
-    padding: 1.2vw 0;
+    height: 30%;
     font-size: 1.2vw;
     letter-spacing: 1px;
     margin: 2% 0 2% 0;
+    color: #000000;             
+    border: 2px solid #000000;
 }
-
 /* popup de acesso negado */
 
 
@@ -340,6 +345,7 @@ body.paineldecriaracoes-pagina {
     gap: 10px;
     padding: 8px 10px;
     background-color: #3b6791;
+    justify-content: space-between;
 }
 
 .paineldecriaracoes-logo {

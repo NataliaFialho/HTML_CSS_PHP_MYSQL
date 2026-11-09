@@ -1,4 +1,4 @@
-/*login*/
+<!-- login -->
 
 <?php
 session_start();

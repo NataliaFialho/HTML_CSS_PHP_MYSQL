@@ -9,31 +9,37 @@
 <body>
 <header class="paineldecriaracoes-cabecalho">
         <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
-        <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
-        <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
+        <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
+        <a href="../index.php" class="cadastrocategoria-btn-sair">Sair</a>
+        </form>
+        
     </header>
 
 
 
     <main class="conteudo-principal">
-        
-        <section class="card-painel">
-            <h2 class="card-titulo">USUÁRIOS</h2>
-            <div class="card-botoes">
-                <button class="botao">ADICIONAR</button>
-                <button class="botao">LISTAR</button>
-            </div>
-        </section>
 
-        <section class="card-painel">
-            <h2 class="card-titulo">AÇÕES</h2>
-            <div class="card-botoes">
-                <button class="botao">ADICIONAR</button>
-                <button class="botao">LISTAR</button>
-            </div>
-        </section>
+    <section class="card-painel">
+        <h2 class="card-titulo">USUÁRIOS</h2>
+        <div class="card-botoes">
 
-    </main>
+            <a href="cadastrar.php" class="botao">ADICIONAR</a>
+            <a href="listar_usuarios.php" class="botao">LISTAR</a>
+
+        </div>
+    </section>
+
+    <section class="card-painel">
+        <h2 class="card-titulo">AÇÕES</h2>
+        <div class="card-botoes">
+
+            <a href="cadastrar_categoria.php" class="botao">ADICIONAR</a>
+            <a href="listar_acoes.php" class="botao">LISTAR</a>
+
+        </div>
+    </section>
+
+</main>
 
 </body>
 </html>
