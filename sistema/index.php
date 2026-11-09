@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 require_once "conexao.php";
@@ -10,73 +9,69 @@ $loginSucesso = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $email = trim($_POST["email"]);
-    $senha = $_POST["senha"];
+    $email = trim($_POST["email"] ?? "");
+    $senha = $_POST["senha"] ?? "";
 
     if (isset($pdo) && $pdo instanceof PDO) {
 
-        $sql = "SELECT * FROM usuarios WHERE email = :email";
+        try {
+            $sql = "SELECT * FROM usuarios WHERE email = :email";
 
-        $consulta = $pdo->prepare($sql);
+            $consulta = $pdo->prepare($sql);
+            $consulta->execute(["email" => $email]);
 
-        $consulta->execute([
-            "email" => $email
-        ]);
+            $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
-        $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
+            if (
+                $usuario &&
+                isset($usuario["senha"]) &&
+                password_verify($senha, $usuario["senha"]) &&
+                isset($usuario["status"]) &&
+                (int)$usuario["status"] === 1
+            ) {
 
-        if (
-            $usuario &&
-            password_verify($senha, $usuario["senha"]) &&
-            $usuario["status"] == 1
-        ) {
+                session_regenerate_id(true);
 
-            session_regenerate_id(true);
+                $_SESSION["matricula"] = $usuario["matricula"];
+                $_SESSION["nome"] = $usuario["nome"];
+                $_SESSION["email"] = $usuario["email"];
 
-            $_SESSION["matricula"] = $usuario["matricula"];
-            $_SESSION["nome"] = $usuario["nome"];
-            $_SESSION["email"] = $usuario["email"];
-            $loginSucesso = true;
+                $loginSucesso = true;
 
-        } else {
+            } else {
+                $mostrarPopupAcessoNegado = true;
+            }
 
-            $mostrarPopupAcessoNegado = true;
-
+        } catch (PDOException $e) {
+            $erroSistema = true;
         }
 
     } else {
-
         $erroSistema = true;
-
     }
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Embrapa - Gado de Corte</title>
+    <title>Login - Embrapa Gado de Corte</title>
 
     <link rel="stylesheet" href="css/estilo.css">
-
 </head>
 
 <body>
 
     <main class="pagina-principal">
 
-        <div class="logo-embrapa">
-
-            <img src="imagens/logo-embrapa.png" alt="Embrapa Gado de Corte">
-
-        </div>
+        <img
+            src="imagens/logo-embrapa.png"
+            alt="Embrapa Gado de Corte"
+            class="logo-embrapa"
+        >
 
         <section class="caixa-login">
 
@@ -107,22 +102,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
 
             <?php if ($loginSucesso): ?>
-
                 <p>Login realizado com sucesso!</p>
-
             <?php endif; ?>
 
             <?php if ($erroSistema): ?>
-
                 <p>Não foi possível conectar ao banco de dados.</p>
-
             <?php endif; ?>
 
         </section>
 
     </main>
 
-    <?php include "popup_acesso_negado.php"; ?>
+    <?php
+    if ($mostrarPopupAcessoNegado === true) {
+        include "popup_acesso_negado.php";
+    }
+    ?>
 
 </body>
 
