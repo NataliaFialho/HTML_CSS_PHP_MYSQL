@@ -231,22 +231,16 @@ body{
     background-color: #009611;
 }
 
-.header-admin {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    background-color: #004e7a;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-}
 
-.logo-container {
+.logo-container{
     background-color: #ffffff;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.logo-embrapa--{
+.logo-embrapa--tela_escolha{
     width: 10%; 
 }
 
