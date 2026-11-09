@@ -38,7 +38,18 @@ $categorias = $stmt->fetchAll();
             <input type="text" placeholder="Email"> 
             <input type="password" placeholder="Senha">
             <div class="cadastrousuario-checkbox">
-                <input type="checkbox">
+                <span>Administrador</span>
+                <input type="checkbox" id="administrador">
+                <span>Validador</span>
+                <input type="checkbox" id="validador">
+                <span>Comitê</span>
+                <input type="checkbox" id="comite">
+                <span>Pesquisador</span>
+                <input type="checkbox" id="pesquisador">
+            </div>
+            <div class="cadastrodeusuario-buttons">
+                <button class="cadastrousuario-cancelbutton">Cancelar</button>
+                <button class="cadastrousuario-submitbutton" id="submitusuario">Cadastrar Usuário</button>
             </div>
         </div>
     </div>
