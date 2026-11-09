@@ -16,7 +16,7 @@ $categorias = $stmt->fetchAll();
     <title>Nova ação</title>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
-<body class="paineldecriaracoes-pagina">
+<body class="paineldecadastrarusuarios-pagina">
 
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
@@ -31,11 +31,16 @@ $categorias = $stmt->fetchAll();
         <h2 class="paineldecriaracoes-titulo-nova-acao">CADASTRAR USUÁRIO</h2>
     </section>
 
-    <main class="paineldecadastrarusuarios-conteudo">
-        <div>
-            <h1>TESTE</h1>
+    <div>
+        <div class="cadastrodeusuario-formulario">
+            <input type="text" placeholder="Nome do Usuário">
+            <input type="text" placeholder="Matricula"> 
+            <input type="text" placeholder="Email"> 
+            <input type="password" placeholder="Senha">
+            <div class="cadastrousuario-checkbox">
+                <input type="checkbox">
+            </div>
         </div>
-
-    </main>
+    </div>
 </body>
 </html>

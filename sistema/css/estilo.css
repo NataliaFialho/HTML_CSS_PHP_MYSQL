@@ -428,11 +428,44 @@ body.paineldecriaracoes-pagina {
     .paineldecriaracoes-btn-confirmar { width: 50%; }
 }
 
-.paineldecadastrarusuarios-conteudo{
+.paineldecadastrarusuarios-pagina{
+    width: 100%;
     justify-content: center;
+    align-items: center;
+}
+
+.cadastrodeusuario-formulario{
     display: flex;
-    height: 25%;
+    flex-direction: column;
     width: 50%;
+    justify-content: center;
+    align-items: center;
     background-color: white;
+    gap: 14px;
+    padding: 28px;
+    margin: 40px auto 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.cadastrodeusuario-formulario input{
+    width: 100%;
+    min-height: 46px;
+    padding: 0 14px;
+    border: 1px solid #b7c3ce;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.cadastrodeusuario-formulario input:focus{
+    border-color: #356394;
+    outline: 3px solid rgba(42, 96, 155, 0.18);
+    background-color: #ffffff;
+}
+
+.cadastrousuario-checkbox input{
+    display: flex;
+    width: 20px;
+    height: 20px;
 }
 /* PAINEL DE CRIAR AÇÕES */
