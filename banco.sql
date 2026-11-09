@@ -13,15 +13,21 @@ CREATE TABLE categoria(
     status BOOLEAN NOT NULL DEFAULT 1 
 ); 
 
-CREATE TABLE IF NOT EXISTS usuarios( 
-    matricula INT PRIMARY KEY NOT NULL, 
-    nome VARCHAR (50) NOT NULL, 
-    email VARCHAR(100) NOT NULL, 
-    id_cargo INT NOT NULL, 
-    senha varchar(16) NOT NULL, 
-    status BOOLEAN NOT NULL DEFAULT 1, 
-    FOREIGN KEY (id_cargo) REFERENCES cargo(id) 
-); 
+CREATE TABLE usuarios (
+    matricula INT PRIMARY KEY NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    status BOOLEAN NOT NULL DEFAULT 1
+);
+
+CREATE TABLE usuario_cargo (
+    matricula INT NOT NULL,
+    id_cargo INT NOT NULL,
+    PRIMARY KEY (matricula, id_cargo),
+    FOREIGN KEY (matricula) REFERENCES usuarios(matricula),
+    FOREIGN KEY (id_cargo) REFERENCES cargo(id)
+);
 
 CREATE TABLE IF NOT EXISTS log( 
     id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -45,7 +51,8 @@ CREATE TABLE IF NOT EXISTS acao(
 ); 
 
 INSERT INTO cargo (cargo) VALUES ('Administrador'), ('Validador'), ('Comitê'), ('Pesquisador'); 
-INSERT INTO usuarios(matricula, nome, email, id_cargo, senha) VALUES (12345, 'Admin', 'admin@gmail.com', 1, '123admin'); 
+INSERT INTO usuarios(matricula, nome, email, senha) VALUES (12345, 'Admin', 'admin@gmail.com', '123admin');
+INSERT INTO usuario_cargo(matricula, id_cargo) VALUES (12345, 1);
 
 SELECT * FROM cargo; 
 SELECT * FROM usuarios; 
