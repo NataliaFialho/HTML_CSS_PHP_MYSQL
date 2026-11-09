@@ -1,5 +1,10 @@
 <?php
 
+require_once 'conexao.php';
+
+$stmt = $pdo->query("SELECT * FROM categorias");
+$categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 if (!isset($categorias)) {
     $categorias = [];
 }?>
@@ -15,7 +20,7 @@ if (!isset($categorias)) {
 <body>
 
     <header class="paineldecriaracoes-cabecalho">
-        <img src="imagens/logo_embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
+        <img src="imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
         <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
     </header>
