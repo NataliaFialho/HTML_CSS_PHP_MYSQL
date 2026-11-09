@@ -15,7 +15,7 @@
     <div class="popup-confirmar-desativacao">
 
         <div class="icone-erro">
-            <img src="imagens/errado.png" alt="Ícone de erro">
+            <img src="imagens/atencao.png" alt="Ícone de erro">
 
         </div>
 
