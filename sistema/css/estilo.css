@@ -6,10 +6,9 @@ body{
     height: 100vh;
     background-color: #004e7a;
 }
-.logo-embrapa{
+.logo-embrapa--tela_dois_cargos{
     width: 40%;
     height: 20%;
-    
 }
 .botao{
     width: 40%;
@@ -17,6 +16,16 @@ body{
     border-radius: 40px;
     background-color: #00bf15;
 }
+
+.formatacao-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
 /* popup de acesso negado */
 
 .popupdeacessonegado-overlay {
@@ -101,6 +110,91 @@ body{
 .popupdeacessonegado-btn:focus-visible {
     outline: 0.15vw solid #ffffff;
     outline-offset: 0.22vw;
+}
+/* tela_escolha.php */
+
+/* Configurações Gerais da Página */
+
+.botao:hover {
+    background-color: #009611;
+}
+
+.header-admin {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #004e7a;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-container {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-embrapa--{
+    width: 10%; 
+}
+
+.titulo-painel {
+    color: #ffffff;
+    font-size: 2.5vw;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-sair {
+    padding: 0.8vw 2.5vw;
+    font-size: 1.2vw;
+}
+
+.conteudo-principal {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4vw;
+    padding: 2vw;
+}
+
+.card-painel {
+    background-color: #3b6791;
+    width: 35vw;
+    height: 30vw;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2vw;
+    box-sizing: border-box;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-titulo {
+    color: #ffffff;
+    font-size: 3vw;
+    margin: 0 0 4vw 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    width: 60%; 
+}
+.card-botoes .botao{
+    width: 100%;
+    padding: 1.2vw 0;
+    font-size: 1.2vw;
+    letter-spacing: 1px;
 }
 
 /* popup de acesso negado */
