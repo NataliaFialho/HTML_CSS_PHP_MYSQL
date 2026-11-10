@@ -16,8 +16,8 @@
     <div class="popup-confirmar-editado">
 
         <div class="icone-correto-popup-editado">
-            
-            <img src="../imagens/correto.png" alt="Ícone de correto">
+
+            <img src="imagens/correto.png" alt="Ícone de correto">
         </div>
 
         <h1>Usuario editado com sucesso!</h1>
