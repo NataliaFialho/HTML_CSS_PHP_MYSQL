@@ -1531,3 +1531,241 @@ body.cadastrocategoria-pagina {
 
 
 
+/* validar ações */
+
+.validaracao-cabecalho {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #3b6791;
+}
+
+.validaracao-logo {
+    width: 140px;
+    height: 55px;
+    object-fit: contain;
+    background-color: #ffffff;
+    padding: 4px;
+}
+
+.validaracao-titulo-administrador {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.validaracao-btn-sair {
+    width: 100px;
+    height: 45px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    background-color: #00b020;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.validaracao-btn-sair:hover {
+    background-color: #008d19;
+}
+
+.validaracao-faixa-titulo {
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.validaracao-titulo-acoes {
+    margin: 0;
+    color: #000000;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.validaracao-area-principal {
+    width: 100%;
+    min-height: calc(100vh - 140px);
+    padding: 35px 20px;
+    background-color: #3b6791;
+}
+
+.validaracao-lista {
+    width: min(100%, 950px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.validaracao-data-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+ }
+
+.validaracao-card {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 2px;
+    padding: 16px 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.validaracao-card-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.validaracao-info-grupo {
+    display: flex;
+    gap: 40px;
+}
+
+.validaracao-item-info,
+.validaracao-data {
+    font-size: 15px;
+    color: #000000;
+}
+
+.validaracao-card-corpo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.validaracao-descricao {
+    margin: 0;
+    color: #000000;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+    text-align: justify;
+}
+
+.validaracao-status {
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.validaracao-status-em-analise {
+    background-color: #fff3cd;
+    color: #765900;
+}
+
+.validaracao-status-aprovado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.validaracao-status-reprovado {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.validaracao-acoes-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-top: 5px;
+}
+
+.validaracao-form-acao {
+    margin: 0;
+}
+
+.validaracao-btn-invalidar,
+.validaracao-btn-validar {
+    width: 125px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 17px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.validaracao-btn-invalidar {
+    background-color: #ff3333;
+}
+
+.validaracao-btn-validar {
+    background-color: #009919;
+}
+
+.validaracao-btn-invalidar:hover,
+.validaracao-btn-validar:hover {
+    opacity: 0.9;
+}
+
+.validaracao-mensagem {
+    width: min(100%, 950px);
+    margin: 0 auto 20px;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.validaracao-sucesso {
+    color: #009919;
+}
+
+.validaracao-erro {
+    color: #ff3333;
+}
+
+@media (max-width: 650px) {
+    .validaracao-info-grupo {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .validaracao-card-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .validaracao-data {
+        align-self: flex-end;
+    }
+
+    .validaracao-acoes-card {
+        justify-content: center;
+    }
+}
+
+/*=======================================*/
