@@ -1,6 +1,7 @@
 <?php
 ?>
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,29 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuário editado</title>
 
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/estilo.css?v=<?php echo time(); ?>">
 </head>
 <body>
 
-    <div class="popup-confirmar-desativacao">
+    <div class="popup-confirmar-editado">
 
-        <div class="icone-atencao">
-            <img src="imagens/atencao.png" alt="Ícone de erro">
-
+        <div class="icone-correto-popup-editado">
+            
+            <img src="../imagens/correto.png" alt="Ícone de correto">
         </div>
 
-        <h1>Certeza que deseja desativar esse Usuário?</h1>
+        <h1>Usuario editado com sucesso!</h1>
 
         <p class="mensagem-popup-editado">
-            Ele não terá acesso ao sistema.
+            Esse usuario foi editado com sucesso!
         </p>
 
         <div class="botoes-popup-editado">
-
-            <button class="botao-cancelar-popup-editado" type="button">
-                Voltar Para Minhas Ações
+            <button class="botao-voltar-popup-editado" type="button">
+                Voltar para Minhas Ações
             </button>
-
         </div>
 
     </div>

@@ -1360,3 +1360,66 @@ body.cadastrocategoria-pagina {
 }
 
 /* GERENCIAMENTO DE CATEGORIAS DE AÇÃO */
+
+/* popup usuario editado */
+
+.popup-confirmar-editado {
+    width: 100%;
+    max-width: 31.67vw;
+    min-height: 17.08vw;
+    padding: 2vw 2vw 2vw;
+    background-color: #356394;
+    border: 0.073vw solid #000000;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+}
+
+.icone-correto-popup-editado {
+    margin-bottom: 15px;
+}
+
+.icone-correto-popup-editado img {
+    width: 90px;
+    height: 90px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.mensagem-popup-editado {
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.botoes-popup-editado {
+    display: flex;
+    justify-content: center;
+}
+
+.botao-voltar-popup-editado {
+    width: 250px;
+    height: 50px;
+    color: white;
+    background-color: #058914;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.botao-voltar-popup-editado:hover {
+    background-color: rgb(7, 72, 27);
+}
+
+/*===========================================*/
