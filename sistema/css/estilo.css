@@ -1436,6 +1436,12 @@ body.cadastrocategoria-pagina {
     gap: 25px;
 }
 
+.validaracao-data-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+ }
+
 .validaracao-card {
     width: 100%;
     background-color: #ffffff;

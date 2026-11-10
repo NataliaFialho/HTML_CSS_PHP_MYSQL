@@ -1,3 +1,47 @@
+<?php
+require_once 'conexao.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao_id'], $_POST['novo_status'])) {
+    $acao_id = $_POST['acao_id'];
+    $novo_status = $_POST['novo_status'];
+
+    if (in_array($novo_status, ['Aprovado', 'Reprovado'])) {
+        try {
+            $sqlUpdate = "UPDATE acao SET status = :status WHERE id = :id";
+            $stmtUpdate = $pdo->prepare($sqlUpdate);
+            $stmtUpdate->execute([
+                ':status' => $novo_status,
+                ':id' => $acao_id
+            ]);
+        } catch (PDOException $e) {
+            $erroAtualizacao = "Erro ao atualizar status: " . $e->getMessage();
+        }
+    }
+}
+
+try {
+    $sqlAcoes = "SELECT 
+                    a.id, 
+                    a.titulo, 
+                    a.descricao, 
+                    a.data, 
+                    a.status, 
+                    c.nome AS categoria_nome, 
+                    u.nome AS pesquisador_nome 
+                 FROM acao a
+                 JOIN categoria c ON a.id_categoria = c.id
+                 JOIN usuarios u ON a.matricula_pesquisador = u.matricula
+                 ORDER BY a.data DESC";
+                 
+    $stmtAcoes = $pdo->prepare($sqlAcoes);
+    $stmtAcoes->execute();
+    $acoes = $stmtAcoes->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    $acoes = [];
+    $erroBusca = "Erro ao carregar ações: " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,65 +62,56 @@
     </section>
 
     <main class="validaracao-area-principal">
-        <section class="validaracao-lista" aria-label="Exemplos de ações para validação">
-            <!-- Cartões demonstrativos: substituir os textos pelos dados fornecidos pelo backend. -->
-            <article class="validaracao-card">
-                <div class="validaracao-card-cabecalho">
-                    <div class="validaracao-info-grupo">
-                        <span class="validaracao-item-info"><strong>[Nome do pesquisador]</strong></span>
-                        <span class="validaracao-item-info"><strong>[Título da ação]</strong></span>
-                        <span class="validaracao-item-info"><strong>[Categoria]</strong></span>
-                    </div>
-                    <span class="validaracao-data"><strong>[Data]</strong></span>
-                </div>
+        <section class="validaracao-lista" aria-label="Lista de ações para validação">
 
-                <div class="validaracao-card-corpo">
-                    <p class="validaracao-descricao">[Descrição da ação]</p>
-                    <div class="validaracao-status validaracao-status-em-analise" role="status">
-                        Status: Em Análise
-                    </div>
-                    <div class="validaracao-acoes-card">
-                        <button type="button" class="validaracao-btn-invalidar">INVALIDAR</button>
-                        <button type="button" class="validaracao-btn-validar">VALIDAR</button>
-                    </div>
-                </div>
-            </article>
+            <?php if (!empty($erroAtualizacao)): ?>
+                <p style="color: red; margin: 10px;"><?= htmlspecialchars($erroAtualizacao) ?></p>
+            <?php endif; ?>
 
-            <article class="validaracao-card">
-                <div class="validaracao-card-cabecalho">
-                    <div class="validaracao-info-grupo">
-                        <span class="validaracao-item-info"><strong>[Nome do pesquisador]</strong></span>
-                        <span class="validaracao-item-info"><strong>[Título da ação]</strong></span>
-                        <span class="validaracao-item-info"><strong>[Categoria]</strong></span>
-                    </div>
-                    <span class="validaracao-data"><strong>[Data]</strong></span>
-                </div>
+            <?php if (!empty($erroBusca)): ?>
+                <p style="color: red; margin: 10px;"><?= htmlspecialchars($erroBusca) ?></p>
+            <?php endif; ?>
 
-                <div class="validaracao-card-corpo">
-                    <p class="validaracao-descricao">[Descrição da ação]</p>
-                    <div class="validaracao-status validaracao-status-aprovado" role="status">
-                        Status: Aprovado
-                    </div>
-                </div>
-            </article>
+            <?php if (empty($acoes)): ?>
+                <p style="margin: 20px; font-weight: bold;">Nenhuma ação cadastrada no momento.</p>
+            <?php else: ?>
+                <?php foreach ($acoes as $acao): ?>
+                    <?php 
+                
+                        $statusClass = 'validaracao-status-em-analise';
+                        if ($acao['status'] === 'Aprovado') {
+                            $statusClass = 'validaracao-status-aprovado';
+                        } elseif ($acao['status'] === 'Reprovado') {
+                            $statusClass = 'validaracao-status-reprovado';
+                        }
+                    ?>
+                    <article class="validaracao-card">
+                        <div class="validaracao-card-cabecalho">
+                            <div class="validaracao-info-grupo">
+                                <span class="validaracao-item-info"><strong><?= htmlspecialchars($acao['pesquisador_nome']) ?></strong></span>
+                                <span class="validaracao-item-info"><strong><?= htmlspecialchars($acao['titulo']) ?></strong></span>
+                                <span class="validaracao-item-info"><strong><?= htmlspecialchars($acao['categoria_nome']) ?></strong></span>
+                            </div>
+                            <div class="validaracao-data-status">
+                                <span class="validaracao-data"><strong><?= date('d/m/Y', strtotime($acao['data'])) ?></strong></span>
+                                <div class="validaracao-status <?= $statusClass ?>" role="status"><?= htmlspecialchars($acao['status']) ?></div>
+                            </div>
+                        </div>
+                        <div class="validaracao-card-corpo">
+                            <p class="validaracao-descricao"><?= htmlspecialchars($acao['descricao']) ?></p>
+                        
+                            <?php if ($acao['status'] === 'Em Análise'): ?>
+                                <form method="POST" class="validaracao-acoes-card">
+                                    <input type="hidden" name="acao_id" value="<?= $acao['id'] ?>">
+                                    <button type="submit" name="novo_status" value="Reprovado" class="validaracao-btn-invalidar">REPROVAR</button>
+                                    <button type="submit" name="novo_status" value="Aprovado" class="validaracao-btn-validar">APROVAR</button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            <?php endif; ?>
 
-            <article class="validaracao-card">
-                <div class="validaracao-card-cabecalho">
-                    <div class="validaracao-info-grupo">
-                        <span class="validaracao-item-info"><strong>[Nome do pesquisador]</strong></span>
-                        <span class="validaracao-item-info"><strong>[Título da ação]</strong></span>
-                        <span class="validaracao-item-info"><strong>[Categoria]</strong></span>
-                    </div>
-                    <span class="validaracao-data"><strong>[Data]</strong></span>
-                </div>
-
-                <div class="validaracao-card-corpo">
-                    <p class="validaracao-descricao">[Descrição da ação]</p>
-                    <div class="validaracao-status validaracao-status-reprovado" role="status">
-                        Status: Reprovado
-                    </div>
-                </div>
-            </article>
         </section>
     </main>
 </body>
