@@ -1414,6 +1414,61 @@ body.cadastrocategoria-pagina {
     color: #333333;
 }
 
+.usuario-card {
+    min-height: 120px;
+    padding: 16px 24px;
+}
+
+.usuario-card-dados {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 14px;
+}
+
+.usuario-card-nome,
+.usuario-card-email,
+.usuario-card-matricula,
+.usuario-card-funcoes {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.usuario-card-email {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.usuario-card-funcoes {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.usuario-card-matricula {
+    grid-column: 2;
+    grid-row: 1;
+    white-space: nowrap;
+}
+
+.usuario-card-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.usuario-card-acoes form {
+    margin: 0;
+}
+
+.usuario-card-acoes button:disabled {
+    background-color: #777777;
+    cursor: not-allowed;
+}
+
 @media (max-width: 600px) {
     .gerenciacategoria-cabecalho {
         min-height: 68px;
@@ -1461,6 +1516,14 @@ body.cadastrocategoria-pagina {
     .gerenciacategoria-btn-salvar {
         width: 105px;
         font-size: 10px;
+    }
+
+    .usuario-card {
+        padding: 13px;
+    }
+
+    .usuario-card-acoes {
+        gap: 10px;
     }
 }
 
