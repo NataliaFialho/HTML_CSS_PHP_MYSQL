@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    justify-content: space-evenly;
 }
 
 body {
@@ -116,12 +117,11 @@ body {
 body{
     width: 100vw;
     height: 100vh;
-    background-color: #004e7a;
+    background-color: #ffffff;
 }
-.logo-embrapa{
+.logo-embrapa--tela_dois_cargos{
     width: 40%;
     height: 20%;
-    
 }
 .botao{
     width: 40%;
@@ -129,6 +129,16 @@ body{
     border-radius: 40px;
     background-color: #00bf15;
 }
+
+.formatacao-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
 /* popup de acesso negado */
 
 .popupdeacessonegado-overlay {
@@ -214,7 +224,96 @@ body{
     outline: 0.15vw solid #ffffff;
     outline-offset: 0.22vw;
 }
+/* tela_escolha.php */
 
+/* Configurações Gerais da Página */
+
+.botao:hover {
+    background-color: #009611;
+}
+
+
+.logo-container{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-embrapa--tela_escolha{
+    width: 10%; 
+}
+
+.titulo-painel {
+    color: #070707;
+    font-size: 2.5vw;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-sair {
+    padding: 0.8vw 2.5vw;
+    font-size: 1.2vw;
+}
+
+.conteudo-principal {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-painel {
+    background-color: #3b6791;
+    width: 60%;
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+.card-titulo {
+    color: #ffffff;
+    font-size: 3vw;
+    margin: 2% 0 2% 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.card-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    gap: 3vh;
+    width: 60%; 
+    height: 60%;
+}
+.card-botoes .botao {
+    display: flex;            
+    align-items: center;      
+    justify-content: center;   
+    text-decoration: none;    
+    width: 100%;
+    height: 30%;
+    font-size: 1.2vw;
+    letter-spacing: 1px;
+    margin: 2% 0 2% 0;
+    color: #000000;             
+    border: 2px solid #000000;
+}
 /* popup de acesso negado */
 
 
@@ -246,6 +345,7 @@ body.paineldecriaracoes-pagina {
     gap: 10px;
     padding: 8px 10px;
     background-color: #3b6791;
+    justify-content: space-between;
 }
 
 .paineldecriaracoes-logo {
