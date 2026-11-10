@@ -1,34 +1,33 @@
 
-<!-- 
 <?php
-// session_start();
-// require_once 'conexao.php'; // ajuste o caminho até o seu conexao.php
+session_start();
+require_once '../conexao.php'; 
 
-// // 1. Só entra quem está logado
-// if (!isset($_SESSION['matricula'])) {
-//     header('Location: login.php'); // ajuste para sua tela de login
-//     exit;
-// }
+// 1. Só entra quem está logado
+if (!isset($_SESSION['matricula'])) {
+    header('Location: login.php'); // ajuste para sua tela de login
+    exit;
+}
 
-// // 2. Busca as ações DESTA matrícula
-// $sql = "SELECT a.id, a.titulo, a.descricao, a.data, a.status, c.nome AS categoria_nome
-//         FROM acao a
-//         INNER JOIN categoria c ON c.id = a.id_categoria
-//         WHERE a.matricula_pesquisador = ?
-//         ORDER BY a.data DESC, a.id DESC";
+// 2. Busca as ações DESTA matrícula
+$sql = "SELECT a.id, a.titulo, a.descricao, a.data, a.status, c.nome AS categoria_nome
+        FROM acao a
+        INNER JOIN categoria c ON c.id = a.id_categoria
+        WHERE a.matricula_pesquisador = ?
+        ORDER BY a.data DESC, a.id DESC";
 
-// $stmt = $pdo->prepare($sql);
-// $stmt->execute([$_SESSION['matricula']]);
-// $acoes = $stmt->fetchAll();
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$_SESSION['matricula']]);
+$acoes = $stmt->fetchAll();
 
-// // 3. Status do banco -> classe de CSS
-// $classes = [
-//     'Em Análise' => 'analise',
-//     'Aprovada'   => 'aprovada',
-//     'Negada'     => 'negada',
-// ];
+// 3. Status do banco -> classe de CSS
+$classes = [
+    'Em Análise' => 'analise',
+    'Aprovada'   => 'aprovada',
+    'Negada'     => 'negada',
+];
 ?>
-/* -->
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
