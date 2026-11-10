@@ -24,7 +24,7 @@
         <div class="card-botoes">
 
             <a href="cadastrar.php" class="botao">ADICIONAR</a>
-            <a href="listar_usuarios.php" class="botao">LISTAR</a>
+            <a href="tela_lista_usuarios.php" class="botao">LISTAR</a>
 
         </div>
     </section>
