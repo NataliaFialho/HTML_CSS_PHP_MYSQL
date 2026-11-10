@@ -3,8 +3,118 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    justify-content: space-evenly;
+
 }
+header{
+    width: 100vw;
+    height: 10vh;
+}
+
+.header-painel-pesquisador {
+    background-color: #386492;
+    width: 100vw;
+    height: 10vh;
+    align-items: center;   
+    display: flex;
+}
+
+.txt-header-painel-pesquisador{
+    color: white;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+.btn-sair-painel-pesquisador{
+    width: 5%;
+    height: 50%;
+    border-radius: 40%;
+    background-color: green;
+    color: white;
+    border: 0;
+    margin-left: auto;
+    margin-right: 5%;
+    align-content:center;
+    text-align: center;
+    
+    
+}
+
+
+.btns-estilizacao-pesquisador{
+    
+    width: 80%;
+    height: 15%;
+    border-radius: 30px;
+    background-color: green;
+    color: white;
+    border: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    display: inline-block;
+    cursor: pointer;
+    
+
+}
+
+
+.titulo-acoes-pesquisador{
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+
+}
+
+.img-header-painel-pesquisador{
+    width: 7%;
+    margin-left: 2%;
+}
+.container-do-painel{
+    width: 100vw;
+    height: 90vh;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    
+    
+}
+
+.painel-dos-botoes{
+    background-color: #386492;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    
+    
+}
+.btns-painel-pesquisador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 110px;              
+    width: 60%;
+    height: 80%;
+    
+}
+
+button{
+    display: block;
+    width: 100%;
+    height: 50%;
+    border-radius: 40%;
+    background-color: green;
+    color: white;
+    border: 0;
+    margin-left: auto;
+    margin-right: 5%;
+}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -286,6 +396,7 @@ body{
 }
 /* tela_escolha.php */
 
+/* popup de acesso negado */
 /* Configurações Gerais da Página */
 
 .botao:hover {

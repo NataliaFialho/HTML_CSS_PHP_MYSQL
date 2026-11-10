@@ -1,7 +1,7 @@
 <?php
 
-require_once 'conexao.php';
-$sql = "INSERT INTO acoes (id, nome) SELECT id, nome FROM categoria WHERE status = 1 ORDER BY nome";
+require_once '../conexao.php';
+$sql = "SELECT id, nome FROM categoria WHERE status = 1 ORDER BY nome";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $categorias = $stmt->fetchAll();
