@@ -1,5 +1,5 @@
 <?php
-require_once 'conexao.php';
+require_once '../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao_id'], $_POST['novo_status'])) {
     $acao_id = $_POST['acao_id'];
@@ -77,7 +77,6 @@ try {
             <?php else: ?>
                 <?php foreach ($acoes as $acao): ?>
                     <?php 
-                
                         $statusClass = 'validaracao-status-em-analise';
                         if ($acao['status'] === 'Aprovado') {
                             $statusClass = 'validaracao-status-aprovado';
@@ -99,7 +98,7 @@ try {
                         </div>
                         <div class="validaracao-card-corpo">
                             <p class="validaracao-descricao"><?= htmlspecialchars($acao['descricao']) ?></p>
-                        
+
                             <?php if ($acao['status'] === 'Em Análise'): ?>
                                 <form method="POST" class="validaracao-acoes-card">
                                     <input type="hidden" name="acao_id" value="<?= $acao['id'] ?>">
