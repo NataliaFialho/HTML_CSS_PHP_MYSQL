@@ -1255,7 +1255,8 @@ body.cadastrocategoria-pagina {
 
 .usuario-card-nome,
 .usuario-card-email,
-.usuario-card-matricula {
+.usuario-card-matricula,
+.usuario-card-funcoes {
     margin: 0;
     font-size: 13px;
     font-weight: bold;
@@ -1265,6 +1266,11 @@ body.cadastrocategoria-pagina {
 .usuario-card-email {
     grid-column: 1;
     grid-row: 2;
+}
+
+.usuario-card-funcoes {
+    grid-column: 1 / -1;
+    grid-row: 3;
 }
 
 .usuario-card-matricula {

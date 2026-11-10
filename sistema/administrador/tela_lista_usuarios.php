@@ -42,9 +42,15 @@ if (($_GET['desativado'] ?? '') === 'sucesso') {
 
 try {
     $usuarios = $pdo->query(
-        'SELECT matricula, nome, email, cargo status
+        'SELECT usuarios.matricula, usuarios.nome, usuarios.email, usuarios.status,
+                (
+                    SELECT GROUP_CONCAT(cargo.cargo ORDER BY cargo.cargo SEPARATOR ", ")
+                    FROM usuario_cargo
+                    INNER JOIN cargo ON cargo.id = usuario_cargo.id_cargo
+                    WHERE usuario_cargo.matricula = usuarios.matricula
+                ) AS funcoes
          FROM usuarios
-         ORDER BY status DESC, nome ASC'
+         ORDER BY usuarios.status DESC, usuarios.nome ASC'
     )->fetchAll();
 } catch (PDOException $e) {
     error_log('Erro ao carregar usuários: ' . $e->getMessage());
@@ -107,6 +113,9 @@ try {
                             </p>
                             <p class="usuario-card-email">
                                 <?= htmlspecialchars($usuario['email'], ENT_QUOTES, 'UTF-8') ?>
+                            </p>
+                            <p class="usuario-card-funcoes">
+                                Funções: <?= htmlspecialchars($usuario['funcoes'] ?? 'Nenhuma atribuída', ENT_QUOTES, 'UTF-8') ?>
                             </p>
                         </div>
                         <div class="usuario-card-acoes">
