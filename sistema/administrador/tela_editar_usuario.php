@@ -24,20 +24,20 @@ $edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
         <h2 class="paineldecriaracoes-titulo-nova-acao">EDITAR USUÁRIO</h2>
     </section>
 
-    <p id="mensagem-edicao" role="status"<?= $edicaoSucesso ? '' : ' hidden' ?>>
+    <p id="mensagem-edicao" class="editarusuario-mensagem editarusuario-sucesso" role="status"<?= $edicaoSucesso ? '' : ' hidden' ?>>
         Usuário atualizado com sucesso.
     </p>
-    <p id="erro-edicao" role="alert" hidden></p>
+    <p id="erro-edicao" class="editarusuario-mensagem editarusuario-erro" role="alert" hidden></p>
 
     <form class="cadastrodeusuario-formulario" method="POST" action="editar.php" style="display: none;">
         <input type="hidden" name="matricula">
         <input type="text" name="nome" placeholder="Nome do Usuário" maxlength="50" required>
-        <input type="number" name="matricula_exibicao" placeholder="Matrícula" readonly>
+        <input type="number" name="matricula_exibicao" placeholder="Matrícula" aria-label="Matrícula" readonly>
         <input type="email" name="email" placeholder="Email" maxlength="100" required>
-        <input type="password" name="senha" placeholder="Nova senha (mínimo de 8 caracteres)" minlength="8">
+        <input type="password" name="senha" placeholder="Nova senha (opcional, mínimo de 8 caracteres)" minlength="8" autocomplete="new-password">
         <div class="cadastrousuario-checkbox">
             <div id="cargos-disponiveis">Carregando dados do usuário...</div>
-            <p id="erro-cargos" role="alert" hidden></p>
+            <p id="erro-cargos" class="editarusuario-mensagem editarusuario-erro" role="alert" hidden></p>
         </div>
         <div class="cadastrodeusuario-buttons">
             <button type="button" class="cadastrousuario-cancelbutton" id="cancelar-edicao">Cancelar</button>
@@ -50,7 +50,8 @@ $edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
         const listaCargos = document.getElementById('cargos-disponiveis');
         const erroCargos = document.getElementById('erro-cargos');
         const erroEdicao = document.getElementById('erro-edicao');
-        const matricula = new URLSearchParams(window.location.search).get('matricula');
+        const parametros = new URLSearchParams(window.location.search);
+        const matricula = parametros.get('matricula') || parametros.get('id');
 
         document.getElementById('cancelar-edicao').addEventListener('click', () => {
             window.location.href = 'tela_escolha.php';
@@ -59,7 +60,6 @@ $edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
         if (!matricula) {
             listaCargos.textContent = '';
             erroEdicao.hidden = false;
-            erroEdicao.textContent = 'Informe a matrícula do usuário que deseja editar.';
         } else {
             fetch(`editar.php?matricula=${encodeURIComponent(matricula)}`)
                 .then(async (resposta) => {

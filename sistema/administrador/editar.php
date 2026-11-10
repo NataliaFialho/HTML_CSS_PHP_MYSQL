@@ -4,7 +4,7 @@ $metodo = $_SERVER['REQUEST_METHOD'];
 if ($metodo === 'GET') {
     header('Content-Type: application/json; charset=utf-8');
 
-    $matriculaInformada = $_GET['matricula'] ?? null;
+    $matriculaInformada = $_GET['matricula'] ?? $_GET['id'] ?? null;
     $matricula = is_string($matriculaInformada)
         ? filter_var($matriculaInformada, FILTER_VALIDATE_INT)
         : false;
