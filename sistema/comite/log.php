@@ -39,26 +39,48 @@
         <h1 class="paineldecriaracoes-titulo-pesquisador">COMITÊ</h1>
         <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
     </header>
-    <main>
-        <div class="painel-minhas-acoes-container-card">
-            <div class="painel-minhas-acoes-card-pesquisa">
-                <h3 class="card-titulo">Usuario Ativo</h3>
-                <p class="card-categoria">Matricula</p>
-                <p class="card-data">Data e hora</p>
-                <p class="card-descricao">Operacao</p>
-                <p class="card-status status-analise">Tabela Afetada</p>
-            </div>
-            
-            <div class="painel-minhas-acoes-card-pesquisa">
-                <h3 class="card-titulo">Usuario Ativo</h3>
-                <p class="card-categoria">Matricula</p>
-                <p class="card-data">Data e hora</p>
-                <p class="card-descricao">Operacao</p>
-                <p class="card-status status-analise">Tabela Afetada</p>
-            </div>
+<main>
+    <div class="painel-minha-acoes-container-card">
+        <?php
+        require_once 'conexao.php';
 
-        </div>
-    </main>
+        try {
+            $query = "SELECT 
+                        u.nome AS usuario_ativo, 
+                        l.matricula_usuario AS matricula, 
+                        l.data_hora, 
+                        l.operacao, 
+                        l.tabela_afetada 
+                      FROM log l
+                      INNER JOIN usuarios u ON l.matricula_usuario = u.matricula
+                      ORDER BY l.data_hora DESC";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if (!empty($logs)):
+                foreach ($logs as $log): 
+                    $dataFormatada = date('d/m/Y H:i:s', strtotime($log['data_hora']));
+            ?>
+                    <div class="painel-linhas-acoes-card-pesquisa">
+                        <h3 class="card-titulo"><?= htmlspecialchars($log['usuario_ativo']) ?></h3>
+                        <p class="card-categoria">Matrícula: <?= htmlspecialchars($log['matricula']) ?></p>
+                        <p class="card-data">Data e hora: <?= htmlspecialchars($dataFormatada) ?></p>
+                        <p class="card-descricao">Operação: <?= htmlspecialchars($log['operacao']) ?></p>
+                        <p class="card-status status-analise">Tabela Afetada: <?= htmlspecialchars($log['tabela_afetada']) ?></p>
+                    </div>
+            <?php 
+                endforeach; 
+            else:
+                echo "<p style='color: white; padding: 20px;'>Nenhum registro de log encontrado.</p>";
+            endif;
+
+        } catch (PDOException $e) {
+            echo "<p style='color: red; padding: 20px;'>Erro ao carregar os dados: " . htmlspecialchars($e->getMessage()) . "</p>";
+        }
+        ?>
+    </div>
+</main>
 </body>
 </html>
 
