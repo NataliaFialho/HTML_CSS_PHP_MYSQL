@@ -15,7 +15,25 @@
         <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
     </header>
     <main>
-        
+        <div class="painel-minhas-acoes-container-card">
+            <!-- Exemplo de Card 1 (Status: Em Análise) -->
+            <div class="painel-minhas-acoes-card-pesquisa">
+                <h3 class="card-titulo">Ação de Reflorestamento Urbano</h3>
+                <p class="card-categoria">Meio Ambiente</p>
+                <p class="card-data">15/10/2026</p>
+                <p class="card-descricao">Plantio de mudas nativas na praça central do bairro para aumento da área verde urbana.</p>
+                <p class="card-status status-analise">Em Análise</p>
+            </div>
+
+            <!-- Exemplo de Card 2 (Status: Aprovado) -->
+            <div class="painel-minhas-acoes-card-pesquisa">
+                <h3 class="card-titulo">Arrecadação de Alimentos</h3>
+                <p class="card-categoria">Social</p>
+                <p class="card-data">22/10/2026</p>
+                <p class="card-descricao">Campanha de natal para arrecadar alimentos não perecíveis para comunidades vulneráveis.</p>
+                <p class="card-status status-aprovado">Aprovado</p>
+            </div>
+        </div>
     </main>
 </body>
 </html>
