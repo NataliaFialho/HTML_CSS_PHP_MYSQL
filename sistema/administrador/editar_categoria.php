@@ -96,19 +96,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     </p>
                 <?php endif; ?>
 
-                <label class="cadastrocategoria-label" for="nome-categoria">Nome</label>
+                <label class="cadastrocategoria-label" for="nome-categoria">Novo nome</label>
                 <input
                     type="text"
                     id="nome-categoria"
                     name="nome"
                     class="cadastrocategoria-campo-nome"
-                    placeholder="Nome"
+                    placeholder="Novo nome"
                     maxlength="50"
                     value="<?= htmlspecialchars($novoNomeCategoria, ENT_QUOTES, 'UTF-8') ?>"
                     required>
 
                 <div class="cadastrocategoria-botoes">
-                    <button type="reset" class="cadastrocategoria-btn-cancelar">
+                    <!-- Analisar esse uso do history.back(), senão funcionar quando a todas as paginas estiverem prontas deverá ser alterado por um link -->
+                    <button type="button" onclick="history.back(); return false;" class="cadastrocategoria-btn-cancelar" >
                         Cancelar
                     </button>
                     <button type="submit" class="cadastrocategoria-btn-confirmar">
