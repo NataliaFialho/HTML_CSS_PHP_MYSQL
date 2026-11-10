@@ -1,3 +1,5 @@
+<!-- login -->
+
 <?php
 session_start();
 
@@ -22,21 +24,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
-            if (
-                $usuario &&
-                isset($usuario["senha"]) &&
-                password_verify($senha, $usuario["senha"]) &&
-                isset($usuario["status"]) &&
-                (int)$usuario["status"] === 1
-            ) {
+            if ($usuario) {
 
-                session_regenerate_id(true);
+                $senhaCorreta = hash_equals($usuario["senha"], $senha);
 
-                $_SESSION["matricula"] = $usuario["matricula"];
-                $_SESSION["nome"] = $usuario["nome"];
-                $_SESSION["email"] = $usuario["email"];
+                if ($senhaCorreta && (int)$usuario["status"] === 1) {
 
-                $loginSucesso = true;
+                    session_regenerate_id(true);
+
+                    $_SESSION["matricula"] = $usuario["matricula"];
+                    $_SESSION["nome"] = $usuario["nome"];
+                    $_SESSION["email"] = $usuario["email"];
+
+                    header("Location: tela_dois_cargos.php");
+                    exit;
+
+                } else {
+                    $mostrarPopupAcessoNegado = true;
+                }
 
             } else {
                 $mostrarPopupAcessoNegado = true;
@@ -59,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Embrapa Gado de Corte</title>
-
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 
@@ -100,10 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </button>
 
             </form>
-
-            <?php if ($loginSucesso): ?>
-                <p>Login realizado com sucesso!</p>
-            <?php endif; ?>
 
             <?php if ($erroSistema): ?>
                 <p>Não foi possível conectar ao banco de dados.</p>
