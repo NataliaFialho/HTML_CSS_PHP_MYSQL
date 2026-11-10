@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../conexao.php';
 
 $nomeCategoria = '';
@@ -22,12 +23,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($consulta->fetch()) {
                 $mensagemErro = 'Essa categoria já está cadastrada.';
             } else {
-                $cadastro = $pdo->prepare(
-                    'INSERT INTO categoria (nome) VALUES (:nome)'
-                );
-                $cadastro->execute([':nome' => $nomeCategoria]);
-                $mensagemSucesso = 'Categoria cadastrada com sucesso!';
-                $nomeCategoria = '';
+                if (!isset($_SESSION['matricula'])) {
+                    http_response_code(401);
+                    $mensagemErro = 'É necessário estar autenticado para cadastrar categorias.';
+                } else {
+                    $permissaoStmt = $pdo->prepare(
+                        'SELECT 1 FROM usuario_cargo
+                         WHERE matricula = :matricula AND id_cargo = 1
+                         LIMIT 1'
+                    );
+                    $permissaoStmt->execute([
+                        ':matricula' => $_SESSION['matricula']
+                    ]);
+
+                    if (!$permissaoStmt->fetchColumn()) {
+                        http_response_code(403);
+                        $mensagemErro = 'Somente administradores podem cadastrar categorias.';
+                    } else {
+                        $pdo->beginTransaction();
+
+                        try {
+                            $cadastro = $pdo->prepare(
+                                'INSERT INTO categoria (nome) VALUES (:nome)'
+                            );
+                            $cadastro->execute([':nome' => $nomeCategoria]);
+                            $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
+                            $logStmt->execute([':operacao' => 'Administrador cadastrou uma nova categoria de ação: ' . $nomeCategoria, ':matricula' => $_SESSION['matricula'], ':tabela' => 'categoria']);
+                            $pdo->commit();
+                            $mensagemSucesso = 'Categoria cadastrada com sucesso!';
+                            $nomeCategoria = '';
+                        } catch (Throwable $e) {
+                            if ($pdo->inTransaction()) {
+                                $pdo->rollBack();
+                            }
+                            throw $e;
+                        }
+                    }
+                }
             }
         } catch (PDOException $e) {
             error_log('Erro ao cadastrar categoria: ' . $e->getMessage());
