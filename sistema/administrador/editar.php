@@ -19,31 +19,32 @@ if ($metodo === 'GET') {
         require_once __DIR__ . '/../conexao.php';
 
         $usuarioStmt = $pdo->prepare(
-            'SELECT matricula, nome, email FROM usuarios WHERE matricula = :matricula'
+            'SELECT matricula, nome, email
+             FROM usuarios
+             WHERE matricula = :matricula AND status = 1'
         );
         $usuarioStmt->execute([':matricula' => $matricula]);
         $usuario = $usuarioStmt->fetch();
 
-
         if (!$usuario) {
             http_response_code(404);
-            echo json_encode(['erro' => 'Usuário não encontrado.'], JSON_UNESCAPED_UNICODE);
+            echo json_encode(['erro' => 'Usuário não encontrado ou desativado.'], JSON_UNESCAPED_UNICODE);
             exit;
         }
 
         $cargos = $pdo->query('SELECT id, cargo FROM cargo ORDER BY cargo')->fetchAll();
-        $cargosStmt = $pdo->prepare(
+        $cargosUsuarioStmt = $pdo->prepare(
             'SELECT id_cargo FROM usuario_cargo WHERE matricula = :matricula'
         );
-        $cargosStmt->execute([':matricula' => $matricula]);
+        $cargosUsuarioStmt->execute([':matricula' => $matricula]);
 
         echo json_encode([
             'usuario' => $usuario,
             'cargos' => $cargos,
-            'cargosSelecionados' => $cargosStmt->fetchAll(PDO::FETCH_COLUMN),
+            'cargosSelecionados' => $cargosUsuarioStmt->fetchAll(PDO::FETCH_COLUMN),
         ], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
     } catch (PDOException | JsonException $e) {
-        error_log($e->getMessage());
+        error_log('Erro ao carregar usuário para edição: ' . $e->getMessage());
         http_response_code(500);
         echo json_encode(['erro' => 'Não foi possível carregar os dados do usuário.'], JSON_UNESCAPED_UNICODE);
     }
@@ -55,19 +56,18 @@ if ($metodo === 'POST') {
     $matriculaInformada = $_POST['matricula'] ?? null;
     $nomeInformado = $_POST['nome'] ?? null;
     $emailInformado = $_POST['email'] ?? null;
-    $senhaInformada = $_POST['senha'] ?? '';
+    $senha = $_POST['senha'] ?? '';
     $cargosInformados = $_POST['cargos'] ?? [];
 
     if (
         !is_string($matriculaInformada) ||
         !is_string($nomeInformado) ||
         !is_string($emailInformado) ||
-        !is_string($senhaInformada) ||
+        !is_string($senha) ||
         !is_array($cargosInformados) || $cargosInformados === []
     ) {
         http_response_code(400);
-        echo 'Confira os dados informados e selecione ao menos um cargo.';
-        exit;
+        exit('Confira os dados informados e selecione ao menos um cargo.');
     }
 
     $matricula = filter_var($matriculaInformada, FILTER_VALIDATE_INT);
@@ -82,8 +82,7 @@ if ($metodo === 'POST') {
 
         if ($idCargo === false || $idCargo < 1) {
             http_response_code(400);
-            echo 'Um dos cargos selecionados não é válido.';
-            exit;
+            exit('Um dos cargos selecionados não é válido.');
         }
         $cargos[] = $idCargo;
     }
@@ -94,24 +93,24 @@ if ($metodo === 'POST') {
         $nome === '' || strlen($nome) > 50 ||
         filter_var($email, FILTER_VALIDATE_EMAIL) === false ||
         strlen($email) > 100 ||
-        ($senhaInformada !== '' && strlen($senhaInformada) < 8)
+        ($senha !== '' && strlen($senha) < 8)
     ) {
         http_response_code(400);
-        echo 'Confira os dados informados. A senha, quando preenchida, deve ter ao menos 8 caracteres.';
-        exit;
+        exit('Confira os dados. A nova senha, quando preenchida, deve ter ao menos 8 caracteres.');
     }
 
     try {
         require_once __DIR__ . '/../conexao.php';
         $pdo->beginTransaction();
 
-        $usuarioStmt = $pdo->prepare('SELECT matricula FROM usuarios WHERE matricula = :matricula');
+        $usuarioStmt = $pdo->prepare(
+            'SELECT matricula FROM usuarios WHERE matricula = :matricula AND status = 1'
+        );
         $usuarioStmt->execute([':matricula' => $matricula]);
         if (!$usuarioStmt->fetch()) {
             $pdo->rollBack();
             http_response_code(404);
-            echo 'Usuário não encontrado.';
-            exit;
+            exit('Usuário não encontrado ou desativado.');
         }
 
         $cargoStmt = $pdo->prepare('SELECT id FROM cargo WHERE id = :id');
@@ -122,40 +121,41 @@ if ($metodo === 'POST') {
             }
         }
 
-        if ($senhaInformada === '') {
+        if ($senha === '') {
             $usuarioUpdateStmt = $pdo->prepare(
                 'UPDATE usuarios SET nome = :nome, email = :email WHERE matricula = :matricula'
             );
-            $usuarioUpdateStmt->execute([
+            $dadosUsuario = [
                 ':nome' => $nome,
                 ':email' => $email,
                 ':matricula' => $matricula,
-            ]);
+            ];
         } else {
             $usuarioUpdateStmt = $pdo->prepare(
                 'UPDATE usuarios
                  SET nome = :nome, email = :email, senha = :senha
                  WHERE matricula = :matricula'
             );
-            $usuarioUpdateStmt->execute([
+            $dadosUsuario = [
                 ':nome' => $nome,
                 ':email' => $email,
-                ':senha' => $senhaInformada,
+                ':senha' => $senha,
                 ':matricula' => $matricula,
-            ]);
+            ];
         }
+        $usuarioUpdateStmt->execute($dadosUsuario);
 
         $removeCargosStmt = $pdo->prepare(
             'DELETE FROM usuario_cargo WHERE matricula = :matricula'
         );
         $removeCargosStmt->execute([':matricula' => $matricula]);
 
-        $usuarioCargoStmt = $pdo->prepare(
+        $insereCargoStmt = $pdo->prepare(
             'INSERT INTO usuario_cargo (matricula, id_cargo)
              VALUES (:matricula, :id_cargo)'
         );
         foreach ($cargos as $idCargo) {
-            $usuarioCargoStmt->execute([
+            $insereCargoStmt->execute([
                 ':matricula' => $matricula,
                 ':id_cargo' => $idCargo,
             ]);
@@ -169,16 +169,14 @@ if ($metodo === 'POST') {
             $pdo->rollBack();
         }
         http_response_code(400);
-        echo 'Um dos cargos selecionados não é válido.';
-        exit;
+        exit('Um dos cargos selecionados não é válido.');
     } catch (PDOException $e) {
         if (isset($pdo) && $pdo->inTransaction()) {
             $pdo->rollBack();
         }
-        error_log($e->getMessage());
+        error_log('Erro ao editar usuário: ' . $e->getMessage());
         http_response_code(500);
-        echo 'Não foi possível editar o usuário. Confira os dados e tente novamente.';
-        exit;
+        exit('Não foi possível editar o usuário. Confira os dados e tente novamente.');
     }
 }
 
