@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $metodo = $_SERVER['REQUEST_METHOD'];
 
 if ($metodo === 'GET') {
@@ -18,6 +20,12 @@ if ($metodo === 'GET') {
 }
 
 if ($metodo === 'POST') {
+    if (!isset($_SESSION['matricula'])) {
+        http_response_code(401);
+        echo 'É necessário estar autenticado para cadastrar usuários.';
+        exit;
+    }
+
     $matriculaInformada = $_POST['matricula'] ?? null;
     $nomeInformado = $_POST['nome'] ?? null;
     $emailInformado = $_POST['email'] ?? null;
@@ -65,6 +73,16 @@ if ($metodo === 'POST') {
 
     try {
         require_once __DIR__ . '/../conexao.php';
+        $permissaoStmt = $pdo->prepare('SELECT 1 FROM usuario_cargo WHERE matricula = :matricula AND id_cargo = 1 LIMIT 1'
+        );
+        $permissaoStmt->execute([':matricula' => $_SESSION['matricula'],]);
+
+        if (!$permissaoStmt->fetchColumn()) {
+            http_response_code(403);
+            echo 'Somente administradores podem cadastrar usuários.';
+            exit;
+        }
+
         $pdo->beginTransaction();
 
         $cargoStmt = $pdo->prepare('SELECT id FROM cargo WHERE id = :id');
@@ -96,6 +114,13 @@ if ($metodo === 'POST') {
                 ':id_cargo' => $idCargo,
             ]);
         }
+
+        $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
+        $logStmt->execute([
+            ':operacao' => 'Administrador cadastrou um novo usuário',
+            ':matricula' => $_SESSION['matricula'],
+            ':tabela' => 'usuarios, usuario_cargo',
+        ]);
 
         $pdo->commit();
         header('Location: tela_cadastrar_usuario.php?cadastro=sucesso');
