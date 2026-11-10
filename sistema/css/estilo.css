@@ -1419,12 +1419,21 @@ body.cadastrocategoria-pagina {
     padding: 16px 24px;
 }
 
+.usuario-lista-voltar {
+    width: min(100%, 900px);
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .usuario-card-dados {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     column-gap: 20px;
     row-gap: 14px;
+    color: inherit;
+    text-decoration: none;
 }
 
 .usuario-card-nome,

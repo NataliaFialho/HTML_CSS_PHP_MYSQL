@@ -54,7 +54,7 @@ $edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
         const matricula = parametros.get('matricula') || parametros.get('id');
 
         document.getElementById('cancelar-edicao').addEventListener('click', () => {
-            window.location.href = 'tela_escolha.php';
+            window.location.href = 'tela_lista_usuarios.php';
         });
 
         if (!matricula) {
