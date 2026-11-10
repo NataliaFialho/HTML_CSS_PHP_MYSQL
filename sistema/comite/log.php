@@ -42,7 +42,7 @@
 <main>
     <div class="painel-minha-acoes-container-card">
         <?php
-        require_once 'conexao.php';
+        require_once '../conexao.php';
 
         try {
             $query = "SELECT 
@@ -72,13 +72,13 @@
             <?php 
                 endforeach; 
             else:
-                echo "<p style='color: white; padding: 20px;'>Nenhum registro de log encontrado.</p>";
+                echo "<p style='color: black; padding: 20px;'>Nenhum registro de log encontrado.</p>";
             endif;
 
         } catch (PDOException $e) {
             echo "<p style='color: red; padding: 20px;'>Erro ao carregar os dados: " . htmlspecialchars($e->getMessage()) . "</p>";
         }
-        ?>
+        ?> 
     </div>
 </main>
 </body>
