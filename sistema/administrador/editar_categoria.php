@@ -1,56 +1,94 @@
 <?php
+session_start();
 require_once __DIR__ . '/../conexao.php';
 
 $novoNomeCategoria = '';
 $mensagemSucesso = '';
 $mensagemErro = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') 
-    {
-        $novoNomeCategoria = trim($_POST['nome'] ?? '');
+$idCategoria = filter_var(
+    $_GET['id'] ?? null,
+    FILTER_VALIDATE_INT
+);
 
-        if ($novoNomeCategoria === '') 
-            {
-                $mensagemErro = 'Informe o nome da categoria.';
-            } 
-        elseif ((function_exists('mb_strlen') ? mb_strlen($novoNomeCategoria, 'UTF-8') : strlen($novoNomeCategoria)) > 50) 
-            {
-                $mensagemErro = 'O nome da categoria deve ter no máximo 50 caracteres.';
-            } 
-        else 
-            {
-                try {
-                        $consulta = $pdo->prepare(
-                            'SELECT id FROM categoria WHERE nome = :nome AND id != :id LIMIT 1'
-                        );
-                        $consulta->execute([
-                            ':nome' => $novoNomeCategoria,
-                            ':id'   => $_GET['id'] ?? 0
-                        ]);
+if ($idCategoria === false || $idCategoria === null || $idCategoria < 1) {
+    http_response_code(400);
+    $mensagemErro = 'ID da categoria inválido.';
+}
 
-                        if ($consulta->fetch()) 
-                        {
-                            $mensagemErro = 'Essa categoria já está cadastrada.';
-                        } 
-                        else 
-                        {
-                            $atualizacao = $pdo->prepare(
-                                'UPDATE categoria SET nome = :nome WHERE id = :id'
-                            );
-                            $atualizacao->execute([
-                                ':nome' => $novoNomeCategoria,
-                                ':id'   => $_GET['id'] ?? 0
-                            ]);
-                            $mensagemSucesso = 'Categoria atualizada com sucesso!';
-                        }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $mensagemErro === '') {
+    $novoNomeCategoria = trim($_POST['nome'] ?? '');
+
+    if (!isset($_SESSION['matricula'])) {
+        http_response_code(401);
+        $mensagemErro = 'É necessário estar autenticado para editar categorias.';
+
+    } elseif ($novoNomeCategoria === '') {
+        $mensagemErro = 'Informe o nome da categoria.';
+
+    } elseif (
+        (function_exists('mb_strlen')
+            ? mb_strlen($novoNomeCategoria, 'UTF-8')
+            : strlen($novoNomeCategoria)) > 50
+    ) {
+        $mensagemErro = 'O nome da categoria deve ter no máximo 50 caracteres.';
+
+    } else {
+
+        try {
+            $permissaoStmt = $pdo->prepare('SELECT 1 FROM usuario_cargo WHERE matricula = :matricula AND id_cargo = 1 LIMIT 1'
+            );
+
+            $permissaoStmt->execute([':matricula' => $_SESSION['matricula']]);
+
+            if (!$permissaoStmt->fetchColumn()) {
+                http_response_code(403);
+                $mensagemErro = 'Somente administradores podem editar categorias.';
+
+            } else {
+                $pdo->beginTransaction();
+                $categoriaStmt = $pdo->prepare('SELECT id, nome FROM categoria WHERE id = :id FOR UPDATE');
+                $categoriaStmt->execute([':id' => $idCategoria]);
+                $categoriaAtual = $categoriaStmt->fetch(PDO::FETCH_ASSOC);
+
+                if (!$categoriaAtual) {
+                    $pdo->rollBack();
+                    $mensagemErro = 'Categoria não encontrada.';
+
+                } else {
+                    $consulta = $pdo->prepare('SELECT id FROM categoria WHERE nome = :nome AND id != :id LIMIT 1');
+                    $consulta->execute([':nome' => $novoNomeCategoria,':id' => $idCategoria
+                    ]);
+
+                    if ($consulta->fetch()) {
+                        $pdo->rollBack();
+                        $mensagemErro = 'Essa categoria já está cadastrada.';
+
+                    } else {
+                        $atualizacao = $pdo->prepare('UPDATE categoria SET nome = :nome WHERE id = :id');
+                        $atualizacao->execute([':nome' => $novoNomeCategoria, ':id' => $idCategoria]);
+
+
+                        $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
+                        $logStmt->execute([':operacao' => 'Administrador editou uma categoria de ação: ' . $novoNomeCategoria, ':matricula' => $_SESSION['matricula'], ':tabela' => 'categoria']);
+                        $pdo->commit();
+                        $mensagemSucesso = 'Categoria atualizada com sucesso!';
+                        $novoNomeCategoria = '';
                     }
-                catch (PDOException $e) 
-                    {
-                    error_log('Erro ao cadastrar categoria: ' . $e->getMessage());
-                    $mensagemErro = 'Não foi possível cadastrar a categoria. Tente novamente.';
-                    }
+                }
             }
+
+        } catch (Throwable $e) {
+
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+            error_log('Erro ao editar categoria: ' . $e->getMessage());
+            http_response_code(500);
+            $mensagemErro = 'Não foi possível editar a categoria. Tente novamente.';
+        }
     }
+}
 ?>
 
 <!DOCTYPE html>
