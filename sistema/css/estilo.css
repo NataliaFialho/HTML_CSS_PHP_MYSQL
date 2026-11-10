@@ -3,8 +3,121 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    justify-content: space-evenly;
+    /* Não tirar esse justify-content pvr */
+    justify-content: space-evenly; 
+
+
 }
+header{
+    width: 100vw;
+    height: 10vh;
+}
+
+.header-painel-pesquisador {
+    background-color: #386492;
+    width: 100vw;
+    height: 10vh;
+    align-items: center;   
+    display: flex;
+}
+
+.txt-header-painel-pesquisador{
+    color: white;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+.btn-sair-painel-pesquisador{
+    width: 5%;
+    height: 50%;
+    border-radius: 40%;
+    background-color: green;
+    color: white;
+    border: 0;
+    margin-left: auto;
+    margin-right: 5%;
+    align-content:center;
+    text-align: center;
+    
+    
+}
+
+
+.btns-estilizacao-pesquisador{
+    
+    width: 80%;
+    height: 15%;
+    border-radius: 30px;
+    background-color: green;
+    color: white;
+    border: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    display: inline-block;
+    cursor: pointer;
+    
+
+}
+
+
+.titulo-acoes-pesquisador{
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+
+}
+
+.img-header-painel-pesquisador{
+    width: 7%;
+    margin-left: 2%;
+}
+.container-do-painel{
+    width: 100vw;
+    height: 90vh;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    
+    
+}
+
+.painel-dos-botoes{
+    background-color: #386492;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    
+    
+}
+.btns-painel-pesquisador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 110px;              
+    width: 60%;
+    height: 80%;
+    
+}
+
+button{
+    display: block;
+    width: 100%;
+    height: 50%;
+    border-radius: 40%;
+    background-color: green;
+    color: white;
+    border: 0;
+    margin-left: auto;
+    margin-right: 5%;
+}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -286,6 +399,7 @@ body{
 }
 /* tela_escolha.php */
 
+/* popup de acesso negado */
 /* Configurações Gerais da Página */
 
 .botao:hover {
@@ -1300,6 +1414,61 @@ body.cadastrocategoria-pagina {
     color: #333333;
 }
 
+.usuario-card {
+    min-height: 120px;
+    padding: 16px 24px;
+}
+
+.usuario-card-dados {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 14px;
+}
+
+.usuario-card-nome,
+.usuario-card-email,
+.usuario-card-matricula,
+.usuario-card-funcoes {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.usuario-card-email {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.usuario-card-funcoes {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.usuario-card-matricula {
+    grid-column: 2;
+    grid-row: 1;
+    white-space: nowrap;
+}
+
+.usuario-card-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.usuario-card-acoes form {
+    margin: 0;
+}
+
+.usuario-card-acoes button:disabled {
+    background-color: #777777;
+    cursor: not-allowed;
+}
+
 @media (max-width: 600px) {
     .gerenciacategoria-cabecalho {
         min-height: 68px;
@@ -1347,6 +1516,14 @@ body.cadastrocategoria-pagina {
     .gerenciacategoria-btn-salvar {
         width: 105px;
         font-size: 10px;
+    }
+
+    .usuario-card {
+        padding: 13px;
+    }
+
+    .usuario-card-acoes {
+        gap: 10px;
     }
 }
 
