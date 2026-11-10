@@ -23,3 +23,19 @@ try {
 }
 
 // Log de cadastrar usuarios
+
+
+// Log de cadastro de categorias de ações
+
+try {
+    $sqlLogCategorias = "SELECT id, operacao, matricula_usuario, tabela_afetada, DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE tabela_afetada = 'categoria' ORDER BY data_hora DESC, id DESC";
+
+    $consultaLogCategorias = $pdo->query($sqlLogCategorias);
+    $logsCategorias = $consultaLogCategorias->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    error_log("Erro ao consultar o log de categorias: " . $e->getMessage());
+    http_response_code(500);
+    $erroLogCategorias = "Não foi possível carregar os registros de cadastro de categorias.";
+}
+// Log de cadastro de categorias de ações
