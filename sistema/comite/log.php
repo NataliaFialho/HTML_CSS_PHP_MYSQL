@@ -37,7 +37,7 @@
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">COMITÊ</h1>
-        <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
+        <a href="../index.php" class="cadastrocategoria-btn-sair">Sair</a>
     </header>
 <main>
     <div class="painel-minha-acoes-container-card">
