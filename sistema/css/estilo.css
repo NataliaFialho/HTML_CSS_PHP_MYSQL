@@ -110,7 +110,67 @@ body {
 
 }
 
+
+
+/* Painel minhas ações */
+
+.painel-minhas-acoes-subcabecalho{
+    display: flex;
+    height: 15vh;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.painel-minhas-acoes-subcabecalho h2{
+    margin: 0;
+    color: black;
+}
+
+.painel-minhas-acoes-container-card{
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 5% 20px 0;
+    align-items: center;
+}
+
+
+.painel-minhas-acoes-card-pesquisa{
+    width: 40%;
+    height: 35%;
+    background-color: rgb(223, 213, 213);
+}
+.painel-minhas-acoes-card-pesquisa p{
+    margin-top: 3%;
+    margin-left: 1%;
+    text-align: left;
+}
+
+.painel-minhas-acoes-card-pesquisa h3{
+    align-content: flex-start;
+    margin-left: 1%;
+    color: rgb(0, 0, 0);
+}
+
+.painel-minhas-acoes-vazio{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.card h3,
+.card p {
+  margin: 0;
+}
+
+/*  */
+
 /*=============*/
+
 /* tela de dois cargos */
 
 
