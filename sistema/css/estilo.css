@@ -309,6 +309,8 @@ body{
     height: 100%;
 }
 
+
+
 /* popup de acesso negado */
 
 .popupdeacessonegado-overlay {
@@ -398,6 +400,7 @@ body{
 
 /* popup de acesso negado */
 /* Configurações Gerais da Página */
+
 
 .botao:hover {
     background-color: #009611;
