@@ -11,13 +11,19 @@
         <div class="header-painel-pesquisador">
             <img class="img-header-painel-pesquisador" src="../../sistema/imagens/logo-embrapa.png" alt="">
             <p class="txt-header-painel-pesquisador">Painel do Pesquisador</p>
-            <button class="btn-sair-painel-pesquisador">Sair</button>
+            <a href="../tela_dois_cargos.php" class="btn-sair-painel-pesquisador">Sair</a>
         </div>
-
     </header>
+
     <div class="container-do-painel">
+        <div class="painel-dos-botoes">
+            <div class="btns-painel-pesquisador">
+                <p class="titulo-acoes-pesquisador">AÇÕES</p>
+                <a href="" class="btns-estilizacao-pesquisador">MINHAS AÇÕES</a>
+                <a href="painel_criar_acao.php" class="btns-estilizacao-pesquisador">NOVA AÇÃO</a>
 
-
+            </div>
+        </div>
     </div>
     
 </body>

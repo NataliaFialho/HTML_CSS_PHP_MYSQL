@@ -1,6 +1,6 @@
 <?php
 
-require_once 'conexao.php';
+require_once '../conexao.php';
 $sql = "SELECT id, nome FROM categoria WHERE status = 1 ORDER BY nome";
 $stmt = $pdo->prepare($sql);
 $categorias = $stmt->fetchAll();
