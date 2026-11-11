@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
              class="cadastrocategoria-logo">
 
         <h1 class="cadastrocategoria-titulo-administrador">ADMINISTRADOR</h1>
-        <a href="../index.php" class="cadastrocategoria-btn-sair">Sair</a>
+        <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
     </header>
 
     <section class="cadastrocategoria-faixa-titulo">

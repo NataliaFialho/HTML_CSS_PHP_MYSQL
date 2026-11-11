@@ -40,7 +40,7 @@ $classes = [
     <header class="paineldecriaracoes-cabecalho">
         <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
-        <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
+        <button type="button" class="paineldecriaracoes-btn-sair" onclick="window.location.href='../tela_dois_cargos.php'">Sair</button>
     </header>
     
     <div class="painel-minhas-acoes-subcabecalho">
