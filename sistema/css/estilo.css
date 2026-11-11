@@ -383,12 +383,33 @@ body{
     padding: 0.51vw 1.17vw;
     border: 0;
     border-radius: 1.46vw;
-    background-color: #078b19;
     color: #ffffff;
     font-size: 0.95vw;
     line-height: 1.32vw;
     font-weight: 700;
     cursor: pointer;
+}
+.popupdeacessonegadoacao-btn {
+    display: flex;
+}
+
+.button-desativar{
+    width: 9.37vw;
+    min-height: 2.34vw;
+    padding: 0.51vw 1.17vw;
+    border: 0;
+    border-radius: 1.46vw;
+    color: #ffffff;
+    font-size: 0.95vw;
+    line-height: 1.32vw;
+    font-weight: 700;
+    cursor: pointer;
+}
+#popupdesativar-cancelar{
+    background-color: #ff3030;
+}
+#popupdesativar-confirmar{
+    background-color: #808080;
 }
 
 .popupdeacessonegado-btn:hover {
@@ -1615,8 +1636,74 @@ body.cadastrocategoria-pagina {
 /* GERENCIAMENTO DE CATEGORIAS DE AÇÃO */
 
 
+.popup-confirmar-desativacao {
+    width: 100%;
+    max-width: 31.67vw;
+    min-height: 17.08vw;
+    padding: 1.68vw 1.76vw 0.51vw;
+    background-color: #356394;
+    border: 0.073vw solid #000000;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+}
+.icone-erro {
+    margin-bottom: 10px;
+}
 
-/* validar ações */
+.icone-erro img {
+    width: 80px;
+    height: 80px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.mensagem {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botao-cancelar {
+    width: 245px;
+    height: 55px;
+    color: white;
+    background-color: #ff3131;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-desativar {
+    width: 245px;
+    height: 55px;
+    color: white;
+    background-color: grey;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-cancelar:hover {
+    background-color: darkred;
+}
+
+.botao-desativar:hover {
+    background-color: rgb(70, 70, 70);
+}/* validar ações */
 
 .validaracao-cabecalho {
     width: 100%;

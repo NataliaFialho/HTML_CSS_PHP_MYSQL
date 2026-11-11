@@ -1,5 +1,5 @@
 <?php
-if (isset($cadastroSucesso) && $cadastroSucesso === true):
+// if (isset($cadastroSucesso) && $cadastroSucesso === true):
 ?>
 
 <!DOCTYPE html>
@@ -28,4 +28,4 @@ if (isset($cadastroSucesso) && $cadastroSucesso === true):
 </body>
 </html>
 
-<?php endif; ?>
+<?php // endif; ?>
