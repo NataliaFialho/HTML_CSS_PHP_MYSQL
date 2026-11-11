@@ -409,6 +409,9 @@ body{
 #popupdesativar-confirmar{
     background-color: #808080;
 }
+#popupdesativar-confirmar--validador {
+    background-color: #168b24;
+}
 
 .popupdeacessonegado-btn:hover {
     background-color: #067515;
