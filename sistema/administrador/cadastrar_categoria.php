@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../conexao.php';
+// require_once __DIR__ . '/../conexao.php';
 
 $nomeCategoria = '';
 $mensagemSucesso = '';
@@ -103,11 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="cadastrocategoria-painel">
             <form class="cadastrocategoria-formulario" method="POST" action="">
 
-                <?php if ($mensagemSucesso !== ''): ?>
+                <!-- <?php if ($mensagemSucesso !== ''): ?>
                     <p class="cadastrocategoria-mensagem cadastrocategoria-sucesso" role="status">
                         <?= htmlspecialchars($mensagemSucesso, ENT_QUOTES, 'UTF-8') ?>
                     </p>
-                <?php endif; ?>
+                <?php endif; ?> -->
 
                 <?php if ($mensagemErro !== ''): ?>
                     <p class="cadastrocategoria-mensagem cadastrocategoria-erro" role="alert">
