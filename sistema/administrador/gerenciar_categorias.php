@@ -142,11 +142,17 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
                             <p class="gerenciacategoria-nome"><?= htmlspecialchars($nome, ENT_QUOTES, 'UTF-8') ?></p>
                             <div class="gerenciacategoria-acoes-card">
                                 <?php if ($ativa): ?>
-                                    <form method="POST" action="gerenciar_categorias.php" class="gerenciacategoria-form-desativar"
-                                          onsubmit="return confirm('Deseja realmente desativar esta categoria?');">
+                                    <form method="POST"
+                                        action="gerenciar_categorias.php"
+                                        class="gerenciacategoria-form-desativar">
+
                                         <input type="hidden" name="acao" value="desativar">
                                         <input type="hidden" name="id" value="<?= $id ?>">
-                                        <button type="submit" class="gerenciacategoria-btn-desativar">DESATIVAR</button>
+
+                                        <button type="submit" class="gerenciacategoria-btn-desativar">
+                                            DESATIVAR
+                                        </button>
+
                                     </form>
                                 <?php else: ?>
                                     <span class="gerenciacategoria-status-inativa">DESATIVADA</span>
@@ -160,5 +166,8 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
             </section>
         <?php endif; ?>
     </main>
+
+    <?php include __DIR__ . '/popup_confirmar_desativacao_acao.php'; ?>
+
 </body>
 </html>
