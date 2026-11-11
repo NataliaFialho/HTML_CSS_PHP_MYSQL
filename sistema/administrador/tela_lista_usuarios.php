@@ -91,8 +91,9 @@ try {
                         </a>
                         <div class="usuario-card-acoes">
                             <?php if ($ativo): ?>
-                                <a href="popup_confirmar_desativacao.php?matricula=<?= $matricula ?>"
-                                   class="gerenciacategoria-btn-desativar">DESATIVAR</a>
+                                <button type="button" class="gerenciacategoria-btn-desativar" onclick="abrirPopupDesativacao(<?= $matricula ?>)">
+                                    DESATIVAR
+                                </button>
                             <?php else: ?>
                                 <button type="button" class="gerenciacategoria-btn-desativar" disabled>
                                     DESATIVADO
@@ -106,5 +107,30 @@ try {
             </section>
         <?php endif; ?>
     </main>
+    <div id="modal-desativacao" class="modal-desativacao">
+    <div class="modal-desativacao-conteudo">
+        <div class="icone-erro">
+            <img src="../imagens/errado.png" alt="Ícone de erro">
+        </div>
+        <h1>Certeza que deseja desativar esse Usuário?</h1>
+        <p class="mensagem">Ele não terá acesso ao sistema.</p>
+        <form method="POST" action="popup_confirmar_desativacao.php">
+            <input type="hidden" name="matricula" id="matricula-desativar">
+            <div class="botoes">
+                <button class="botao-cancelar" type="button" onclick="fecharPopupDesativacao()">CANCELAR</button>
+                <button class="botao-cancelar" type="submit">DESATIVAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+function abrirPopupDesativacao(matricula) {
+    document.getElementById('matricula-desativar').value = matricula;
+    document.getElementById('modal-desativacao').style.display = 'flex';
+}
+function fecharPopupDesativacao() {
+    document.getElementById('modal-desativacao').style.display = 'none';
+}
+</script>
 </body>
 </html>
