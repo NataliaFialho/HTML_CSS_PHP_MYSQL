@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuário editado</title>
 
-    <link rel="stylesheet" href="css/estilo.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?php echo time(); ?>">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 
         <div class="icone-correto-popup-editado">
 
-            <img src="imagens/correto.png" alt="Ícone de correto">
+            <img src="../imagens/correto.png" alt="Ícone de correto">
         </div>
 
         <h1>Usuario editado com sucesso!</h1>
