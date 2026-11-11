@@ -33,7 +33,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuários cadastrados</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 <body class="gerenciacategoria-pagina">
     <header class="paineldecriaracoes-cabecalho">
@@ -76,7 +76,12 @@ try {
                             <p class="usuario-card-nome">
                                 <?= htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8') ?>
                             </p>
-                            <p class="usuario-card-matricula">Matrícula: <?= $matricula ?></p>
+                            <p class="usuario-card-matricula">
+                                <span style="color: <?= $ativo ? '#168b24' : '#d91f1f' ?>;">
+                                    <?= $ativo ? 'ATIVADO' : 'DESATIVADO' ?>
+                                </span>
+                                &nbsp;|&nbsp; Matrícula: <?= $matricula ?>
+                            </p>
                             <p class="usuario-card-email">
                                 <?= htmlspecialchars($usuario['email'], ENT_QUOTES, 'UTF-8') ?>
                             </p>
@@ -86,7 +91,9 @@ try {
                         </a>
                         <div class="usuario-card-acoes">
                             <?php if ($ativo): ?>
-                                <button type="button" class="gerenciacategoria-btn-desativar">DESATIVAR</button>
+                                <button type="button" class="gerenciacategoria-btn-desativar" onclick="abrirPopupDesativacao(<?= $matricula ?>)">
+                                    DESATIVAR
+                                </button>
                             <?php else: ?>
                                 <button type="button" class="gerenciacategoria-btn-desativar" disabled>
                                     DESATIVADO
@@ -100,5 +107,30 @@ try {
             </section>
         <?php endif; ?>
     </main>
+    <div id="modal-desativacao" class="modal-desativacao" style="display: none;">
+    <div class="modal-desativacao-conteudo">
+        <div class="icone-erro">
+            <img src="../imagens/errado.png" alt="Ícone de erro">
+        </div>
+        <h1>Certeza que deseja desativar esse Usuário?</h1>
+        <p class="mensagem">Ele não terá acesso ao sistema.</p>
+        <form method="POST" action="popup_confirmar_desativacao.php">
+            <input type="hidden" name="matricula" id="matricula-desativar">
+            <div class="botoes">
+                <button class="botao-cancelar" type="button" onclick="fecharPopupDesativacao()">CANCELAR</button>
+                <button class="botao-cancelar" type="submit">DESATIVAR</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+function abrirPopupDesativacao(matricula) {
+    document.getElementById('matricula-desativar').value = matricula;
+    document.getElementById('modal-desativacao').style.display = 'flex';
+}
+function fecharPopupDesativacao() {
+    document.getElementById('modal-desativacao').style.display = 'none';
+}
+</script>
 </body>
 </html>
