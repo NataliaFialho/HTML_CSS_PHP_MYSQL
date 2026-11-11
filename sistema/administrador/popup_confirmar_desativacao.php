@@ -7,20 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-if ($sql->rowCount() > 0) {
-        header('Location: tela_lista_usuarios.php?desativado=1');
-        exit;
-    }
-
-    header('Location: tela_lista_usuarios.php?erro=usuario');
-    exit;
-
-} catch (PDOException $e) {
-    error_log('Erro ao desativar usuário: ' . $e->getMessage());
-    header('Location: tela_lista_usuarios.php?erro=banco');
-    exit;
-}
-
 $matricula = filter_input(INPUT_POST, 'matricula', FILTER_VALIDATE_INT);
 
 if (!$matricula || $matricula <= 0) {
@@ -35,23 +21,57 @@ try {
     $sql->execute([':matricula' => $matricula
     ]);
 
-        <p class="mensagem-popup-confirmar">
-            Ele não terá acesso ao sistema.
-        </p>
+    if ($sql->rowCount() > 0) {
+        header('Location: tela_lista_usuarios.php?desativado=1');
+        exit;
+    }
 
-        <div class="botoes-popup-confirmar">
+    header('Location: tela_lista_usuarios.php?erro=usuario');
+    exit;
 
-            <button class="botao-cancelar-popup-confirmar" type="button">
-                CANCELAR
-            </button>
+} catch (PDOException $e) {
+    error_log('Erro ao desativar usuário: ' . $e->getMessage());
+    header('Location: tela_lista_usuarios.php?erro=banco');
+    exit;
+}
 
-            <button class="botao-desativar-popup-confirmar" type="button">
-                DESATIVAR
-            </button>
+// <!DOCTYPE html>
+// <html lang="pt-BR">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Confirmar desativação</title>
 
-        </div>
+//     <link rel="stylesheet" href="../css/estilo.css">
+// </head>
+// <body>
 
-    </div>
+//     <div class="popup-confirmar-desativacao">
 
-</body>
-</html>
+//         <div class="icone-erro">
+//             <img src="../imagens/atencao.png" alt="Ícone de erro">
+
+//         </div>
+
+//         <h1>Certeza que deseja desativar esse Usuário?</h1>
+
+//         <p class="mensagem-popup-confirmar">
+//             Ele não terá acesso ao sistema.
+//         </p>
+
+//         <div class="botoes-popup-confirmar">
+
+//             <button class="botao-cancelar-popup-confirmar" type="button">
+//                 CANCELAR
+//             </button>
+
+//             <button class="botao-desativar-popup-confirmar" type="button">
+//                 DESATIVAR
+//             </button>
+
+//         </div>
+
+//     </div>
+
+// </body>
+// </html>
