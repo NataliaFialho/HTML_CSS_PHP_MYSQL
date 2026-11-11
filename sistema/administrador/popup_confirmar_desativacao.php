@@ -1,26 +1,39 @@
 <?php
-// nada 
-?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmar desativação</title>
+require_once __DIR__ . '/../conexao.php';
 
-    <link rel="stylesheet" href="../css/estilo.css">
-</head>
-<body>
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: tela_lista_usuarios.php');
+    exit;
+}
 
-    <div class="popup-confirmar-desativacao">
+if ($sql->rowCount() > 0) {
+        header('Location: tela_lista_usuarios.php?desativado=1');
+        exit;
+    }
 
-        <div class="icone-erro">
-            <img src="../imagens/atencao.png" alt="Ícone de erro">
+    header('Location: tela_lista_usuarios.php?erro=usuario');
+    exit;
 
-        </div>
+} catch (PDOException $e) {
+    error_log('Erro ao desativar usuário: ' . $e->getMessage());
+    header('Location: tela_lista_usuarios.php?erro=banco');
+    exit;
+}
 
-        <h1>Certeza que deseja desativar esse Usuário?</h1>
+$matricula = filter_input(INPUT_POST, 'matricula', FILTER_VALIDATE_INT);
+
+if (!$matricula || $matricula <= 0) {
+    header('Location: tela_lista_usuarios.php?erro=matricula');
+    exit;
+}
+
+try {
+    $sql = $pdo->prepare('UPDATE usuarios SET status = 0 WHERE matricula = :matricula AND status = 1'
+    );
+
+    $sql->execute([':matricula' => $matricula
+    ]);
 
         <p class="mensagem-popup-confirmar">
             Ele não terá acesso ao sistema.
