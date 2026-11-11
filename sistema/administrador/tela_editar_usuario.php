@@ -1,3 +1,7 @@
+<?php
+$mostrarPopupUsuarioEditado = isset($_GET['sucesso']) && $_GET['sucesso'] === '1';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,6 +11,7 @@
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body class="paineldecadastrarusuarios-pagina">
+    <?php require_once 'popup_usuario_editado.php'; ?>
 
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
