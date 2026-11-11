@@ -1,40 +1,93 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmar desativação</title>
 
-    <link rel="stylesheet" href="../css/estilo.css">
-</head>
-<body>
+<div class="popupdeacessonegado-overlay"
+     id="popupdesativar-overlay"
+     style="display: none;">
 
-    <div class="popup-confirmar-desativacao">
+    <section class="popupdeacessonegado-container"
+             role="alertdialog"
+             aria-modal="true">
 
-        <div class="icone-erro">
-            <img src="imagens/atencao.png" alt="Ícone de erro">
-
+        <div class="popupdeacessonegado-icone">
+            <img src="../imagens/atencao.png"
+                 alt="Atenção"
+                 class="popupdeacessonegado-icone-imagem">
         </div>
 
-        <h1>Certeza que deseja desativar essa Ação?</h1>
+        <h2 class="popupdeacessonegado-titulo">
+            Tem certeza que deseja desativar esta categoria?
+        </h2>
 
-        <p class="mensagem">
+        <p class="popupdeacessonegado-mensagem">
             Essa ação não pode ser desfeita.
         </p>
 
-        <div class="botoes">
-
-            <button class="botao-cancelar" type="button">
-                CANCELAR
-            </button>
-
-            <button class="botao-desativar" type="button">
-                DESATIVAR
-            </button>
-
+        <div class="popupdeacessonegadoacao-btn">
+        <button type="button"
+            class="button-desativar"
+            id="popupdesativar-cancelar">
+            Cancelar
+        </button>
+        <button type="button"
+            class="button-desativar"
+            id="popupdesativar-confirmar">
+            Desativar
+        </button>
         </div>
 
-    </div>
 
-</body>
-</html>
+    </section>
+</div>
+
+<script>
+(function () {
+
+    const overlay = document.getElementById('popupdesativar-overlay');
+    const cancelar = document.getElementById('popupdesativar-cancelar');
+    const confirmar = document.getElementById('popupdesativar-confirmar');
+
+    let formularioSelecionado = null;
+
+    if (!overlay || !cancelar || !confirmar) {
+        console.error('Elementos do popup não encontrados.');
+        return;
+    }
+
+    document.addEventListener('submit', function(event) {
+
+        const formulario = event.target;
+
+        if (formulario.classList.contains('gerenciacategoria-form-desativar')) {
+
+            event.preventDefault();
+
+            formularioSelecionado = formulario;
+
+            overlay.style.display = 'flex';
+        }
+
+    }, true);
+
+    cancelar.addEventListener('click', function() {
+
+        overlay.style.display = 'none';
+
+        formularioSelecionado = null;
+
+    });
+
+    confirmar.addEventListener('click', function() {
+
+        if (formularioSelecionado) {
+
+            const formulario = formularioSelecionado;
+
+            formularioSelecionado = null;
+
+            formulario.submit();
+
+        }
+
+    });
+
+})();
+</script>
