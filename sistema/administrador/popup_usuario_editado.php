@@ -21,7 +21,7 @@ if (isset($mostrarPopupUsuarioEditado) && $mostrarPopupUsuarioEditado === true):
 <script>
     document
         document.getElementById('popupusuarioeditado-btn-ok').addEventListener('click', function () {
-    window.location.href = 'tela_lista_usuarios.php';
+    window.location.href = 'tela_escolha.php';
 });
 </script>
 
