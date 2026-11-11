@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $metodo = $_SERVER['REQUEST_METHOD'];
 
 if ($metodo === 'GET') {
@@ -18,6 +20,18 @@ if ($metodo === 'GET') {
 }
 
 if ($metodo === 'POST') {
+    $requisicaoLocal = in_array(
+        $_SERVER['REMOTE_ADDR'] ?? '',
+        ['127.0.0.1', '::1'],
+        true
+    );
+
+    if (!isset($_SESSION['matricula']) && !$requisicaoLocal) {
+        http_response_code(401);
+        echo 'O cadastro sem autenticação só é permitido no servidor local.';
+        exit;
+    }
+
     $matriculaInformada = $_POST['matricula'] ?? null;
     $nomeInformado = $_POST['nome'] ?? null;
     $emailInformado = $_POST['email'] ?? null;
@@ -65,6 +79,21 @@ if ($metodo === 'POST') {
 
     try {
         require_once __DIR__ . '/../conexao.php';
+        if (isset($_SESSION['matricula'])) {
+            $permissaoStmt = $pdo->prepare(
+                'SELECT 1 FROM usuario_cargo
+                 WHERE matricula = :matricula AND id_cargo = 1
+                 LIMIT 1'
+            );
+            $permissaoStmt->execute([':matricula' => $_SESSION['matricula']]);
+
+            if (!$permissaoStmt->fetchColumn()) {
+                http_response_code(403);
+                echo 'Somente administradores podem cadastrar usuários.';
+                exit;
+            }
+        }
+
         $pdo->beginTransaction();
 
         $cargoStmt = $pdo->prepare('SELECT id FROM cargo WHERE id = :id');

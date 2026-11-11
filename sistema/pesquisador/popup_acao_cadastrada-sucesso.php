@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../sistema/css/estilo.css">
+    
 </head>
 <body>
     <div class="popup-acao-sucesso-overlay">
     <div class="popup-acao-sucesso-container">
         <div class="popup-acao-sucesso-icone">
+            <img class="popupacaosucesso-icone" src="../imagens/correto.png" alt="">
             
         </div>
         <h2 class="popup-acao-sucesso-titulo">Ação cadastrada com sucesso!</h2>
