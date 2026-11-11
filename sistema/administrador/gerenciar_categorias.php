@@ -109,6 +109,10 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
             </p>
         <?php endif; ?>
 
+        <div class="usuario-lista-voltar">
+            <a href="tela_escolha.php" class="gerenciacategoria-btn-editar">VOLTAR</a>
+        </div>
+
         <?php if (empty($categorias)): ?>
             <p class="gerenciacategoria-vazio">Nenhuma categoria cadastrada.</p>
         <?php else: ?>

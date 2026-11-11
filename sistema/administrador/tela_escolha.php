@@ -34,7 +34,7 @@
         <div class="card-botoes">
 
             <a href="cadastrar_categoria.php" class="botao">ADICIONAR</a>
-            <a href="listar_acoes.php" class="botao">LISTAR</a>
+            <a href="gerenciar_categorias.php" class="botao">LISTAR</a>
 
         </div>
     </section>
