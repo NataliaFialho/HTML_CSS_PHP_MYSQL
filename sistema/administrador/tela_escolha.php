@@ -10,7 +10,7 @@
 <header class="paineldecriaracoes-cabecalho">
         <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
-        <a href="../index.php" class="cadastrocategoria-btn-sair">Sair</a>
+        <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
         </form>
         
     </header>
@@ -23,7 +23,7 @@
         <h2 class="card-titulo">USUÁRIOS</h2>
         <div class="card-botoes">
 
-            <a href="cadastrar.php" class="botao">ADICIONAR</a>
+            <a href="tela_cadastrar_usuario.php" class="botao">ADICIONAR</a>
             <a href="tela_lista_usuarios.php" class="botao">LISTAR</a>
 
         </div>

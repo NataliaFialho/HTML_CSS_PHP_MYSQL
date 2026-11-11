@@ -32,7 +32,7 @@ $cargos = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
 // 5. Define os destinos de cada cargo
 $paineis = [
-    1 => "", //Aqui tem de por o painel do Administrador
+    1 => "administrador/tela_escolha.php", //Aqui tem de por o painel do Administrador
     2 => "", //Aqui tem de por o painel do Validador
     3 => "", //Aqui tem de por o painel do Comitê
     4 => "pesquisador/painel_pesquisador.php" //Aqui tem de por o painel do Pesquisador

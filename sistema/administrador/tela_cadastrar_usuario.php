@@ -35,7 +35,7 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
             <p id="erro-cargos" role="alert" hidden></p>
         </div>
         <div class="cadastrodeusuario-buttons">
-            <button type="reset" class="cadastrousuario-cancelbutton">Cancelar</button>
+            <button class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
             <button type="submit" class="cadastrousuario-submitbutton" id="submitusuario">Cadastrar Usuário</button>
         </div>
     </form>
