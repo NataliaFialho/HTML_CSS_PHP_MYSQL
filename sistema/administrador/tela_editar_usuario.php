@@ -1,6 +1,3 @@
-<?php
-$edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,11 +21,9 @@ $edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
         <h2 class="paineldecriaracoes-titulo-nova-acao">EDITAR USUÁRIO</h2>
     </section>
 
-    <p id="mensagem-edicao" class="editarusuario-mensagem editarusuario-sucesso" role="status"<?= $edicaoSucesso ? '' : ' hidden' ?>>
-        Usuário atualizado com sucesso.
-    </p>
     <p id="erro-edicao" class="editarusuario-mensagem editarusuario-erro" role="alert" hidden></p>
 
+    <p style="display: flex" id="aviso-lista">tem que escolher o usuario la na tela de lista de usuarios meu nobre</p>
     <form class="cadastrodeusuario-formulario" method="POST" action="editar.php" style="display: none;">
         <input type="hidden" name="matricula">
         <input type="text" name="nome" placeholder="Nome do Usuário" maxlength="50" required>
@@ -46,6 +41,7 @@ $edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
     </form>
 
     <script>
+        const aviso = document.getElementById('aviso-lista');
         const formulario = document.querySelector('.cadastrodeusuario-formulario');
         const listaCargos = document.getElementById('cargos-disponiveis');
         const erroCargos = document.getElementById('erro-cargos');
@@ -94,6 +90,7 @@ $edicaoSucesso = ($_GET['edicao'] ?? '') === 'sucesso';
                     });
 
                     formulario.style.display = 'flex';
+                    aviso.style.display = 'none';
                     if (cargos.length === 0) {
                         erroCargos.hidden = false;
                         erroCargos.textContent = 'Nenhum cargo foi encontrado.';
