@@ -222,7 +222,7 @@ if ($metodo === 'POST') {
 
         // Confirma a edição e o registro no log.
         $pdo->commit();
-        header('Location: tela_lista_usuarios.php');
+        header('Location: tela_editar_usuario.php?matricula=' . $matricula . '&sucesso=1');
         exit;
 
     } catch (InvalidArgumentException $e) {
