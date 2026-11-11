@@ -102,8 +102,21 @@ try {
                             <?php if ($acao['status'] === 'Em Análise'): ?>
                                 <form method="POST" class="validaracao-acoes-card">
                                     <input type="hidden" name="acao_id" value="<?= $acao['id'] ?>">
-                                    <button type="submit" name="novo_status" value="Reprovado" class="validaracao-btn-invalidar">REPROVAR</button>
-                                    <button type="submit" name="novo_status" value="Aprovado" class="validaracao-btn-validar">APROVAR</button>
+
+                                    <button
+                                        type="button"
+                                        class="validaracao-btn-invalidar"
+                                        onclick="abrirPopupInvalidacao(this.form)">
+                                        REPROVAR
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        name="novo_status"
+                                        value="Aprovado"
+                                        class="validaracao-btn-validar">
+                                        APROVAR
+                                    </button>
                                 </form>
                             <?php endif; ?>
                         </div>
@@ -113,5 +126,8 @@ try {
 
         </section>
     </main>
+
+    <?php include 'popup_confirmar_invalidacao_acao.php'; ?>
+    
 </body>
 </html>

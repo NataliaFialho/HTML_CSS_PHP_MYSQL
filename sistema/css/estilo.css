@@ -375,6 +375,15 @@ body{
     font-weight: 400;
 }
 
+.popupconfirmarinvaliacao-div--validador {
+    margin: 0 0 1.24vw;
+    color: #ffffff;
+    font-size: 1.025vw;
+    line-height: 1.39vw;
+    font-weight: 400;
+}
+
+
 .popupdeacessonegado-btn {
     width: 9.37vw;
     min-height: 2.34vw;

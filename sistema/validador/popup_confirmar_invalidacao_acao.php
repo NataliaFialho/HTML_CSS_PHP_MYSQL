@@ -5,7 +5,8 @@
 
     <section class="popupdeacessonegado-container"
              role="alertdialog"
-             aria-modal="true">
+             aria-modal="true"
+             aria-labelledby="popupdesativar-titulo">
 
         <div class="popupdeacessonegado-icone">
             <img src="../imagens/atencao.png"
@@ -13,24 +14,31 @@
                  class="popupdeacessonegado-icone-imagem">
         </div>
 
-        <h2 class="popupdeacessonegado-titulo">
+        <h2 class="popupdeacessonegado-titulo"
+            id="popupdesativar-titulo">
             Confirmar invalidação?
         </h2>
 
-        <div class="popupdeacessonegadoacao-btn">
-        <button type="button"
-            class="button-desativar"
-            id="popupdesativar-cancelar">
-            Cancelar
-        </button>
-        <button type="button"
-            class="button-desativar"
-            id="popupdesativar-confirmar--validador">
-            Confirmar
-        </button>
+        <div class="popupconfirmarinvaliacao-div--validador">
+            <p class="popupdeacessonegado-mensagem">
+            </p>
         </div>
 
+        <div class="popupdeacessonegadoacao-btn">
 
+            <button type="button"
+                    class="button-desativar"
+                    id="popupdesativar-cancelar">
+                Cancelar
+            </button>
+
+            <button type="button"
+                    class="button-desativar"
+                    id="popupdesativar-confirmar--validador">
+                Confirmar
+            </button>
+
+        </div>
     </section>
 </div>
 
@@ -48,30 +56,17 @@
         return;
     }
 
-    document.addEventListener('submit', function(event) {
+    window.abrirPopupInvalidacao = function(formulario) {
+        formularioSelecionado = formulario;
+        overlay.style.display = 'flex';
+    };
 
-        const formulario = event.target;
-
-        if (formulario.classList.contains('gerenciacategoria-form-desativar')) {
-
-            event.preventDefault();
-
-            formularioSelecionado = formulario;
-
-            overlay.style.display = 'flex';
-        }
-
-    }, true);
-
-    cancelar.addEventListener('click', function() {
-
+    cancelar.addEventListener('click', function () {
         overlay.style.display = 'none';
-
         formularioSelecionado = null;
-
     });
 
-    confirmar.addEventListener('click', function() {
+    confirmar.addEventListener('click', function () {
 
         if (formularioSelecionado) {
 
@@ -79,8 +74,16 @@
 
             formularioSelecionado = null;
 
-            formulario.submit();
+            const campoStatus = document.createElement('input');
+            campoStatus.type = 'hidden';
+            campoStatus.name = 'novo_status';
+            campoStatus.value = 'Reprovado';
 
+            formulario.appendChild(campoStatus);
+
+            overlay.style.display = 'none';
+
+            formulario.submit();
         }
 
     });
