@@ -76,7 +76,7 @@ try {
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">COMITÊ</h1>
-        <a href="../index.php" class="cadastrocategoria-btn-sair">Sair</a>
+        <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
     </header>
 <main>
     <div class="painel-minha-acoes-container-card">

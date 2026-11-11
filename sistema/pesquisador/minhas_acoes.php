@@ -47,6 +47,10 @@ $classes = [
         <h2>Minhas ações</h2>
     </div>
 
+    <div class="usuario-lista-voltar">
+        <a href="painel_pesquisador.php" class="gerenciacategoria-btn-editar">VOLTAR</a>
+    </div>
+
     <div class="painel-minhas-acoes-container-card">
 
         <?php if (empty($acoes)): ?>
@@ -89,4 +93,3 @@ $classes = [
 
 </body>
 </html>
-

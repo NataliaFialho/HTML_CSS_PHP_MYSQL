@@ -55,7 +55,7 @@ $categorias = $stmt->fetchAll();
             <?php endif; ?>
 
             <div class="paineldecriaracoes-btn">
-                <button type="reset" class="paineldecriaracoes-btn-cancelar">Cancelar</button>
+                <button type="button" class="paineldecriaracoes-btn-cancelar" onclick="window.location.href='painel_pesquisador.php'">Cancelar</button>
                 <button type="submit" class="paineldecriaracoes-btn-confirmar">Confirmar</button>
             </div>
         </form>
