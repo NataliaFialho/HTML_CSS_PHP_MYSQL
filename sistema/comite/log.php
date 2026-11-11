@@ -58,6 +58,20 @@ try {
  // Log de edição de categorias de ações
 
 
+ // Log de edição de usuários
+
+try {
+    $sqlLogEdicaoUsuarios = "SELECT id, operacao, matricula_usuario, tabela_afetada, DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE tabela_afetada = 'usuarios, usuario_cargo' AND operacao LIKE 'Administrador editou um usuário:%' ORDER BY data_hora DESC, id DESC";
+    $consultaLogEdicaoUsuarios = $pdo->query($sqlLogEdicaoUsuarios);
+    $logsEdicaoUsuarios = $consultaLogEdicaoUsuarios->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    error_log("Erro ao consultar o log de edição de usuários: " . $e->getMessage());
+    http_response_code(500);
+    $erroLogEdicaoUsuarios = "Não foi possível carregar os registros de edição de usuários.";
+}
+ // Log de edição de usuários
+
 // session_start();
 // $logs = [];
 // $erroLog = null;
