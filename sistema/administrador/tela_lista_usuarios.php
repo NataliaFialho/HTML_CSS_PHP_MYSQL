@@ -56,6 +56,10 @@ try {
             </p>
         <?php endif; ?>
 
+        <div class="usuario-lista-voltar">
+            <a href="tela_escolha.php" class="gerenciacategoria-btn-editar">VOLTAR</a>
+        </div>
+
         <?php if ($usuarios === []): ?>
             <p class="gerenciacategoria-vazio">Nenhum usuário cadastrado.</p>
         <?php else: ?>
@@ -66,7 +70,9 @@ try {
                     $ativo = (int) $usuario['status'] === 1;
                     ?>
                     <article class="gerenciacategoria-card usuario-card<?= $ativo ? '' : ' gerenciacategoria-card-inativa' ?>">
-                        <div class="usuario-card-dados">
+                        <a class="usuario-card-dados"
+                           href="tela_editar_usuario.php?matricula=<?= $matricula ?>"
+                           aria-label="Editar usuário <?= htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8') ?>">
                             <p class="usuario-card-nome">
                                 <?= htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8') ?>
                             </p>
@@ -82,7 +88,7 @@ try {
                             <p class="usuario-card-funcoes">
                                 Funções: <?= htmlspecialchars($usuario['funcoes'] ?? 'Nenhuma atribuída', ENT_QUOTES, 'UTF-8') ?>
                             </p>
-                        </div>
+                        </a>
                         <div class="usuario-card-acoes">
                             <?php if ($ativo): ?>
                                 <a href="popup_confirmar_desativacao.php?matricula=<?= $matricula ?>"
