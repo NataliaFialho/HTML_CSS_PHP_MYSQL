@@ -16,11 +16,12 @@
 
         <h2 class="popupdeacessonegado-titulo"
             id="popupdesativar-titulo">
-            Confirmar invalidação?
+            Confirmar Validação?
         </h2>
 
-        <div class="popupconfirmarinvaliacao-div--validador">
+        <div class="popupconfirmarinvalidacao-div--validador">
             <p class="popupdeacessonegado-mensagem">
+
             </p>
         </div>
 
@@ -56,7 +57,7 @@
         return;
     }
 
-    window.abrirPopupInvalidacao = function(formulario) {
+    window.abrirPopupValidacao = function(formulario) {
         formularioSelecionado = formulario;
         overlay.style.display = 'flex';
     };
@@ -77,7 +78,7 @@
             const campoStatus = document.createElement('input');
             campoStatus.type = 'hidden';
             campoStatus.name = 'novo_status';
-            campoStatus.value = 'Reprovado';
+            campoStatus.value = 'Aprovado';
 
             formulario.appendChild(campoStatus);
 

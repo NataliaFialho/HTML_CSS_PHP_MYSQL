@@ -375,6 +375,15 @@ body{
     font-weight: 400;
 }
 
+.popupconfirmarinvaliacao-div--validador {
+    margin: 0 0 1.24vw;
+    color: #ffffff;
+    font-size: 1.025vw;
+    line-height: 1.39vw;
+    font-weight: 400;
+}
+
+
 .popupdeacessonegado-btn {
     width: 9.37vw;
     min-height: 2.34vw;
@@ -403,11 +412,27 @@ body{
     font-weight: 700;
     cursor: pointer;
 }
+.popupconfirmarinvalidacao-div--validador{
+    width: 9.37vw;
+    min-height: 2.34vw;
+    padding: 0.51vw 1.17vw;
+    border: 0;
+    border-radius: 1.46vw;
+    color: #ffffff;
+    font-size: 0.95vw;
+    line-height: 1.32vw;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 #popupdesativar-cancelar{
     background-color: #ff3030;
 }
 #popupdesativar-confirmar{
     background-color: #808080;
+}
+#popupdesativar-confirmar--validador {
+    background-color: #168b24;
 }
 
 .popupdeacessonegado-btn:hover {
@@ -437,11 +462,11 @@ body{
     color: white;
     box-sizing: border-box;
 }
-.icone-erro {
+.icone-atencao {
     margin-bottom: 10px;
 }
 
-.icone-erro img {
+.icone-atencao img {
     width: 80px;
     height: 80px;
 }
@@ -451,18 +476,18 @@ h1 {
     margin-bottom: 20px;
 }
 
-.mensagem {
+.mensagem-popup-confirmar {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 40px;
 }
 
-.botoes {
+.botoes-popup-confirmar {
     display: flex;
     justify-content: space-between;
 }
 
-.botao-cancelar {
+.botao-cancelar-popup-confirmar {
     width: 245px;
     height: 55px;
     color: white;
@@ -472,7 +497,7 @@ h1 {
     font-size: 20px;
 }
 
-.botao-desativar {
+.botao-desativar-popup-confirmar {
     width: 245px;
     height: 55px;
     color: white;
@@ -480,13 +505,14 @@ h1 {
     border: none;
     border-radius: 30px;
     font-size: 20px;
+
 }
 
-.botao-cancelar:hover {
+.botao-cancelar-popup-confirmar:hover {
     background-color: darkred;
 }
 
-.botao-desativar:hover {
+.botao-desativar-popup-confirmar:hover {
     background-color: rgb(70, 70, 70);
 }
 
