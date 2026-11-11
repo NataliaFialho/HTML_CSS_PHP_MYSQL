@@ -70,7 +70,12 @@ try {
                             <p class="usuario-card-nome">
                                 <?= htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8') ?>
                             </p>
-                            <p class="usuario-card-matricula">Matrícula: <?= $matricula ?></p>
+                            <p class="usuario-card-matricula">
+                                <span style="color: <?= $ativo ? '#168b24' : '#d91f1f' ?>;">
+                                    <?= $ativo ? 'ATIVADO' : 'DESATIVADO' ?>
+                                </span>
+                                &nbsp;|&nbsp; Matrícula: <?= $matricula ?>
+                            </p>
                             <p class="usuario-card-email">
                                 <?= htmlspecialchars($usuario['email'], ENT_QUOTES, 'UTF-8') ?>
                             </p>
@@ -80,7 +85,8 @@ try {
                         </div>
                         <div class="usuario-card-acoes">
                             <?php if ($ativo): ?>
-                                <button type="button" class="gerenciacategoria-btn-desativar">DESATIVAR</button>
+                                <a href="popup_confirmar_desativacao.php?matricula=<?= $matricula ?>"
+                                   class="gerenciacategoria-btn-desativar">DESATIVAR</a>
                             <?php else: ?>
                                 <button type="button" class="gerenciacategoria-btn-desativar" disabled>
                                     DESATIVADO
