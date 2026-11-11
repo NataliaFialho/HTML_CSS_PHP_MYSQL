@@ -1,19 +1,46 @@
 <?php
+session_start();
 require_once '../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao_id'], $_POST['novo_status'])) {
-    $acao_id = $_POST['acao_id'];
+    $acao_id = filter_var($_POST['acao_id'], FILTER_VALIDATE_INT);
     $novo_status = $_POST['novo_status'];
 
-    if (in_array($novo_status, ['Aprovado', 'Reprovado'])) {
+    if (!isset($_SESSION['matricula'])) {
+        http_response_code(401);
+        $erroAtualizacao = "É necessário estar autenticado para validar ações.";
+    } elseif ($acao_id !== false && in_array($novo_status, ['Aprovado', 'Reprovado'], true)) {
         try {
+            $pdo->beginTransaction();
+
             $sqlUpdate = "UPDATE acao SET status = :status WHERE id = :id";
             $stmtUpdate = $pdo->prepare($sqlUpdate);
             $stmtUpdate->execute([
                 ':status' => $novo_status,
                 ':id' => $acao_id
             ]);
+
+            if ($stmtUpdate->rowCount() > 0) {
+                $stmtTitulo = $pdo->prepare("SELECT titulo FROM acao WHERE id = :id");
+                $stmtTitulo->execute([':id' => $acao_id]);
+                $tituloAcao = (string) $stmtTitulo->fetchColumn();
+
+                $verbo = $novo_status === 'Aprovado' ? 'aprovou' : 'reprovou';
+                $operacaoLog = 'Validador ' . $verbo . ' a ação: ' . $tituloAcao;
+                if (function_exists('mb_substr')) {
+                    $operacaoLog = mb_substr($operacaoLog, 0, 100, 'UTF-8');
+                } else {
+                    $operacaoLog = substr($operacaoLog, 0, 100);
+                }
+                $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
+                $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $_SESSION['matricula'], ':tabela' => 'acao']);
+            }
+
+            $pdo->commit();
         } catch (PDOException $e) {
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
             $erroAtualizacao = "Erro ao atualizar status: " . $e->getMessage();
         }
     }

@@ -47,8 +47,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 'INSERT INTO categoria (nome) VALUES (:nome)'
                             );
                             $cadastro->execute([':nome' => $nomeCategoria]);
+                            $operacaoLog = 'Administrador cadastrou uma nova categoria de ação: ' . $nomeCategoria;
+                            if (function_exists('mb_substr')) {
+                                $operacaoLog = mb_substr($operacaoLog, 0, 100, 'UTF-8');
+                            } else {
+                                $operacaoLog = substr($operacaoLog, 0, 100);
+                            }
                             $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
-                            $logStmt->execute([':operacao' => 'Administrador cadastrou uma nova categoria de ação: ' . $nomeCategoria, ':matricula' => $_SESSION['matricula'], ':tabela' => 'categoria']);
+                            $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $_SESSION['matricula'], ':tabela' => 'categoria']);
                             $pdo->commit();
                             $mensagemSucesso = 'Categoria cadastrada com sucesso!';
                             $nomeCategoria = '';
@@ -77,6 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body class="cadastrocategoria-pagina">
+    
+    <?php if ($mensagemSucesso !== ''): ?>
+        <?php include __DIR__ . '/../popup_categoria_criada.php'; ?>
+    <?php endif; ?>
 
     <header class="cadastrocategoria-cabecalho">
         <img src="../imagens/logo-embrapa.png"
@@ -98,13 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <section class="cadastrocategoria-painel">
             <form class="cadastrocategoria-formulario" method="POST" action="">
-
-                <?php if ($mensagemSucesso !== ''): ?>
+                <!-- <?php if ($mensagemSucesso !== ''): ?>
                     <p class="cadastrocategoria-mensagem cadastrocategoria-sucesso" role="status">
                         <?= htmlspecialchars($mensagemSucesso, ENT_QUOTES, 'UTF-8') ?>
                     </p>
-                <?php endif; ?>
-
+                <?php endif; ?> -->
                 <?php if ($mensagemErro !== ''): ?>
                     <p class="cadastrocategoria-mensagem cadastrocategoria-erro" role="alert">
                         <?= htmlspecialchars($mensagemErro, ENT_QUOTES, 'UTF-8') ?>

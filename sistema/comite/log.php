@@ -1,6 +1,6 @@
-<!-- Log de cadastrar usuarios -->
-
 <?php
+
+// Log de cadastrar usuarios
 
 session_start();
 $logs = [];
@@ -39,29 +39,28 @@ try {
     http_response_code(500);
     $erroLogCategorias = "Não foi possível carregar os registros de cadastro de categorias.";
 }
-
 // Log de cadastro de categorias de ações
 
-
- // Log de edição de categorias de ações
+// Log de desativação de usuários
 
 try {
-    $sqlLogEdicaoCategorias = "SELECT id, operacao, matricula_usuario, tabela_afetada, DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE tabela_afetada = 'categoria' AND operacao LIKE 'Administrador editou uma categoria de ação:%' ORDER BY data_hora DESC, id DESC";
-    $consultaLogEdicaoCategorias = $pdo->query($sqlLogEdicaoCategorias);
-    $logsEdicaoCategorias = $consultaLogEdicaoCategorias->fetchAll(PDO::FETCH_ASSOC);
+    $sqlLogDesativacaoUsuarios = "SELECT log.id, log.operacao, log.matricula_usuario, log.tabela_afetada, DATE_FORMAT(log.data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE log.tabela_afetada = 'usuarios' AND log.operacao LIKE 'Administrador desativou%' ORDER BY log.data_hora DESC, log.id DESC";
+
+    $consultaLogDesativacaoUsuarios = $pdo->query($sqlLogDesativacaoUsuarios);
+    $logsDesativacaoUsuarios = $consultaLogDesativacaoUsuarios->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    error_log("Erro ao consultar o log de edição de categorias: " . $e->getMessage());
+    error_log("Erro ao consultar o log de desativação de usuários: " . $e->getMessage());
     http_response_code(500);
-    $erroLogEdicaoCategorias = "Não foi possível carregar os registros de edição de categorias.";
+    $erroLogDesativacaoUsuarios = "Não foi possível carregar os registros de desativação de usuários.";
 }
- // Log de edição de categorias de ações
+// Log de desativação de usuários
 
-
- // Log de edição de usuários
+// Log de edição de usuários
 
 try {
-    $sqlLogEdicaoUsuarios = "SELECT id, operacao, matricula_usuario, tabela_afetada, DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE tabela_afetada = 'usuarios, usuario_cargo' AND operacao LIKE 'Administrador editou um usuário:%' ORDER BY data_hora DESC, id DESC";
+    $sqlLogEdicaoUsuarios = "SELECT log.id, log.operacao, log.matricula_usuario, log.tabela_afetada, DATE_FORMAT(log.data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE log.tabela_afetada = 'usuarios' AND log.operacao LIKE 'Administrador editou%' ORDER BY log.data_hora DESC, log.id DESC";
+
     $consultaLogEdicaoUsuarios = $pdo->query($sqlLogEdicaoUsuarios);
     $logsEdicaoUsuarios = $consultaLogEdicaoUsuarios->fetchAll(PDO::FETCH_ASSOC);
 
@@ -70,7 +69,38 @@ try {
     http_response_code(500);
     $erroLogEdicaoUsuarios = "Não foi possível carregar os registros de edição de usuários.";
 }
- // Log de edição de usuários
+// Log de edição de usuários
+
+// Log de validação de ações
+
+try {
+    $sqlLogValidacaoAcoes = "SELECT log.id, log.operacao, log.matricula_usuario, log.tabela_afetada, DATE_FORMAT(log.data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE log.tabela_afetada = 'acao' AND log.operacao LIKE 'Validador%' ORDER BY log.data_hora DESC, log.id DESC";
+
+    $consultaLogValidacaoAcoes = $pdo->query($sqlLogValidacaoAcoes);
+    $logsValidacaoAcoes = $consultaLogValidacaoAcoes->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    error_log("Erro ao consultar o log de validação de ações: " . $e->getMessage());
+    http_response_code(500);
+    $erroLogValidacaoAcoes = "Não foi possível carregar os registros de validação de ações.";
+}
+// Log de validação de ações
+
+// Log das minhas ações
+
+try {
+    $sqlLogMinhasAcoes = "SELECT log.id, log.operacao, log.matricula_usuario, log.tabela_afetada, DATE_FORMAT(log.data_hora, '%d/%m/%Y %H:%i:%s') AS data_hora FROM log WHERE log.matricula_usuario = :matricula ORDER BY log.data_hora DESC, log.id DESC";
+
+    $consultaLogMinhasAcoes = $pdo->prepare($sqlLogMinhasAcoes);
+    $consultaLogMinhasAcoes->execute([":matricula" => $_SESSION["matricula"]]);
+    $logsMinhasAcoes = $consultaLogMinhasAcoes->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    error_log("Erro ao consultar o log das minhas ações: " . $e->getMessage());
+    http_response_code(500);
+    $erroLogMinhasAcoes = "Não foi possível carregar os registros das minhas ações.";
+}
+// Log das minhas ações
 
 // session_start();
 // $logs = [];
@@ -104,6 +134,7 @@ try {
 </head>
 
 <body class="paineldecadastrarusuarios-pagina">
+
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">COMITÊ</h1>
@@ -115,7 +146,15 @@ try {
         require_once '../conexao.php';
 
         try {
-            $query = "SELECT u.nome AS usuario_ativo, l.matricula_usuario AS matricula, l.data_hora, l.operacao, l.tabela_afetada FROM log l INNER JOIN usuarios u ON l.matricula_usuario = u.matricula ORDER BY l.data_hora DESC";
+            $query = "SELECT 
+                        u.nome AS usuario_ativo, 
+                        l.matricula_usuario AS matricula, 
+                        l.data_hora, 
+                        l.operacao, 
+                        l.tabela_afetada 
+                      FROM log l
+                      INNER JOIN usuarios u ON l.matricula_usuario = u.matricula
+                      ORDER BY l.data_hora DESC";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
             $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,5 +1,20 @@
 <?php
+require_once __DIR__ . '/../conexao.php';
+
 $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
+$cargos = [];
+$erroCargos = '';
+
+try {
+    $cargos = $pdo->query('SELECT id, cargo FROM cargo ORDER BY cargo')->fetchAll();
+
+    if ($cargos === []) {
+        $erroCargos = 'Nenhum cargo foi encontrado.';
+    }
+} catch (PDOException $e) {
+    error_log('Erro ao carregar cargos: ' . $e->getMessage());
+    $erroCargos = 'Não foi possível carregar os cargos. Recarregue a página.';
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +46,15 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
         <input type="email" name="email" placeholder="Email" maxlength="100" required>
         <input type="password" name="senha" placeholder="Senha (mínimo de 8 caracteres)" minlength="8" required>
         <div class="cadastrousuario-checkbox">
-            <div id="cargos-disponiveis">Carregando cargos...</div>
-            <p id="erro-cargos" role="alert" hidden></p>
+            <div id="cargos-disponiveis">
+                <?php foreach ($cargos as $cargo): ?>
+                    <label>
+                        <input type="checkbox" name="cargos[]" value="<?= (int) $cargo['id'] ?>">
+                        <span><?= htmlspecialchars($cargo['cargo'], ENT_QUOTES, 'UTF-8') ?></span>
+                    </label>
+                <?php endforeach; ?>
+            </div>
+            <p id="erro-cargos" role="alert"<?= $erroCargos === '' ? ' hidden' : '' ?>><?= htmlspecialchars($erroCargos, ENT_QUOTES, 'UTF-8') ?></p>
         </div>
         <div class="cadastrodeusuario-buttons">
             <button type="reset" class="cadastrousuario-cancelbutton">Cancelar</button>
@@ -44,40 +66,6 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
         const formulario = document.querySelector('.cadastrodeusuario-formulario');
         const listaCargos = document.getElementById('cargos-disponiveis');
         const erroCargos = document.getElementById('erro-cargos');
-
-        fetch('cadastrar.php')
-            .then((resposta) => {
-                if (!resposta.ok) {
-                    throw new Error('Não foi possível carregar os cargos.');
-                }
-                return resposta.json();
-            })
-            .then((cargos) => {
-                listaCargos.replaceChildren();
-                cargos.forEach((cargo) => {
-                    const opcao = document.createElement('label');
-                    const checkbox = document.createElement('input');
-                    const nome = document.createElement('span');
-
-                    checkbox.type = 'checkbox';
-                    checkbox.name = 'cargos[]';
-                    checkbox.value = cargo.id;
-                    nome.textContent = cargo.cargo;
-
-                    opcao.append(checkbox, nome);
-                    listaCargos.append(opcao);
-                });
-
-                if (cargos.length === 0) {
-                    erroCargos.hidden = false;
-                    erroCargos.textContent = 'Nenhum cargo foi encontrado.';
-                }
-            })
-            .catch(() => {
-                listaCargos.textContent = '';
-                erroCargos.hidden = false;
-                erroCargos.textContent = 'Não foi possível carregar os cargos. Recarregue a página.';
-            });
 
         formulario.addEventListener('submit', (evento) => {
             if (!listaCargos.querySelector('input:checked')) {
