@@ -4,6 +4,7 @@ require_once __DIR__ . '/../conexao.php';
 $novoNomeCategoria = '';
 $mensagemSucesso = '';
 $mensagemErro = '';
+$mostrarPopupCategoriaEditada = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
     {
@@ -42,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                                 ':id'   => $_GET['id'] ?? 0
                             ]);
                             $mensagemSucesso = 'Categoria atualizada com sucesso!';
+                            $mostrarPopupCategoriaEditada = TRUE;
                         }
                     }
                 catch (PDOException $e) 
@@ -85,9 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             <form class="cadastrocategoria-formulario" method="POST" action="">
 
                 <?php if ($mensagemSucesso !== ''): ?>
-                    <p class="cadastrocategoria-mensagem cadastrocategoria-sucesso" role="status">
+                    <!-- <p class="cadastrocategoria-mensagem cadastrocategoria-sucesso" role="status">
                         <?= htmlspecialchars($mensagemSucesso, ENT_QUOTES, 'UTF-8') ?>
-                    </p>
+                    </p> -->
                 <?php endif; ?>
 
                 <?php if ($mensagemErro !== ''): ?>
@@ -119,5 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             </form>
         </section>
     </main>
+    <?php include __DIR__ . '/popup_categoria_editada.php'; ?>
 </body>
 </html>
