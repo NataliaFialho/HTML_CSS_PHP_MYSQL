@@ -14,8 +14,8 @@ if ($sql->rowCount() > 0) {
 
     header('Location: tela_lista_usuarios.php?erro=usuario');
     exit;
-
-} catch (PDOException $e) {
+} 
+catch (PDOException $e) {
     error_log('Erro ao desativar usuário: ' . $e->getMessage());
     header('Location: tela_lista_usuarios.php?erro=banco');
     exit;

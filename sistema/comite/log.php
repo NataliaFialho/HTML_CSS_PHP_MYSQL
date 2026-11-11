@@ -104,7 +104,6 @@ try {
 </head>
 
 <body class="paineldecadastrarusuarios-pagina">
-
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">COMITÊ</h1>
@@ -116,15 +115,7 @@ try {
         require_once '../conexao.php';
 
         try {
-            $query = "SELECT 
-                        u.nome AS usuario_ativo, 
-                        l.matricula_usuario AS matricula, 
-                        l.data_hora, 
-                        l.operacao, 
-                        l.tabela_afetada 
-                      FROM log l
-                      INNER JOIN usuarios u ON l.matricula_usuario = u.matricula
-                      ORDER BY l.data_hora DESC";
+            $query = "SELECT u.nome AS usuario_ativo, l.matricula_usuario AS matricula, l.data_hora, l.operacao, l.tabela_afetada FROM log l INNER JOIN usuarios u ON l.matricula_usuario = u.matricula ORDER BY l.data_hora DESC";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
             $logs = $stmt->fetchAll(PDO::FETCH_ASSOC);
