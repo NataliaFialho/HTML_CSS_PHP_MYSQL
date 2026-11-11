@@ -77,6 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body class="cadastrocategoria-pagina">
+    
+    <?php if ($mensagemSucesso !== ''): ?>
+        <?php include __DIR__ . '/popup_categoria_criada.php'; ?>
+    <?php endif; ?>
 
     <header class="cadastrocategoria-cabecalho">
         <img src="../imagens/logo-embrapa.png"
