@@ -1,4 +1,5 @@
 <?php
+// nada 
 ?>
 
 <!DOCTYPE html>
@@ -8,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar desativação</title>
 
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
 
     <div class="popup-confirmar-desativacao">
 
-        <div class="icone-atencao">
-            <img src="imagens/atencao.png" alt="Ícone de erro">
+        <div class="icone-erro">
+            <img src="../imagens/atencao.png" alt="Ícone de erro">
 
         </div>
 

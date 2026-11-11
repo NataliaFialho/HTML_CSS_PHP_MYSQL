@@ -35,7 +35,7 @@ $paineis = [
     1 => "", //Aqui tem de por o painel do Administrador
     2 => "", //Aqui tem de por o painel do Validador
     3 => "", //Aqui tem de por o painel do Comitê
-    4 => "" //Aqui tem de por o painel do Pesquisador
+    4 => "pesquisador/painel_pesquisador.php" //Aqui tem de por o painel do Pesquisador
 ];
 
 ?>
