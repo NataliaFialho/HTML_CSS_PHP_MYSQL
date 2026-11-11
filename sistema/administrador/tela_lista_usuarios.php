@@ -33,7 +33,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuários cadastrados</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 <body class="gerenciacategoria-pagina">
     <header class="paineldecriaracoes-cabecalho">
@@ -107,7 +107,7 @@ try {
             </section>
         <?php endif; ?>
     </main>
-    <div id="modal-desativacao" class="modal-desativacao">
+    <div id="modal-desativacao" class="modal-desativacao" style="display: none;">
     <div class="modal-desativacao-conteudo">
         <div class="icone-erro">
             <img src="../imagens/errado.png" alt="Ícone de erro">
