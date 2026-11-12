@@ -3,6 +3,7 @@ require_once __DIR__ . '/../conexao.php';
 
 $mensagemSucesso = '';
 $mensagemErro = '';
+$mostrarPopupCategoriaEditada = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $acao = $_POST['acao'] ?? '';
@@ -41,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             ':id' => $idCategoria
                         ]);
 
-                        $mensagemSucesso = 'Categoria editada com sucesso!';
+                        // $mensagemSucesso = 'Categoria editada com sucesso!';
+                        $mostrarPopupCategoriaEditada = true;
                     }
                 }
             } elseif ($acao === 'desativar') {
@@ -168,6 +170,8 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
     </main>
 
     <?php include __DIR__ . '/popup_confirmar_desativacao_acao.php'; ?>
+    <?php include __DIR__ . '/popup_categoria_editada.php'; ?>
+
 
 </body>
 </html>
