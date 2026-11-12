@@ -67,7 +67,7 @@ try {
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
-        <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
+        <button type="button" class="paineldecriaracoes-btn-sair" onclick="window.location.href='../tela_dois_cargos.php'">Sair</button>
     </header>
 
     <section class="paineldecriaracoes-barra-titulo">
@@ -112,7 +112,7 @@ try {
             <?php endif; ?>
 
             <div class="paineldecriaracoes-btn">
-                <button type="reset" class="paineldecriaracoes-btn-cancelar">Cancelar</button>
+                <button type="button" class="paineldecriaracoes-btn-cancelar" onclick="window.location.href='painel_pesquisador.php'">Cancelar</button>
                 <button type="submit" class="paineldecriaracoes-btn-confirmar">Confirmar</button>
             </div>
         </form>
