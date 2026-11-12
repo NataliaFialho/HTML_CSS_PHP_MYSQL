@@ -2149,3 +2149,20 @@ h1 {
     gap: 15px;
     margin-top: 25px;
 }
+
+.popup-acao-sucesso-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    z-index: 100000;
+}

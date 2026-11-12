@@ -61,7 +61,7 @@ if ($matriculaInformada !== null) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar usuário</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 <body class="paineldecadastrarusuarios-pagina">
     <?php require_once 'popup_usuario_editado.php'; ?>
@@ -69,7 +69,7 @@ if ($matriculaInformada !== null) {
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
-        <button type="button" class="paineldecriaracoes-btn-sair" onclick="window.location.href='../index.php'">Sair</button>
+        <button type="button" class="paineldecriaracoes-btn-sair" onclick="window.location.href='../tela_dois_cargos.php'">Sair</button>
     </header>
 
     <section class="paineldecriaracoes-barra-titulo">
@@ -85,9 +85,9 @@ if ($matriculaInformada !== null) {
         <p style="display: flex" id="aviso-lista">tem que escolher o usuario la na tela de lista de usuarios meu nobre</p>
     <?php else: ?>
         <form class="cadastrodeusuario-formulario" method="POST" action="editar.php" style="display: flex;">
-            <input type="hidden" name="matricula" value="<?= (int) $usuario['matricula'] ?>">
+            <input type="hidden" name="matricula_atual" value="<?= (int) $usuario['matricula'] ?>">
             <input type="text" name="nome" placeholder="Nome do Usuário" maxlength="50" value="<?= htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8') ?>" required>
-            <input type="number" name="matricula_exibicao" placeholder="Matrícula" aria-label="Matrícula" value="<?= (int) $usuario['matricula'] ?>" readonly>
+            <input type="number" name="matricula" placeholder="Matrícula" aria-label="Matrícula" min="1" value="<?= (int) $usuario['matricula'] ?>" required>
             <input type="email" name="email" placeholder="Email" maxlength="100" value="<?= htmlspecialchars($usuario['email'], ENT_QUOTES, 'UTF-8') ?>" required>
             <input type="password" name="senha" placeholder="Nova senha (opcional, mínimo de 8 caracteres)" minlength="8" autocomplete="new-password">
             <div class="cadastrousuario-checkbox">

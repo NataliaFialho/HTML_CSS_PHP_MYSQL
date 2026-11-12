@@ -2,6 +2,11 @@
 require_once __DIR__ . '/../conexao.php';
 
 $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
+$mensagemErroCadastro = ($_GET['erro'] ?? '') === 'matricula'
+    ? 'Já existe um usuário com essa matrícula.'
+    : '';
+
+$cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
 $cargos = [];
 $erroCargos = '';
 
@@ -23,14 +28,14 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar usuário</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 <body class="paineldecadastrarusuarios-pagina">
 
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
-        <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
+        <button type="button" class="paineldecriaracoes-btn-sair" onclick="window.location.href='../tela_dois_cargos.php'">Sair</button>
     </header>
 
     <section class="paineldecriaracoes-barra-titulo">
@@ -39,6 +44,12 @@ try {
     <section class="paineldecriaracoes-barra-nova-acao">
         <h2 class="paineldecriaracoes-titulo-nova-acao">CADASTRAR USUÁRIO</h2>
     </section>
+
+    <?php if ($mensagemErroCadastro !== ''): ?>
+        <p class="editarusuario-mensagem editarusuario-erro" role="alert">
+            <?= htmlspecialchars($mensagemErroCadastro, ENT_QUOTES, 'UTF-8') ?>
+        </p>
+    <?php endif; ?>
 
     <form class="cadastrodeusuario-formulario" method="POST" action="cadastrar.php">
         <input type="text" name="nome" placeholder="Nome do Usuário" maxlength="50" required>
@@ -57,7 +68,7 @@ try {
             <p id="erro-cargos" role="alert"<?= $erroCargos === '' ? ' hidden' : '' ?>><?= htmlspecialchars($erroCargos, ENT_QUOTES, 'UTF-8') ?></p>
         </div>
         <div class="cadastrodeusuario-buttons">
-            <button type="reset" class="cadastrousuario-cancelbutton">Cancelar</button>
+            <button type="button" class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
             <button type="submit" class="cadastrousuario-submitbutton" id="submitusuario">Cadastrar Usuário</button>
         </div>
     </form>
@@ -76,6 +87,8 @@ try {
         });
     </script>
 
-    <?php include __DIR__ . '/popup_usuario_sucesso.php'; ?>
+    <?php if ($cadastroSucesso): ?>
+        <?php include __DIR__ . '/popup_usuario_sucesso.php'; ?>
+    <?php endif; ?>
 </body>
 </html>
