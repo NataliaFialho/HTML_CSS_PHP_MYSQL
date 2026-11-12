@@ -48,7 +48,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validador de Ações</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 <body class="validaracao-pagina">
     <header class="validaracao-cabecalho">
@@ -127,5 +127,6 @@ try {
     </main>
 
 <?php include __DIR__ . '/popup_confirmar_validacao.php'; ?>    
+<?php include __DIR__ . '/popup_confirmar_invalidacao_acao.php'; ?>    
 </body>
 </html>
