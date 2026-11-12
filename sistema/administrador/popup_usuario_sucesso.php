@@ -20,7 +20,7 @@
 
             <h2 class="popupusuariosucesso-titulo">Usuário cadastrado com sucesso!</h2>
             <p class="popupusuariosucesso-mensagem">Esse usuário foi cadastrado com sucesso!</p>
-            <a href=""class="popupusuariosucesso-btn">Voltar para o painel principal</a>
+            <a href="tela_escolha.php"class="popupusuariosucesso-btn">Voltar para o painel principal</a>
         </section>
 
     </div>

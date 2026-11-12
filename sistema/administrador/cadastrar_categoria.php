@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              class="cadastrocategoria-logo">
 
         <h1 class="cadastrocategoria-titulo-administrador">ADMINISTRADOR</h1>
-        <a href="../index.php" class="cadastrocategoria-btn-sair">Sair</a>
+        <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
     </header>
 
     <section class="cadastrocategoria-faixa-titulo">
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     required>
 
                 <div class="cadastrocategoria-botoes">
-                    <button type="reset" class="cadastrocategoria-btn-cancelar">
+                    <button type="reset" class="cadastrocategoria-btn-cancelar" onclick="history.back()">
                         Cancelar
                     </button>
                     <button type="submit" class="cadastrocategoria-btn-confirmar">
