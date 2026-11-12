@@ -111,10 +111,9 @@ try {
                                     </button>
 
                                     <button
-                                        type="submit"
-                                        name="novo_status"
-                                        value="Aprovado"
-                                        class="validaracao-btn-validar">
+                                        type="button"
+                                        class="validaracao-btn-validar"
+                                        onclick="abrirPopupValidacao(this.form)">
                                         APROVAR
                                     </button>
                                 </form>
@@ -127,7 +126,6 @@ try {
         </section>
     </main>
 
-    <?php include 'popup_confirmar_invalidacao_acao.php'; ?>
-    
+<?php include __DIR__ . '/popup_confirmar_validacao.php'; ?>    
 </body>
 </html>
