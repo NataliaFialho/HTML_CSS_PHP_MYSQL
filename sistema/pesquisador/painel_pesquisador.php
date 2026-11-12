@@ -19,7 +19,7 @@
         <div class="painel-dos-botoes">
             <div class="btns-painel-pesquisador">
                 <p class="titulo-acoes-pesquisador">AÇÕES</p>
-                <a href="" class="btns-estilizacao-pesquisador">MINHAS AÇÕES</a>
+                <a href="minhas_acoes.php" class="btns-estilizacao-pesquisador">MINHAS AÇÕES</a>
                 <a href="painel_criar_acao.php" class="btns-estilizacao-pesquisador">NOVA AÇÃO</a>
 
             </div>

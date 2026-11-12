@@ -1726,6 +1726,8 @@ body.cadastrocategoria-pagina {
 
 /* GERENCIAMENTO DE CATEGORIAS DE AÇÃO */
 
+/* POPUP DE AÇÃO CADASTRADA COM SUCESSO */
+
 /* popup usuario editado */
 
 .popupusuarioeditado-overlay {
@@ -1780,7 +1782,6 @@ body.cadastrocategoria-pagina {
     line-height: 1.2;
     font-weight: 700;
 }
-
 .popupusuarioeditado-mensagem {
     margin: 0 0 1.24vw;
     color: #ffffff;
@@ -1812,6 +1813,159 @@ body.cadastrocategoria-pagina {
 .popupusuarioeditado-btn:focus-visible {
     outline: 0.15vw solid #ffffff;
     outline-offset: 0.22vw;
+}
+
+/* POPUP DE AÇÃO CADASTRADA COM SUCESSO */
+
+.popupacaosucesso-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.popupacaosucesso-container {
+    width: min(100%, 435px);
+    min-height: 207px;
+    padding: 14px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3b6791;
+    border: 2px solid #111111;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.popupacaosucesso-icone {
+    width: 74px;
+    height: 74px;
+    margin-bottom: 10px;
+}
+
+.popupacaosucesso-icone svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.popupacaosucesso-titulo {
+    margin: 0 0 2px;
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.popupacaosucesso-mensagem {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.popupacaosucesso-btn {
+    min-width: 195px;
+    min-height: 32px;
+    padding: 7px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background-color: #168b24;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popupacaosucesso-btn:hover {
+    background-color: #056510;
+}
+
+.popupacaosucesso-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+
+.popup-acao-sucesso-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.popup-acao-sucesso-container {
+    width: min(100%, 435px);
+    min-height: 207px;
+    padding: 14px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3b6791;
+    border: 2px solid #111111;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.popup-acao-sucesso-icone {
+    width: 74px;
+    height: 74px;
+    margin-bottom: 10px;
+}
+
+.popup-acao-sucesso-icone svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-acao-sucesso-titulo {
+    margin: 0 0 2px;
+    font-size: 21px;
+}
+
+.popup-acao-sucesso-mensagem {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.popup-acao-sucesso-btn {
+    min-width: 195px;
+    min-height: 32px;
+    padding: 7px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background-color: #168b24;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-acao-sucesso-btn:hover {
+    background-color: #056510;
+}
+
+.popup-acao-sucesso-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
 }
 
 /*===========================================*/
@@ -2225,3 +2379,56 @@ h1 {
 
 
 /*========================================*/
+/* Fundo escuro do popup */
+.modal-desativacao {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-desativacao-conteudo {
+    background: #3b6791;
+    width: 420px;
+    max-width: 90%;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+    animation: aparecerPopup 0.25s ease;
+}
+
+.modal-desativacao-conteudo h1 {
+    color: #ffffff;
+}
+
+.modal-desativacao-conteudo p {
+    color: #ffffff;
+}
+
+@keyframes aparecerPopup {
+
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.modal-desativacao-conteudo .botoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
