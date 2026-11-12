@@ -14,15 +14,10 @@ if (isset($mostrarPopupUsuarioEditado) && $mostrarPopupUsuarioEditado === true):
 
         <h2 class="popupusuarioeditado-titulo" id="popupusuarioeditado-titulo">Usuário editado com sucesso!</h2>
         <p class="popupusuarioeditado-mensagem" id="popupusuarioeditado-mensagem">Esse usuário foi editado com sucesso!</p>
-        <button type="button" class="popupusuarioeditado-btn" id="popupusuarioeditado-btn-ok">Voltar para Minhas Ações</button>
+        <button type="button" class="popupusuarioeditado-btn" id="popupusuarioeditado-btn-ok" onclick="window.location.href='tela_escolha.php'">
+            Voltar para o painel principal
+        </button>
     </section>
 </div>
-
-<script>
-    document
-        document.getElementById('popupusuarioeditado-btn-ok').addEventListener('click', function () {
-    window.location.href = 'tela_escolha.php';
-});
-</script>
 
 <?php endif; ?>

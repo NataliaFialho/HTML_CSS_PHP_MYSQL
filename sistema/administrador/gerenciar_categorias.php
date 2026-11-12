@@ -89,7 +89,7 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="gerenciacategoria-logo">
 
         <h1 class="gerenciacategoria-titulo-administrador">ADMINISTRADOR</h1>
-        <a href="../index.php" class="gerenciacategoria-btn-sair">Sair</a>
+        <a href="../tela_dois_cargos.php" class="gerenciacategoria-btn-sair">Sair</a>
     </header>
 
     <section class="gerenciacategoria-faixa-titulo">
@@ -108,6 +108,10 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
                 <?= htmlspecialchars($mensagemErro, ENT_QUOTES, 'UTF-8') ?>
             </p>
         <?php endif; ?>
+
+        <div class="usuario-lista-voltar">
+            <a href="tela_escolha.php" class="gerenciacategoria-btn-editar">VOLTAR</a>
+        </div>
 
         <?php if (empty($categorias)): ?>
             <p class="gerenciacategoria-vazio">Nenhuma categoria cadastrada.</p>

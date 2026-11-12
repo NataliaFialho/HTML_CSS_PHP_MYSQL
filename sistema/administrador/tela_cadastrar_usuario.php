@@ -15,7 +15,7 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
-        <button type="button" class="paineldecriaracoes-btn-sair">Sair</button>
+        <button type="button" class="paineldecriaracoes-btn-sair" onclick="window.location.href='../tela_dois_cargos.php'">Sair</button>
     </header>
 
     <section class="paineldecriaracoes-barra-titulo">
@@ -35,7 +35,7 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
             <p id="erro-cargos" role="alert" hidden></p>
         </div>
         <div class="cadastrodeusuario-buttons">
-            <button type="reset" class="cadastrousuario-cancelbutton">Cancelar</button>
+            <button class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
             <button type="submit" class="cadastrousuario-submitbutton" id="submitusuario">Cadastrar Usuário</button>
         </div>
     </form>
