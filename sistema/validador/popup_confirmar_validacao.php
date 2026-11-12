@@ -14,6 +14,11 @@
                  class="popupdeacessonegado-icone-imagem">
         </div>
 
+        <h1 class="popupdeacessonegado-titulo"
+            id="popupdesativar-titulo">
+            Confirmar Validação?
+        </h1>
+
         <h2 class="popupdeacessonegado-titulo"
             id="popupdesativar-titulo">
             Confirmar Validação?
