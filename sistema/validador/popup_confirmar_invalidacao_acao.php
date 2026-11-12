@@ -1,12 +1,12 @@
 
 <div class="popupdeacessonegado-overlay"
-     id="popupdesativar-overlay"
+     id="popup-invalidacao-overlay"
      style="display: none;">
 
     <section class="popupdeacessonegado-container"
              role="alertdialog"
              aria-modal="true"
-             aria-labelledby="popupdesativar-titulo">
+             aria-labelledby="popup-invalidacao-titulo">
 
         <div class="popupdeacessonegado-icone">
             <img src="../imagens/atencao.png"
@@ -15,7 +15,7 @@
         </div>
 
         <h2 class="popupdeacessonegado-titulo"
-            id="popupdesativar-titulo">
+            id="popup-invalidacao-titulo">
             Confirmar invalidação?
         </h2>
 
@@ -28,13 +28,13 @@
 
             <button type="button"
                     class="button-desativar"
-                    id="popupdesativar-cancelar">
+                    id="popup-invalidacao-cancelar">
                 Cancelar
             </button>
 
             <button type="button"
                     class="button-desativar"
-                    id="popupdesativar-confirmar--validador">
+                    id="popup-invalidacao-confirmar">
                 Confirmar
             </button>
 
@@ -45,9 +45,9 @@
 <script>
 (function () {
 
-    const overlay = document.getElementById('popupdesativar-overlay');
-    const cancelar = document.getElementById('popupdesativar-cancelar');
-    const confirmar = document.getElementById('popupdesativar-confirmar--validador');
+    const overlay = document.getElementById('popup-invalidacao-overlay');
+    const cancelar = document.getElementById('popup-invalidacao-cancelar');
+    const confirmar = document.getElementById('popup-invalidacao-confirmar');
 
     let formularioSelecionado = null;
 

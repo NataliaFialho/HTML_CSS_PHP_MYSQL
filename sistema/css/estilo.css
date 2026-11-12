@@ -425,7 +425,8 @@ body{
     cursor: pointer;
 }
 
-#popupdesativar-cancelar{
+#popupdesativar-cancelar,
+#popup-invalidacao-cancelar{
     background-color: #ff3030;
 }
 #popupdesativar-confirmar{
