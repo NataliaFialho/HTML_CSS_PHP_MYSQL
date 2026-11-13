@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS acao(
 ); 
 
 INSERT INTO cargo (cargo) VALUES ('Administrador'), ('Validador'), ('Comitê'), ('Pesquisador'); 
-INSERT INTO usuarios(matricula, nome, email, senha) VALUES (12345, 'Admin', 'admin@gmail.com', '123admin');
+INSERT INTO usuarios(matricula, nome, email, senha) VALUES (12345, 'Natalia', 'natalia@gmail.com', '12345678');
 INSERT INTO usuario_cargo(matricula, id_cargo) VALUES (12345, 1);
 
 SELECT * FROM cargo; 

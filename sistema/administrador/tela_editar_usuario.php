@@ -79,7 +79,7 @@ if ($matriculaInformada !== null) {
     </section>
 
     <section class="paineldecriaracoes-barra-nova-acao">
-        <h2 class="paineldecriaracoes-titulo-nova-acao">EDITAR USUÁRIO</h2>
+        <h2 class="paineldecriaracoes-titulo-nova-acao">EDITAR USUÁRIOA</h2>
     </section>
 
     <?php if ($erroEdicao !== ''): ?>
