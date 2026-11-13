@@ -1,5 +1,28 @@
 <?php
+require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+exigirCargo($pdo, 1);
+
 $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
+$errosCadastro = [
+    'matricula' => 'Já existe um usuário com essa matrícula.',
+    'email'     => 'Já existe um usuário com esse e-mail.',
+];
+$mensagemErroCadastro = $errosCadastro[$_GET['erro'] ?? ''] ?? '';
+$cargos = [];
+$erroCargos = '';
+
+try {
+    $cargos = $pdo->query('SELECT id, cargo FROM cargo ORDER BY cargo')->fetchAll();
+
+    if ($cargos === []) {
+        $erroCargos = 'Nenhum cargo foi encontrado.';
+    }
+} catch (PDOException $e) {
+    error_log('Erro ao carregar cargos: ' . $e->getMessage());
+    $erroCargos = 'Não foi possível carregar os cargos. Recarregue a página.';
+}
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +31,7 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar usuário</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 <body class="paineldecadastrarusuarios-pagina">
 
@@ -25,17 +48,30 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
         <h2 class="paineldecriaracoes-titulo-nova-acao">CADASTRAR USUÁRIO</h2>
     </section>
 
+    <?php if ($mensagemErroCadastro !== ''): ?>
+        <p class="editarusuario-mensagem editarusuario-erro" role="alert">
+            <?= htmlspecialchars($mensagemErroCadastro, ENT_QUOTES, 'UTF-8') ?>
+        </p>
+    <?php endif; ?>
+
     <form class="cadastrodeusuario-formulario" method="POST" action="cadastrar.php">
         <input type="text" name="nome" placeholder="Nome do Usuário" maxlength="50" required>
         <input type="number" name="matricula" placeholder="Matrícula" min="1" required>
         <input type="email" name="email" placeholder="Email" maxlength="100" required>
-        <input type="password" name="senha" placeholder="Senha (mínimo de 8 caracteres)" minlength="8" required>
+        <input type="password" name="senha" placeholder="Senha (8 caracteres)" minlength="8" maxlength="8" required>
         <div class="cadastrousuario-checkbox">
-            <div id="cargos-disponiveis">Carregando cargos...</div>
-            <p id="erro-cargos" role="alert" hidden></p>
+            <div id="cargos-disponiveis">
+                <?php foreach ($cargos as $cargo): ?>
+                    <label>
+                        <input type="checkbox" name="cargos[]" value="<?= (int) $cargo['id'] ?>">
+                        <span><?= htmlspecialchars($cargo['cargo'], ENT_QUOTES, 'UTF-8') ?></span>
+                    </label>
+                <?php endforeach; ?>
+            </div>
+            <p id="erro-cargos" role="alert"<?= $erroCargos === '' ? ' hidden' : '' ?>><?= htmlspecialchars($erroCargos, ENT_QUOTES, 'UTF-8') ?></p>
         </div>
         <div class="cadastrodeusuario-buttons">
-            <button class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
+            <button type="button" class="cadastrousuario-cancelbutton" onclick="window.location.href='tela_escolha.php'">Cancelar</button>
             <button type="submit" class="cadastrousuario-submitbutton" id="submitusuario">Cadastrar Usuário</button>
         </div>
     </form>
@@ -44,40 +80,6 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
         const formulario = document.querySelector('.cadastrodeusuario-formulario');
         const listaCargos = document.getElementById('cargos-disponiveis');
         const erroCargos = document.getElementById('erro-cargos');
-
-        fetch('cadastrar.php')
-            .then((resposta) => {
-                if (!resposta.ok) {
-                    throw new Error('Não foi possível carregar os cargos.');
-                }
-                return resposta.json();
-            })
-            .then((cargos) => {
-                listaCargos.replaceChildren();
-                cargos.forEach((cargo) => {
-                    const opcao = document.createElement('label');
-                    const checkbox = document.createElement('input');
-                    const nome = document.createElement('span');
-
-                    checkbox.type = 'checkbox';
-                    checkbox.name = 'cargos[]';
-                    checkbox.value = cargo.id;
-                    nome.textContent = cargo.cargo;
-
-                    opcao.append(checkbox, nome);
-                    listaCargos.append(opcao);
-                });
-
-                if (cargos.length === 0) {
-                    erroCargos.hidden = false;
-                    erroCargos.textContent = 'Nenhum cargo foi encontrado.';
-                }
-            })
-            .catch(() => {
-                listaCargos.textContent = '';
-                erroCargos.hidden = false;
-                erroCargos.textContent = 'Não foi possível carregar os cargos. Recarregue a página.';
-            });
 
         formulario.addEventListener('submit', (evento) => {
             if (!listaCargos.querySelector('input:checked')) {
@@ -88,6 +90,8 @@ $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
         });
     </script>
 
-    <?php include __DIR__ . '/popup_usuario_sucesso.php'; ?>
+    <?php if ($cadastroSucesso): ?>
+        <?php include __DIR__ . '/popup_usuario_sucesso.php'; ?>
+    <?php endif; ?>
 </body>
 </html>
