@@ -523,7 +523,7 @@ h1 {
 /* Tela de escolha do adm */
 
 
-.tela-escolha-adiministrador{
+.titulo-administrador{
     margin: 0 0 0 0;
     color: #ffffff;
     font-size: clamp(20px, 2.7vw, 30px);
@@ -612,7 +612,7 @@ h1 {
     letter-spacing: 1px;
     margin: 2% 0 2% 0;
     color: #000000;
-    border: #000000;         
+    border:solid 2px #000000;         
 }
 
 /* Fim da tela de escolha do adm */
