@@ -44,12 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $atualiza->execute([':nome' => $novoNome, ':id' => $idCategoria]);
                         $operacaoLog = 'Administrador editou a categoria: ' . $novoNome;
 
-                    if (function_exists('mb_substr')) {$operacaoLog = mb_substr($operacaoLog, 0, 100, 'UTF-8');
-                    } else {$operacaoLog = substr($operacaoLog, 0, 100);
+                    if (function_exists('mb_substr'))
+                        {$operacaoLog = mb_substr($operacaoLog, 0, 100, 'UTF-8');
+                    } 
+                    else {$operacaoLog = substr($operacaoLog, 0, 100);
                     }
-                    
                         $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
-                        $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $_SESSION['matricula'], ':tabela' => 'categoria',A]);
+                        $logStmt->execute([
+                            ':operacao' => $operacaoLog,
+                            ':matricula' => $_SESSION['matricula'],
+                            ':tabela' => 'categoria'
+                        ]);
 
                         $pdo->commit();
                         $mensagemSucesso = 'Categoria editada com sucesso!';
