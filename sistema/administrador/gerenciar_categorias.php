@@ -107,12 +107,12 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
     <header class="gerenciacategoria-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="gerenciacategoria-logo">
 
-        <h1 class="gerenciacategoria-titulo-administrador">ADMINISTRADOR</h1>
+        <h1 class="gerenciacategoria-titulo-administrador">Administrador</h1>
         <a href="../tela_dois_cargos.php" class="gerenciacategoria-btn-sair">Sair</a>
     </header>
 
     <section class="gerenciacategoria-faixa-titulo">
-        <h2 class="gerenciacategoria-titulo-acoes">AÇÕES</h2>
+        <h2 class="gerenciacategoria-titulo-acoes">Ações</h2>
     </section>
 
     <main class="gerenciacategoria-area-principal">
@@ -129,7 +129,7 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
         <?php endif; ?>
 
         <div class="usuario-lista-voltar">
-            <a href="tela_escolha.php" class="gerenciacategoria-btn-editar">VOLTAR</a>
+            <a href="tela_escolha.php" class="gerenciacategoria-btn-editar">Voltar</a>
         </div>
 
         <?php if (empty($categorias)): ?>
@@ -169,15 +169,15 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
                                         <input type="hidden" name="id" value="<?= $id ?>">
 
                                         <button type="submit" class="gerenciacategoria-btn-desativar">
-                                            DESATIVAR
+                                            Desativar
                                         </button>
 
                                     </form>
                                 <?php else: ?>
-                                    <span class="gerenciacategoria-status-inativa">DESATIVADA</span>
+                                    <span class="gerenciacategoria-status-inativa">Desativada</span>
                                 <?php endif; ?>
 
-                                <a href="?editar=<?= $id ?>" class="gerenciacategoria-btn-editar">EDITAR</a>
+                                <a href="?editar=<?= $id ?>" class="gerenciacategoria-btn-editar">Editar</a>
                             </div>
                         <?php endif; ?>
                     </article>
