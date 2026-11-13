@@ -66,17 +66,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              alt="Embrapa Gado de Corte"
              class="cadastrocategoria-logo">
 
-        <h1 class="cadastrocategoria-titulo-administrador">ADMINISTRADOR</h1>
+        <h1 class="cadastrocategoria-titulo-administrador">Administrador</h1>
         <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
     </header>
 
     <section class="cadastrocategoria-faixa-titulo">
-        <h2 class="cadastrocategoria-titulo-acoes">AÇÕES</h2>
+        <h2 class="cadastrocategoria-titulo-acoes">Ações</h2>
     </section>
 
     <main class="cadastrocategoria-area-principal">
         <div class="cadastrocategoria-barra-adicionar">
-            <h2>ADICIONAR</h2>
+            <h2>Adicionar</h2>
         </div>
 
         <section class="cadastrocategoria-painel">

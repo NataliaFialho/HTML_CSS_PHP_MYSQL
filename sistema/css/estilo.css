@@ -584,7 +584,7 @@ h1 {
     margin: 2% 0 2% 0;
     font-weight: 700;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 .card-botoes {
@@ -593,7 +593,7 @@ h1 {
     gap: 3vw;
     gap: 3vh;
     width: 60%; 
-    height: 60%;
+    height: 40%;
 }
 .card-botoes .botao {
     display: flex;            
@@ -601,7 +601,7 @@ h1 {
     justify-content: center;   
     text-decoration: none;    
     width: 100%;
-    height: 30%;
+    /* height: 30%; */
     font-size: 1.2vw;
     letter-spacing: 1px;
     margin: 2% 0 2% 0;

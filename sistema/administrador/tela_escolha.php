@@ -14,13 +14,8 @@ exigirCargo($pdo, 1);
 </head>
 <body>
 <header class="paineldecriaracoes-cabecalho">
-<<<<<<< HEAD
         <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">Administrador</h1>
-=======
-        <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
-        <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
->>>>>>> 4f397bcb9729ad40a4b566147c10aedba3007ac2
         <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
     </header>
 
@@ -30,28 +25,18 @@ exigirCargo($pdo, 1);
         <h2 class="card-titulo">Usuários</h2>
         <div class="card-botoes">
 
-<<<<<<< HEAD
             <a href="tela_cadastrar_usuario.php" class="botao">Adicionar</a>
             <a href="tela_lista_usuarios.php" class="botao">Listar</a>
-
-=======
-            <a href="tela_cadastrar_usuario.php" class="botao">ADICIONAR</a>
-            <a href="tela_lista_usuarios.php" class="botao">LISTAR</a>
->>>>>>> 4f397bcb9729ad40a4b566147c10aedba3007ac2
         </div>
     </section>
 
     <section class="card-painel">
         <h2 class="card-titulo">Ações</h2>
         <div class="card-botoes">
-<<<<<<< HEAD
 
             <a href="cadastrar_categoria.php" class="botao">Adicionar</a>
             <a href="gerenciar_categorias.php" class="botao">Listar</a>
-=======
-            <a href="cadastrar_categoria.php" class="botao">ADICIONAR</a>
-            <a href="gerenciar_categorias.php" class="botao">LISTAR</a>
->>>>>>> 4f397bcb9729ad40a4b566147c10aedba3007ac2
+         
 
         </div>
     </section>
