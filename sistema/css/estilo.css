@@ -1001,6 +1001,74 @@ body.paineldecriaracoes-pagina {
     overflow-wrap: anywhere;
 }
 
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-container-card > .painel-minhas-acoes-card-pesquisa {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    padding: 22px 24px;
+    border: 1px solid #dce5eb;
+    border-left: 5px solid #16864e;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(31, 57, 76, 0.1);
+    transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-container-card > .painel-minhas-acoes-card-pesquisa:hover {
+    box-shadow: 0 10px 24px rgba(31, 57, 76, 0.15);
+    transform: translateY(-2px);
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa .card-titulo {
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8eef2;
+    color: #234b70;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    overflow-wrap: anywhere;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > p {
+    margin: 0;
+    padding: 7px 0;
+    color: #34495e;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > .card-data {
+    color: #627587;
+    font-size: 14px;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > .card-descricao {
+    margin-top: 8px;
+    padding: 11px 13px;
+    border-radius: 8px;
+    background: #f0f7f3;
+    color: #17613c;
+    font-weight: 600;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > .card-status {
+    margin-top: 8px;
+    padding: 9px 13px;
+    border-radius: 8px;
+    background: #f1f5f8;
+    color: #38556c;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .paineldecadastrarusuarios-pagina .painel-minhas-acoes-container-card > .painel-minhas-acoes-card-pesquisa {
+        padding: 18px;
+    }
+}
+
 .cadastrodeusuario-formulario{
     display: flex;
     flex-direction: column;
