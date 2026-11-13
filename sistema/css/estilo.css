@@ -375,6 +375,15 @@ body{
     font-weight: 400;
 }
 
+.popupconfirmarinvaliacao-div--validador {
+    margin: 0 0 1.24vw;
+    color: #ffffff;
+    font-size: 1.025vw;
+    line-height: 1.39vw;
+    font-weight: 400;
+}
+
+
 .popupdeacessonegado-btn {
     width: 9.37vw;
     min-height: 2.34vw;
@@ -403,11 +412,28 @@ body{
     font-weight: 700;
     cursor: pointer;
 }
-#popupdesativar-cancelar{
+.popupconfirmarinvalidacao-div--validador{
+    width: 9.37vw;
+    min-height: 2.34vw;
+    padding: 0.51vw 1.17vw;
+    border: 0;
+    border-radius: 1.46vw;
+    color: #ffffff;
+    font-size: 0.95vw;
+    line-height: 1.32vw;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#popupdesativar-cancelar,
+#popup-invalidacao-cancelar{
     background-color: #ff3030;
 }
 #popupdesativar-confirmar{
     background-color: #808080;
+}
+#popupdesativar-confirmar--validador {
+    background-color: #168b24;
 }
 
 .popupdeacessonegado-btn:hover {
@@ -437,11 +463,11 @@ body{
     color: white;
     box-sizing: border-box;
 }
-.icone-erro {
+.icone-atencao {
     margin-bottom: 10px;
 }
 
-.icone-erro img {
+.icone-atencao img {
     width: 80px;
     height: 80px;
 }
@@ -451,18 +477,18 @@ h1 {
     margin-bottom: 20px;
 }
 
-.mensagem {
+.mensagem-popup-confirmar {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 40px;
 }
 
-.botoes {
+.botoes-popup-confirmar {
     display: flex;
     justify-content: space-between;
 }
 
-.botao-cancelar {
+.botao-cancelar-popup-confirmar {
     width: 245px;
     height: 55px;
     color: white;
@@ -472,7 +498,7 @@ h1 {
     font-size: 20px;
 }
 
-.botao-desativar {
+.botao-desativar-popup-confirmar {
     width: 245px;
     height: 55px;
     color: white;
@@ -480,13 +506,14 @@ h1 {
     border: none;
     border-radius: 30px;
     font-size: 20px;
+
 }
 
-.botao-cancelar:hover {
+.botao-cancelar-popup-confirmar:hover {
     background-color: darkred;
 }
 
-.botao-desativar:hover {
+.botao-desativar-popup-confirmar:hover {
     background-color: rgb(70, 70, 70);
 }
 
@@ -1700,6 +1727,8 @@ body.cadastrocategoria-pagina {
 
 /* GERENCIAMENTO DE CATEGORIAS DE AÇÃO */
 
+/* POPUP DE AÇÃO CADASTRADA COM SUCESSO */
+
 /* popup usuario editado */
 
 .popupusuarioeditado-overlay {
@@ -1754,7 +1783,6 @@ body.cadastrocategoria-pagina {
     line-height: 1.2;
     font-weight: 700;
 }
-
 .popupusuarioeditado-mensagem {
     margin: 0 0 1.24vw;
     color: #ffffff;
@@ -1786,6 +1814,159 @@ body.cadastrocategoria-pagina {
 .popupusuarioeditado-btn:focus-visible {
     outline: 0.15vw solid #ffffff;
     outline-offset: 0.22vw;
+}
+
+/* POPUP DE AÇÃO CADASTRADA COM SUCESSO */
+
+.popupacaosucesso-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.popupacaosucesso-container {
+    width: min(100%, 435px);
+    min-height: 207px;
+    padding: 14px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3b6791;
+    border: 2px solid #111111;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.popupacaosucesso-icone {
+    width: 74px;
+    height: 74px;
+    margin-bottom: 10px;
+}
+
+.popupacaosucesso-icone svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.popupacaosucesso-titulo {
+    margin: 0 0 2px;
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.popupacaosucesso-mensagem {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.popupacaosucesso-btn {
+    min-width: 195px;
+    min-height: 32px;
+    padding: 7px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background-color: #168b24;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popupacaosucesso-btn:hover {
+    background-color: #056510;
+}
+
+.popupacaosucesso-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+
+.popup-acao-sucesso-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.popup-acao-sucesso-container {
+    width: min(100%, 435px);
+    min-height: 207px;
+    padding: 14px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3b6791;
+    border: 2px solid #111111;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.popup-acao-sucesso-icone {
+    width: 74px;
+    height: 74px;
+    margin-bottom: 10px;
+}
+
+.popup-acao-sucesso-icone svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-acao-sucesso-titulo {
+    margin: 0 0 2px;
+    font-size: 21px;
+}
+
+.popup-acao-sucesso-mensagem {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.popup-acao-sucesso-btn {
+    min-width: 195px;
+    min-height: 32px;
+    padding: 7px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background-color: #168b24;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-acao-sucesso-btn:hover {
+    background-color: #056510;
+}
+
+.popup-acao-sucesso-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
 }
 
 /*===========================================*/
@@ -2096,6 +2277,109 @@ h1 {
 
 /*=======================================*/
 
+
+/* popup confirmar validacao */
+
+
+.popupvalidacao-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.popupvalidacao-container {
+    width: 100%;
+    max-width: 794px;
+    min-height: 335px;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3b6791;
+    border: 1px solid #111111;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.popupvalidacao-icone {
+    width: 165px;
+    height: 150px;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupvalidacao-icone-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.popupvalidacao-titulo {
+    margin: 0 0 17px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.popupvalidacao-mensagem {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: 21px;
+}
+
+.popupvalidacao-botoes {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: auto;
+}
+
+.popupvalidacao-btn-cancelar {
+    width: 32%;
+    min-height: 59px;
+    border: none;
+    border-radius: 35px;
+    background-color: #ff3030;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.popupvalidacao-btn-confirmar {
+    width: 32%;
+    min-height: 59px;
+    border: none;
+    border-radius: 35px;
+    background-color: #078b19;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.popupvalidacao-btn-cancelar:hover {
+    background-color: #d92525;
+}
+
+.popupvalidacao-btn-confirmar:hover {
+    background-color: #067515;
+}
+
+
+/*========================================*/
 /* Fundo escuro do popup */
 .modal-desativacao {
     display: none;
@@ -2149,6 +2433,7 @@ h1 {
     gap: 15px;
     margin-top: 25px;
 }
+<<<<<<< HEAD
 
 .popup-acao-sucesso-overlay {
     position: fixed !important;
@@ -2166,3 +2451,5 @@ h1 {
     box-sizing: border-box;
     z-index: 100000;
 }
+=======
+>>>>>>> origin/main

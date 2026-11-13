@@ -75,13 +75,13 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validador de Ações</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 <body class="validaracao-pagina">
     <header class="validaracao-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="validaracao-logo">
         <h1 class="validaracao-titulo-administrador">VALIDADOR</h1>
-        <a href="../index.php" class="validaracao-btn-sair">Sair</a>
+        <a href="../tela_dois_cargos.php" class="validaracao-btn-sair">Sair</a>
     </header>
 
     <section class="validaracao-faixa-titulo">
@@ -129,8 +129,20 @@ try {
                             <?php if ($acao['status'] === 'Em Análise'): ?>
                                 <form method="POST" class="validaracao-acoes-card">
                                     <input type="hidden" name="acao_id" value="<?= $acao['id'] ?>">
-                                    <button type="submit" name="novo_status" value="Reprovado" class="validaracao-btn-invalidar">REPROVAR</button>
-                                    <button type="submit" name="novo_status" value="Aprovado" class="validaracao-btn-validar">APROVAR</button>
+
+                                    <button
+                                        type="button"
+                                        class="validaracao-btn-invalidar"
+                                        onclick="abrirPopupInvalidacao(this.form)">
+                                        REPROVAR
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="validaracao-btn-validar"
+                                        onclick="abrirPopupValidacao(this.form)">
+                                        APROVAR
+                                    </button>
                                 </form>
                             <?php endif; ?>
                         </div>
@@ -140,5 +152,8 @@ try {
 
         </section>
     </main>
+
+<?php include __DIR__ . '/popup_confirmar_validacao.php'; ?>    
+<?php include __DIR__ . '/popup_confirmar_invalidacao_acao.php'; ?>    
 </body>
 </html>

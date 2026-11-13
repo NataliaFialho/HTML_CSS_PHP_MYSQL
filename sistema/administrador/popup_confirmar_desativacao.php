@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$matricula = filter_input(INPUT_POST, 'matricula', FILTER_VALIDATE_INT);
+// Se não existe matrícula válida, volta para a lista
+if (!$matricula || $matricula <= 0) {
 
 if (!$matricula || $matricula <= 0) {
     header('Location: tela_lista_usuarios.php?erro=matricula');

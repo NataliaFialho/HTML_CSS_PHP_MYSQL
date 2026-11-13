@@ -68,7 +68,11 @@ try {
             <p id="erro-cargos" role="alert"<?= $erroCargos === '' ? ' hidden' : '' ?>><?= htmlspecialchars($erroCargos, ENT_QUOTES, 'UTF-8') ?></p>
         </div>
         <div class="cadastrodeusuario-buttons">
+<<<<<<< HEAD
             <button type="button" class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
+=======
+            <button class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
+>>>>>>> origin/main
             <button type="submit" class="cadastrousuario-submitbutton" id="submitusuario">Cadastrar Usuário</button>
         </div>
     </form>

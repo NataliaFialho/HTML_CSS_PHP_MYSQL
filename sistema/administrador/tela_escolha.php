@@ -20,6 +20,10 @@
     <section class="card-painel">
         <h2 class="card-titulo">USUÁRIOS</h2>
         <div class="card-botoes">
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
             <a href="tela_cadastrar_usuario.php" class="botao">ADICIONAR</a>
             <a href="tela_lista_usuarios.php" class="botao">LISTAR</a>
         </div>
@@ -30,6 +34,10 @@
         <div class="card-botoes">
             <a href="cadastrar_categoria.php" class="botao">ADICIONAR</a>
             <a href="gerenciar_categorias.php" class="botao">LISTAR</a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
         </div>
     </section>
 </main>
