@@ -182,14 +182,13 @@ header{
     width: 7%;
     margin-left: 2%;
 }
+
 .container-do-painel{
     width: 100vw;
     height: 90vh;
     justify-items: center;
     align-items: center;
     align-content: center;
-    
-    
 }
 
 .painel-dos-botoes{
@@ -1694,7 +1693,7 @@ body.cadastrocategoria-pagina {
 
 .gerenciacategoria-form-desativar {
     margin: 0;
-}
+}CON
 
 .gerenciacategoria-btn-desativar,
 .gerenciacategoria-btn-editar,

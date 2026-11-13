@@ -4,6 +4,8 @@ require_once __DIR__ . '/../auth.php';
 
 exigirCargo($pdo, 4);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,25 +14,45 @@ exigirCargo($pdo, 4);
     <title>Painel do Pesquisador</title>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
+
 <body>
-    <header>
-        <div class="header-painel-pesquisador">
-            <img class="img-header-painel-pesquisador" src="../imagens/logo-embrapa.png" alt="">
-            <p class="txt-header-painel-pesquisador">Painel do Pesquisador</p>
-            <a href="../tela_dois_cargos.php" class="btn-sair-painel-pesquisador">Sair</a>
-        </div>
+
+    <header class="paineldecriaracoes-cabecalho">
+        <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
+        <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
+        <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
+    </header>
     </header>
 
-    <div class="container-do-painel">
+    <main class="container-do-painel">
+
         <div class="painel-dos-botoes">
+
             <div class="btns-painel-pesquisador">
-                <p class="titulo-acoes-pesquisador">AÇÕES</p>
-                <a href="minhas_acoes.php" class="btns-estilizacao-pesquisador">MINHAS AÇÕES</a>
-                <a href="painel_criar_acao.php" class="btns-estilizacao-pesquisador">NOVA AÇÃO</a>
+
+                <p class="titulo-acoes-pesquisador">
+                    AÇÕES
+                </p>
+
+                <a
+                    href="minhas_acoes.php"
+                    class="btns-estilizacao-pesquisador"
+                >
+                    MINHAS AÇÕES
+                </a>
+
+                <a
+                    href="painel_criar_acao.php"
+                    class="btns-estilizacao-pesquisador"
+                >
+                    NOVA AÇÃO
+                </a>
 
             </div>
+
         </div>
-    </div>
-    
+
+    </main>
+
 </body>
 </html>
