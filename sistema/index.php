@@ -65,13 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <main id="login-container-geral">
+        <section id="login-container-logo-formulario">
+            <img src="imagens/logo-embrapa.png" alt="Embrapa Gado de Corte">
 
-    <main class="pagina-principal">
-
-        <img src="imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="logo-embrapa">
-
-        <section class="caixa-login">
-            <h1 class="titulo-login">Tela de Login</h1>
+            <h1>Tela de Login</h1>
             <form class="formulario-login" method="POST" action="index.php">
                 <input type="email" name="email" class="input-email" placeholder="Email" required>
                 <input type="password" name="senha" class="input-senha" placeholder="Senha" required>
@@ -82,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>Não foi possível conectar ao banco de dados.</p>
             <?php endif; ?>
         </section>
-
     </main>
 
     <?php
