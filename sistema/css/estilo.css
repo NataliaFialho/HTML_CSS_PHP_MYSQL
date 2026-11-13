@@ -367,6 +367,14 @@ body{
     font-weight: 700;
 }
 
+.popupdeacessonegado-subtitulo {
+    margin: 0 0 1.24vw;
+    color: #ffffff;
+    font-size: 1.1vw;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
 .popupdeacessonegado-mensagem {
     margin: 0 0 1.24vw;
     color: #ffffff;
@@ -2288,21 +2296,22 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1.17vw;
     background-color: rgba(0, 0, 0, 0.45);
-    padding: 10px;
     box-sizing: border-box;
 }
 
 .popupvalidacao-container {
     width: 100%;
-    max-width: 794px;
-    min-height: 335px;
-    padding: 15px 20px;
+    max-width: 31.67vw;
+    min-height: 17.08vw;
+    padding: 1.68vw 1.76vw 1.17vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     background-color: #3b6791;
-    border: 1px solid #111111;
+    border: 0.073vw solid #111111;
     box-sizing: border-box;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
@@ -2310,72 +2319,80 @@ h1 {
 }
 
 .popupvalidacao-icone {
-    width: 165px;
-    height: 150px;
-    margin-bottom: 7px;
+    width: 4.10vw;
+    height: 4.10vw;
+    margin-bottom: 1.32vw;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .popupvalidacao-icone-imagem {
-    width: 100%;
-    height: 100%;
+    display: block;
+    width: 4.10vw;
+    height: 4.10vw;
     object-fit: contain;
 }
 
 .popupvalidacao-titulo {
-    margin: 0 0 17px;
+    margin: 0 0 1.24vw;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 1.46vw;
+    line-height: 1.2;
     font-weight: 700;
 }
 
 .popupvalidacao-mensagem {
-    margin: 0 0 10px;
+    margin: 0 0 1.24vw;
     color: #ffffff;
-    font-size: 21px;
+    font-size: 1.025vw;
+    line-height: 1.39vw;
+    font-weight: 400;
 }
 
 .popupvalidacao-botoes {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    gap: 1vw;
     margin-top: auto;
 }
 
-.popupvalidacao-btn-cancelar {
-    width: 32%;
-    min-height: 59px;
-    border: none;
-    border-radius: 35px;
-    background-color: #ff3030;
+.popupvalidacao-btn-cancelar,
+.popupvalidacao-btn-confirmar {
+    width: 9.37vw;
+    min-height: 2.34vw;
+    padding: 0.51vw 1.17vw;
+    border: 0;
+    border-radius: 1.46vw;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 0.95vw;
+    line-height: 1.32vw;
     font-weight: 700;
     cursor: pointer;
 }
 
-.popupvalidacao-btn-confirmar {
-    width: 32%;
-    min-height: 59px;
-    border: none;
-    border-radius: 35px;
-    background-color: #078b19;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
+.popupvalidacao-btn-cancelar {
+    background-color: #ff3030;
 }
 
 .popupvalidacao-btn-cancelar:hover {
     background-color: #d92525;
 }
 
+.popupvalidacao-btn-confirmar {
+    background-color: #168b24;
+}
+
 .popupvalidacao-btn-confirmar:hover {
     background-color: #067515;
+}
+
+.popupvalidacao-btn-cancelar:focus-visible,
+.popupvalidacao-btn-confirmar:focus-visible {
+    outline: 0.15vw solid #ffffff;
+    outline-offset: 0.22vw;
 }
 
 

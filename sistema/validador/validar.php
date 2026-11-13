@@ -85,7 +85,7 @@ try {
 <body class="validaracao-pagina">
     <header class="validaracao-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="validaracao-logo">
-        <h1 class="validaracao-titulo-administrador">VALIDADOR</h1>
+        <h1 class="validaracao-titulo-administrador">Validador</h1>
         <a href="../tela_dois_cargos.php" class="validaracao-btn-sair">Sair</a>
     </header>
 
