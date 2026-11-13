@@ -1,13 +1,120 @@
-/*Login*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     /* Não tirar esse justify-content pvr */
     justify-content: space-evenly; 
+}
 
+/*Login*/
+
+#login-container-geral {
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    align-items: center;
+    padding: 24px 20px;
+}
+
+#login-container-logo-formulario {
+    width: min(545px, 100%);
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: solid 1px #dce5eb;
+    box-shadow: 0 6px 18px rgba(31, 57, 76, 0.1);
+    border-radius: 10px;
+    text-align: center;    
+}
+
+#login-container-logo-formulario > img {
+    width: min(250px, 100%);
+    margin-bottom: 36px;
+    text-align: center;    
+}
+
+#login-container-logo-formulario > h1 {
+    color: #07549a;
+    font-size: 1.5em;
+    margin-bottom: 24px;
+}
+
+.formulario-login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input-email,
+.input-senha {
+    width: 100%;
+    height: 64px;
+    padding: 15px 30px;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+#btn-login {
+    width: min(220px, 100%);
+    height: 60px;
+    background: linear-gradient(0deg, #16864e, #087443);
+    box-shadow: 0 8px 18px rgba(13, 91, 57, 0.17);
+    color: white;
+    border: 1px solid #087443;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+#btn-login:hover {
+    background: linear-gradient(135deg, #107342, #075e35);
+    box-shadow: 0 11px 22px rgba(13, 91, 57, 0.24);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+
+    .logo-embrapa {
+        width: 90%;
+        margin-bottom: 40px;
+    }
+
+    .caixa-login {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .titulo-login {
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+
+    .input-usuario,
+    .input-senha {
+        height: 58px;
+        font-size: 18px;
+    }
+
+    #btn-login {
+        height: 60px;
+        font-size: 25px;
+    }
 
 }
+
+/*Fim do Login*/
+
 header{
     width: 100vw;
     height: 10vh;
@@ -124,107 +231,6 @@ body {
     background-color: #004e7a;
 }
 
-.pagina-principal {
-    width: 72%;
-    min-height: 100vh;
-    background-color: #356394;
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-}
-
-.logo-embrapa {
-    width: 340px;
-    margin-bottom: 70px;
-    text-align: center;
-}
-
-.logo-embrapa img {
-    width: 100%;
-    height: auto;
-}
-
-.caixa-login {
-    width: 545px;
-    padding: 35px 45px;
-    background-color: white;
-    border: 2px solid black;
-    text-align: center;
-}
-
-.titulo-login {
-    color: #07549a;
-    font-size: 38px;
-    margin-bottom: 30px;
-}
-
-.formulario-login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-}
-
-.input-email,
-.input-senha {
-    width: 100%;
-    height: 75px;
-    padding: 15px 30px;
-    border: 2px solid black;
-    border-radius: 40px;
-    font-size: 22px;
-}
-
-#btn-login {
-    width: 265px;
-    height: 70px;
-    background-color: #07549a;
-    color: white;
-    border: 2px solid black;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#btn-login:hover {
-    background-color: #063f78;
-}
-
-@media (max-width: 600px) {
-
-    .logo-embrapa {
-        width: 90%;
-        margin-bottom: 40px;
-    }
-
-    .caixa-login {
-        width: 100%;
-        padding: 30px 20px;
-    }
-
-    .titulo-login {
-        font-size: 30px;
-        margin-bottom: 50px;
-    }
-
-    .input-usuario,
-    .input-senha {
-        height: 60px;
-        font-size: 18px;
-    }
-
-    #btn-login {
-        width: 220px;
-        height: 60px;
-        font-size: 25px;
-    }
-
-}
-
-
-
 /* Painel minhas ações */
 
 .painel-minhas-acoes-subcabecalho{
@@ -284,32 +290,110 @@ body {
 
 /*=============*/
 
-/* tela de dois cargos */
+/* Tela_dois_cargos.php */
 
-
-body{
-    width: 100vw;
-    height: 100vh;
-    background-color: #ffffff;
-}
-.logo-embrapa--tela_dois_cargos{
-    width: 40%;
-    height: 20%;
-}
-.botao{
-    width: 40%;
-    height: 20%;
-    border-radius: 40px;
-    background-color: #00bf15;
-}
-
-.formatacao-div{
+.formatacao-div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    height: 100%;
+    gap: 16px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 48px 20px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.96), transparent 68%),
+        linear-gradient(145deg, #edf4f8 0%, #f7fafb 52%, #e8f1f5 100%);
+}
+
+.formatacao-div .logo-embrapa {
+    align-self: center;
+    width: min(340px, 72vw);
+    margin: 0 auto 14px;
+}
+
+.formatacao-div .logo-embrapa img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.formatacao-div .botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 520px);
+    min-height: 78px;
+    padding: 18px 28px;
+    border: 1px solid #087443;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #16864e, #087443);
+    box-shadow: 0 8px 18px rgba(13, 91, 57, 0.17);
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.formatacao-div .texto-formatacao {
+    margin: 0;
+    color: inherit;
+    font-size: clamp(18px, 2.4vw, 22px);
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.formatacao-div .botao:hover {
+    background: linear-gradient(135deg, #107342, #075e35);
+    box-shadow: 0 11px 22px rgba(13, 91, 57, 0.24);
+    transform: translateY(-2px);
+}
+
+.formatacao-div .botao:focus-visible {
+    outline: 3px solid #f0ad32;
+    outline-offset: 4px;
+}
+
+.formatacao-div > .botao-sair-cargos {
+    order: 1;
+    width: min(100%, 200px);
+    min-height: 78px;
+    padding: 18px 28px;
+    border: 1px solid #851919;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #b92929, #851919);
+    box-shadow: 0 8px 18px rgba(13, 91, 57, 0.17);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.formatacao-div .botao-sair-cargos:hover {
+    background: linear-gradient(135deg, #9e1d1d, #791313);
+    box-shadow: 0 11px 22px rgba(13, 91, 57, 0.24);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .formatacao-div {
+        gap: 13px;
+        padding: 32px 18px;
+    }
+
+    .formatacao-div .logo-embrapa {
+        margin-bottom: 10px;
+    }
+
+    .formatacao-div .botao {
+        min-height: 70px;
+        padding: 16px 20px;
+        border-radius: 14px;
+    }
 }
 
 /* popup de acesso negado */
@@ -901,8 +985,124 @@ body.paineldecriaracoes-pagina {
 
 .paineldecadastrarusuarios-pagina{
     width: 100%;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f5f8;
+    font-family: Arial, sans-serif;
     justify-content: center;
     align-items: center;
+}
+
+.paineldecadastrarusuarios-pagina main {
+    width: 100%;
+    padding: 28px 20px 40px;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minha-acoes-container-card {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    gap: 18px;
+}
+
+.paineldecadastrarusuarios-pagina .painel-linhas-acoes-card-pesquisa {
+    min-width: 0;
+    padding: 20px 22px;
+    border: 1px solid #d9e2ec;
+    border-left: 5px solid #3b6791;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(24, 49, 74, 0.1);
+}
+
+.paineldecadastrarusuarios-pagina .painel-linhas-acoes-card-pesquisa .card-titulo {
+    margin: 0 0 14px;
+    color: #234b70;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    overflow-wrap: anywhere;
+}
+
+.paineldecadastrarusuarios-pagina .painel-linhas-acoes-card-pesquisa p {
+    margin-top: 9px;
+    color: #34495e;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-container-card > .painel-minhas-acoes-card-pesquisa {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    padding: 22px 24px;
+    border: 1px solid #dce5eb;
+    border-left: 5px solid #16864e;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(31, 57, 76, 0.1);
+    transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-container-card > .painel-minhas-acoes-card-pesquisa:hover {
+    box-shadow: 0 10px 24px rgba(31, 57, 76, 0.15);
+    transform: translateY(-2px);
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa .card-titulo {
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8eef2;
+    color: #234b70;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    overflow-wrap: anywhere;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > p {
+    margin: 0;
+    padding: 7px 0;
+    color: #34495e;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > .card-data {
+    color: #627587;
+    font-size: 14px;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > .card-descricao {
+    margin-top: 8px;
+    padding: 11px 13px;
+    border-radius: 8px;
+    background: #f0f7f3;
+    color: #17613c;
+    font-weight: 600;
+}
+
+.paineldecadastrarusuarios-pagina .painel-minhas-acoes-card-pesquisa > .card-status {
+    margin-top: 8px;
+    padding: 9px 13px;
+    border-radius: 8px;
+    background: #f1f5f8;
+    color: #38556c;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .paineldecadastrarusuarios-pagina .painel-minhas-acoes-container-card > .painel-minhas-acoes-card-pesquisa {
+        padding: 18px;
+    }
 }
 
 .cadastrodeusuario-formulario{
