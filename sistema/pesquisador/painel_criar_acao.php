@@ -144,7 +144,7 @@ try {
     </main>
 
     <?php if ($mensagemSucesso !== ''): ?>
-        <?php include __DIR__ . '/popup_acao_cadastrada-sucesso.php'; ?>
+        <?php include __DIR__ . ('/popup_acao_cadastrada-sucesso.php'); ?>
     <?php endif; ?>
 
 </body>
