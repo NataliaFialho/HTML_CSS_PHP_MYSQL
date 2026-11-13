@@ -1,5 +1,3 @@
-<!-- login -->
-
 <?php
 session_start();
 
@@ -25,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
             if ($usuario) {
-
-                $senhaCorreta = hash_equals($usuario["senha"], $senha);
+                $senhaArmazenada = (string) $usuario["senha"];
+                $senhaCorreta = hash_equals($senhaArmazenada, (string) $senha);
 
                 if ($senhaCorreta && (int)$usuario["status"] === 1) {
 
@@ -63,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Embrapa Gado de Corte</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 
@@ -71,54 +68,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <main class="pagina-principal">
 
-        <img
-            src="imagens/logo-embrapa.png"
-            alt="Embrapa Gado de Corte"
-            class="logo-embrapa"
-        >
+        <img src="imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="logo-embrapa">
 
         <section class="caixa-login">
-
             <h1 class="titulo-login">Tela de Login</h1>
-
             <form class="formulario-login" method="POST" action="index.php">
-
-                <input
-                    type="email"
-                    name="email"
-                    class="input-email"
-                    placeholder="Email"
-                    required
-                >
-
-                <input
-                    type="password"
-                    name="senha"
-                    class="input-senha"
-                    placeholder="Senha"
-                    required
-                >
-
-                <button type="submit" id="btn-login">
-                    Entrar
-                </button>
-
+                <input type="email" name="email" class="input-email" placeholder="Email" required>
+                <input type="password" name="senha" class="input-senha" placeholder="Senha" required>
+                <button type="submit" id="btn-login">Entrar</button>
             </form>
 
             <?php if ($erroSistema): ?>
                 <p>Não foi possível conectar ao banco de dados.</p>
             <?php endif; ?>
-
         </section>
 
     </main>
 
     <?php
-    if ($mostrarPopupAcessoNegado === true) {
-        include "popup_acesso_negado.php";
-    }
+    if ($mostrarPopupAcessoNegado === true) {include "popup_acesso_negado.php";}
     ?>
-
 </body>
-
 </html>

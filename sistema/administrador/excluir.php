@@ -1,1 +1,0 @@
-// Criar uma função em PHP para excluir usuário

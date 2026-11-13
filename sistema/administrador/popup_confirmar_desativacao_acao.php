@@ -1,4 +1,3 @@
-
 <div class="popupdeacessonegado-overlay"
      id="popupdesativar-overlay"
      style="display: none;">
@@ -18,7 +17,7 @@
         </h2>
 
         <p class="popupdeacessonegado-mensagem">
-            Essa ação não pode ser desfeita.
+            A categoria ficará desativada e não poderá ser usada em novas ações.
         </p>
 
         <div class="popupdeacessonegadoacao-btn">
