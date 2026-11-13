@@ -9,21 +9,19 @@
 /*Login*/
 
 #login-container-geral {
-    max-width: 100vw;
-    max-height: 100vh;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    min-height: 100vh;
     background-color: #134070;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: safe center;
     align-items: center;
-    padding: 40px 20px;  
+    padding: 24px 20px;
 }
 
 #login-container-logo-formulario {
-    width: 545px;
-    padding: 35px 45px;
+    width: min(545px, 100%);
+    padding: 30px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,28 +33,28 @@
 }
 
 #login-container-logo-formulario > img {
-    width: 250px;
-    margin-bottom: 70px;
+    width: min(250px, 100%);
+    margin-bottom: 36px;
     text-align: center;    
 }
 
 #login-container-logo-formulario > h1 {
     color: #07549a;
-    font-size: 38px;
-    margin-bottom: 30px;
+    font-size: clamp(28px, 4vw, 38px);
+    margin-bottom: 24px;
 }
 
 .formulario-login {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 18px;
 }
 
 .input-email,
 .input-senha {
     width: 100%;
-    height: 75px;
+    height: 64px;
     padding: 15px 30px;
     border: 1px solid #b4b4b4;
     border-radius: 10px;
@@ -64,15 +62,15 @@
 }
 
 #btn-login {
-    width: 50%;
-    height: 70px;
+    width: min(220px, 100%);
+    height: 60px;
     background-color: #07549a;
     color: white;
     border: 2px solid #063058;
     border-radius: 10px;
     font-size: 30px;
     font-weight: bold;
-    margin-right: 25%;
+    margin: 0 auto;
     cursor: pointer;
 }
 
@@ -99,12 +97,11 @@
 
     .input-usuario,
     .input-senha {
-        height: 60px;
+        height: 58px;
         font-size: 18px;
     }
 
     #btn-login {
-        width: 220px;
         height: 60px;
         font-size: 25px;
     }
