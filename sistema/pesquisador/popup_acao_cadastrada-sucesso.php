@@ -6,13 +6,13 @@
         <h2 class="popup-acao-sucesso-titulo">Ação cadastrada com sucesso!</h2>
         <p class="popup-acao-sucesso-mensagem">Sua ação já está salva no sistema.</p>
         <button type="button" class="popup-acao-sucesso-btn" onclick="voltarParaAcoes()">
-            Voltar para Minhas Ações
+            OK
         </button>
     </div>
 </div>
 
 <script>
     function voltarParaAcoes() {
-        window.location.href = "minhas_acoes.php"; // ajuste para a sua página de listagem
+        window.location.href = "painel_pesquisador.php";
     }
 </script>

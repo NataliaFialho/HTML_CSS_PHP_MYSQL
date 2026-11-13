@@ -1,12 +1,15 @@
 <?php
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+exigirCargo($pdo, 1);
 
 $cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
-$mensagemErroCadastro = ($_GET['erro'] ?? '') === 'matricula'
-    ? 'Já existe um usuário com essa matrícula.'
-    : '';
-
-$cadastroSucesso = ($_GET['cadastro'] ?? '') === 'sucesso';
+$errosCadastro = [
+    'matricula' => 'Já existe um usuário com essa matrícula.',
+    'email'     => 'Já existe um usuário com esse e-mail.',
+];
+$mensagemErroCadastro = $errosCadastro[$_GET['erro'] ?? ''] ?? '';
 $cargos = [];
 $erroCargos = '';
 
@@ -55,7 +58,7 @@ try {
         <input type="text" name="nome" placeholder="Nome do Usuário" maxlength="50" required>
         <input type="number" name="matricula" placeholder="Matrícula" min="1" required>
         <input type="email" name="email" placeholder="Email" maxlength="100" required>
-        <input type="password" name="senha" placeholder="Senha (mínimo de 8 caracteres)" minlength="8" required>
+        <input type="password" name="senha" placeholder="Senha (8 caracteres)" minlength="8" maxlength="8" required>
         <div class="cadastrousuario-checkbox">
             <div id="cargos-disponiveis">
                 <?php foreach ($cargos as $cargo): ?>
@@ -68,11 +71,7 @@ try {
             <p id="erro-cargos" role="alert"<?= $erroCargos === '' ? ' hidden' : '' ?>><?= htmlspecialchars($erroCargos, ENT_QUOTES, 'UTF-8') ?></p>
         </div>
         <div class="cadastrodeusuario-buttons">
-<<<<<<< HEAD
-            <button type="button" class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
-=======
-            <button class="cadastrousuario-cancelbutton" onclick="history.back()">Cancelar</button>
->>>>>>> origin/main
+            <button type="button" class="cadastrousuario-cancelbutton" onclick="window.location.href='tela_escolha.php'">Cancelar</button>
             <button type="submit" class="cadastrousuario-submitbutton" id="submitusuario">Cadastrar Usuário</button>
         </div>
     </form>

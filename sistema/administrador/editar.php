@@ -57,10 +57,10 @@ if (
     $nome === '' || strlen($nome) > 50 ||
     filter_var($email, FILTER_VALIDATE_EMAIL) === false ||
     strlen($email) > 100 ||
-    ($senhaInformada !== '' && strlen($senhaInformada) < 8)
+    ($senhaInformada !== '' && strlen($senhaInformada) !== 8)
 ) {
     http_response_code(400);
-    exit('Confira os dados. A nova senha, quando preenchida, deve ter ao menos 8 caracteres.');
+    exit('Confira os dados. A nova senha, quando preenchida, deve ter exatamente 8 caracteres.');
 }
 
 $cargos = [];
@@ -108,6 +108,15 @@ try {
             http_response_code(409);
             exit('A nova matrícula já está sendo utilizada por outro usuário.');
         }
+    }
+
+    $verificaEmail = $pdo->prepare('SELECT 1 FROM usuarios WHERE email = :email AND matricula <> :matricula LIMIT 1');
+    $verificaEmail->execute([':email' => $email, ':matricula' => $matriculaAtual]);
+
+    if ($verificaEmail->fetchColumn()) {
+        $pdo->rollBack();
+        http_response_code(409);
+        exit('Já existe outro usuário com esse e-mail.');
     }
 
     $cargoStmt = $pdo->prepare('SELECT id FROM cargo WHERE id = :id');

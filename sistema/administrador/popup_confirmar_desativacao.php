@@ -1,23 +1,23 @@
 <?php
-session_start();
-
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+$matriculaOperador = exigirCargo($pdo, 1);
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: tela_lista_usuarios.php');
     exit;
 }
 
-// Se não existe matrícula válida, volta para a lista
-if (!$matricula || $matricula <= 0) {
+$matricula = filter_var($_POST['matricula'] ?? '', FILTER_VALIDATE_INT);
 
-if (!$matricula || $matricula <= 0) {
+if ($matricula === false || $matricula < 1) {
     header('Location: tela_lista_usuarios.php?erro=matricula');
     exit;
 }
 
-if (!isset($_SESSION['matricula'])) {
-    header('Location: tela_lista_usuarios.php?erro=sessao');
+if ($matricula === $matriculaOperador) {
+    header('Location: tela_lista_usuarios.php?erro=proprio');
     exit;
 }
 
@@ -34,14 +34,10 @@ try {
         $nomeStmt->execute([':matricula' => $matricula]);
         $nomeUsuario = (string) $nomeStmt->fetchColumn();
 
-        $operacaoLog = 'Administrador desativou o usuário ' . $matricula . ' - ' . $nomeUsuario;
-        if (function_exists('mb_substr')) {
-            $operacaoLog = mb_substr($operacaoLog, 0, 100, 'UTF-8');
-        } else {
-            $operacaoLog = substr($operacaoLog, 0, 100);
-        }
+        $operacaoLog = mb_substr('Administrador desativou o usuário ' . $matricula . ' - ' . $nomeUsuario, 0, 100, 'UTF-8');
+
         $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
-        $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $_SESSION['matricula'], ':tabela' => 'usuarios']);
+        $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $matriculaOperador, ':tabela' => 'usuarios']);
 
         $pdo->commit();
         header('Location: tela_lista_usuarios.php?desativado=1');

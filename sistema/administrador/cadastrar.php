@@ -48,10 +48,10 @@ try {
         $nome === '' || strlen($nome) > 50 ||
         filter_var($email, FILTER_VALIDATE_EMAIL) === false ||
         strlen($email) > 100 ||
-        strlen($senhaInformada) < 8
+        strlen($senhaInformada) !== 8
     ) {
         http_response_code(400);
-        exit('Confira os dados informados. A senha deve ter pelo menos 8 caracteres.');
+        exit('Confira os dados informados. A senha deve ter exatamente 8 caracteres.');
     }
 
     $cargos = [];
@@ -77,6 +77,15 @@ try {
     if ($verificaUsuario->fetchColumn()) {
         $pdo->rollBack();
         header('Location: tela_cadastrar_usuario.php?erro=matricula');
+        exit;
+    }
+
+    $verificaEmail = $pdo->prepare('SELECT 1 FROM usuarios WHERE email = :email LIMIT 1');
+    $verificaEmail->execute([':email' => $email]);
+
+    if ($verificaEmail->fetchColumn()) {
+        $pdo->rollBack();
+        header('Location: tela_cadastrar_usuario.php?erro=email');
         exit;
     }
 

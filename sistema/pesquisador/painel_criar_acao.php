@@ -1,61 +1,71 @@
 <?php
-session_start();
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+$matricula = exigirCargo($pdo, 4);
 
 $mensagemSucesso = '';
 $mensagemErro = '';
 
-// Depois de cadastrar, a página recarrega com ?sucesso=1 (evita duplicar no F5)
 if (isset($_GET['sucesso'])) {
     $mensagemSucesso = 'Ação cadastrada com sucesso!';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo    = trim($_POST['titulo'] ?? '');
-    $data      = trim($_POST['data_realizacao'] ?? '');
-    $descricao = trim($_POST['descricao'] ?? '');
+    $titulo      = trim($_POST['titulo'] ?? '');
+    $data        = trim($_POST['data_realizacao'] ?? '');
+    $descricao   = trim($_POST['descricao'] ?? '');
     $idCategoria = filter_input(INPUT_POST, 'categoria', FILTER_VALIDATE_INT);
-    $matricula = $_SESSION['matricula'] ?? null; // ajuste conforme seu login
+
+    $dataValida = DateTime::createFromFormat('Y-m-d', $data);
+    $dataValida = $dataValida && $dataValida->format('Y-m-d') === $data;
 
     if ($titulo === '' || $data === '' || $descricao === '' || !$idCategoria) {
         $mensagemErro = 'Preencha todos os campos.';
-    } elseif ($matricula === null) {
-        $mensagemErro = 'Sessão expirada. Faça login novamente.';
+    } elseif (mb_strlen($titulo, 'UTF-8') > 50 || mb_strlen($descricao, 'UTF-8') > 100) {
+        $mensagemErro = 'O título aceita até 50 caracteres e a descrição até 100.';
+    } elseif (!$dataValida) {
+        $mensagemErro = 'Informe uma data válida.';
     } else {
         try {
-            $insere = $pdo->prepare(
-                'INSERT INTO acao (id_categoria, matricula_pesquisador, titulo, descricao, data)
-                 VALUES (:categoria, :matricula, :titulo, :descricao, :data)'
-            );
-            $insere->execute([
-                ':categoria' => $idCategoria,
-                ':matricula' => $matricula,
-                ':titulo'    => $titulo,
-                ':descricao' => $descricao,
-                ':data'      => $data,
-            ]);
+            $categoriaStmt = $pdo->prepare('SELECT 1 FROM categoria WHERE id = :id AND status = 1');
+            $categoriaStmt->execute([':id' => $idCategoria]);
 
-            $operacaoLog = 'Pesquisador cadastrou a ação: ' . $titulo;
-            if (function_exists('mb_substr')) {
-                $operacaoLog = mb_substr($operacaoLog, 0, 100, 'UTF-8');
+            if (!$categoriaStmt->fetchColumn()) {
+                $mensagemErro = 'Categoria inválida ou desativada.';
             } else {
-                $operacaoLog = substr($operacaoLog, 0, 100);
+                $pdo->beginTransaction();
+
+                $insere = $pdo->prepare(
+                    'INSERT INTO acao (id_categoria, matricula_pesquisador, titulo, descricao, data, status)
+                     VALUES (:categoria, :matricula, :titulo, :descricao, :data, :status)'
+                );
+                $insere->execute([
+                    ':categoria' => $idCategoria,
+                    ':matricula' => $matricula,
+                    ':titulo'    => $titulo,
+                    ':descricao' => $descricao,
+                    ':data'      => $data,
+                    ':status'    => 'Em Análise',
+                ]);
+
+                $operacaoLog = mb_substr('Pesquisador cadastrou a ação: ' . $titulo, 0, 100, 'UTF-8');
+
+                $logStmt = $pdo->prepare(
+                    'INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora)
+                     VALUES (:operacao, :matricula, :tabela, NOW())'
+                );
+                $logStmt->execute([
+                    ':operacao'  => $operacaoLog,
+                    ':matricula' => $matricula,
+                    ':tabela'    => 'acao',
+                ]);
+
+                $pdo->commit();
+
+                header('Location: painel_criar_acao.php?sucesso=1');
+                exit;
             }
-
-            $logStmt = $pdo->prepare(
-                'INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora)
-                 VALUES (:operacao, :matricula, :tabela, NOW())'
-            );
-            $logStmt->execute([
-                ':operacao' => $operacaoLog,
-                ':matricula' => $matricula,
-                ':tabela' => 'acao',
-            ]);
-
-            $pdo->commit();
-
-            header('Location: painel_criar_acao.php?sucesso=1');
-            exit;
         } catch (Throwable $e) {
             if ($pdo->inTransaction()) {
                 $pdo->rollBack();
@@ -130,7 +140,7 @@ try {
             </select>
 
             <?php if (empty($categorias)): ?>
-                <p class="paineldecriaracoes-aviso-categorias">Nenhuma categoria ativa foi encontrada. Cadastre uma categoria no banco de dados.</p>
+                <p class="paineldecriaracoes-aviso-categorias">Nenhuma categoria ativa foi encontrada. Peça a um administrador para cadastrar uma categoria.</p>
             <?php endif; ?>
 
             <div class="paineldecriaracoes-btn">

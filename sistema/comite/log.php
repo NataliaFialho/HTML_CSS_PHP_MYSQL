@@ -1,12 +1,8 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['matricula'])) {
-    header('Location: ../index.php');
-    exit;
-}
-
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+exigirCargo($pdo, 3);
 
 $logs = [];
 $erroLog = '';
@@ -27,6 +23,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log do sistema</title>
     <link rel="stylesheet" href="../css/estilo.css?v=<?= filemtime(__DIR__ . '/../css/estilo.css') ?>">
 </head>
 
@@ -38,7 +35,7 @@ try {
     </header>
 
     <main>
-        <div class="painel-minha-acoes-container-card">
+        <div class="painel-minhas-acoes-container-card">
 
             <?php if ($erroLog !== ''): ?>
                 <p role="alert"><?= htmlspecialchars($erroLog, ENT_QUOTES, 'UTF-8') ?></p>
@@ -48,7 +45,7 @@ try {
 
             <?php else: ?>
                 <?php foreach ($logs as $log): ?>
-                    <div class="painel-linhas-acoes-card-pesquisa">
+                    <div class="painel-minhas-acoes-card-pesquisa">
                         <h3 class="card-titulo">
                             <?= htmlspecialchars($log['nome_usuario'], ENT_QUOTES, 'UTF-8') ?>
                         </h3>

@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+exigirCargo($pdo, 1);
 
 $mostrarPopupUsuarioEditado = isset($_GET['sucesso']) && $_GET['sucesso'] === '1';
 
@@ -82,14 +85,14 @@ if ($matriculaInformada !== null) {
     <?php if ($erroEdicao !== ''): ?>
         <p id="erro-edicao" class="editarusuario-mensagem editarusuario-erro" role="alert"><?= htmlspecialchars($erroEdicao, ENT_QUOTES, 'UTF-8') ?></p>
     <?php elseif ($usuario === null): ?>
-        <p style="display: flex" id="aviso-lista">tem que escolher o usuario la na tela de lista de usuarios meu nobre</p>
+        <p id="aviso-lista">Selecione um usuário na lista de usuários para editá-lo.</p>
     <?php else: ?>
         <form class="cadastrodeusuario-formulario" method="POST" action="editar.php" style="display: flex;">
             <input type="hidden" name="matricula_atual" value="<?= (int) $usuario['matricula'] ?>">
             <input type="text" name="nome" placeholder="Nome do Usuário" maxlength="50" value="<?= htmlspecialchars($usuario['nome'], ENT_QUOTES, 'UTF-8') ?>" required>
             <input type="number" name="matricula" placeholder="Matrícula" aria-label="Matrícula" min="1" value="<?= (int) $usuario['matricula'] ?>" required>
             <input type="email" name="email" placeholder="Email" maxlength="100" value="<?= htmlspecialchars($usuario['email'], ENT_QUOTES, 'UTF-8') ?>" required>
-            <input type="password" name="senha" placeholder="Nova senha (opcional, mínimo de 8 caracteres)" minlength="8" autocomplete="new-password">
+            <input type="password" name="senha" placeholder="Nova senha (opcional, 8 caracteres)" minlength="8" maxlength="8" autocomplete="new-password">
             <div class="cadastrousuario-checkbox">
                 <div id="cargos-disponiveis">
                     <?php foreach ($cargos as $cargo): ?>

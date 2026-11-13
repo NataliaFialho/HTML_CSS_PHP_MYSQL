@@ -1,19 +1,8 @@
 <?php
-session_start();
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
 
-if (!isset($_SESSION['matricula'])) {
-    header('Location: ../index.php');
-    exit;
-}
-
-$permissaoStmt = $pdo->prepare('SELECT 1 FROM usuario_cargo WHERE matricula = :matricula AND id_cargo = 1 LIMIT 1');
-$permissaoStmt->execute([':matricula' => $_SESSION['matricula']]);
-
-if (!$permissaoStmt->fetchColumn()) {
-    http_response_code(403);
-    exit('Somente administradores podem gerenciar categorias.');
-}
+$matriculaOperador = exigirCargo($pdo, 1);
 
 $mensagemSucesso = '';
 $mensagemErro = '';
@@ -52,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
                         $logStmt->execute([
                             ':operacao' => $operacaoLog,
-                            ':matricula' => $_SESSION['matricula'],
+                            ':matricula' => $matriculaOperador,
                             ':tabela' => 'categoria'
                         ]);
 
@@ -61,6 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                 }
             } elseif ($acao === 'desativar') {
+                $nomeStmt = $pdo->prepare('SELECT nome FROM categoria WHERE id = :id');
+                $nomeStmt->execute([':id' => $idCategoria]);
+                $nomeCategoria = (string) $nomeStmt->fetchColumn();
+
                 $pdo->beginTransaction();
                 $desativa = $pdo->prepare(
                     'UPDATE categoria SET status = 0 WHERE id = :id AND status = 1'
@@ -68,10 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $desativa->execute([':id' => $idCategoria]);
 
                 if ($desativa->rowCount() > 0) {
-                    $operacaoLog = 'Administrador desativou a categoria ' . $idCategoria;
+                    $operacaoLog = mb_substr('Administrador desativou a categoria: ' . $nomeCategoria, 0, 100, 'UTF-8');
                     $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())'
                     );
-                    $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $_SESSION['matricula'], ':tabela' => 'categoria',]);
+                    $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $matriculaOperador, ':tabela' => 'categoria',]);
                     $pdo->commit();
                     $mensagemSucesso = 'Categoria desativada com sucesso!';
                 } else {

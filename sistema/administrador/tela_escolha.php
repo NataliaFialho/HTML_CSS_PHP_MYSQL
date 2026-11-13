@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+exigirCargo($pdo, 1);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,8 +17,6 @@
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
         <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
-        </form>
-        
     </header>
 
     <main class="conteudo-principal">
@@ -20,10 +24,7 @@
     <section class="card-painel">
         <h2 class="card-titulo">USUÁRIOS</h2>
         <div class="card-botoes">
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main
             <a href="tela_cadastrar_usuario.php" class="botao">ADICIONAR</a>
             <a href="tela_lista_usuarios.php" class="botao">LISTAR</a>
         </div>
@@ -34,10 +35,7 @@
         <div class="card-botoes">
             <a href="cadastrar_categoria.php" class="botao">ADICIONAR</a>
             <a href="gerenciar_categorias.php" class="botao">LISTAR</a>
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main
         </div>
     </section>
 </main>
