@@ -353,6 +353,25 @@ body {
 
 .formatacao-div > .botao-sair-cargos {
     order: 1;
+    width: min(100%, 200px);
+    min-height: 78px;
+    padding: 18px 28px;
+    border: 1px solid #851919;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #b92929, #851919);
+    box-shadow: 0 8px 18px rgba(13, 91, 57, 0.17);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.formatacao-div .botao-sair-cargos:hover {
+    background: linear-gradient(135deg, #9e1d1d, #791313);
+    box-shadow: 0 11px 22px rgba(13, 91, 57, 0.24);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
