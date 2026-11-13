@@ -15,7 +15,7 @@ exigirCargo($pdo, 1);
 <body>
 <header class="paineldecriaracoes-cabecalho">
         <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
-        <h1 class="paineldecriaracoes-titulo-pesquisador">Administrador</h1>
+        <h1 class="tela-escolha-administrador">Administrador</h1>
         <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
     </header>
 
@@ -36,8 +36,6 @@ exigirCargo($pdo, 1);
 
             <a href="cadastrar_categoria.php" class="botao">Adicionar</a>
             <a href="gerenciar_categorias.php" class="botao">Listar</a>
-         
-
         </div>
     </section>
 </main>

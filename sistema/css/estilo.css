@@ -520,8 +520,15 @@ h1 {
 
 /*======================================*/
 
-/* Configurações Gerais da Página */
+/* Tela de escolha do adm */
 
+
+.tela-escolha-adiministrador{
+    margin: 0 0 0 0;
+    color: #ffffff;
+    font-size: clamp(20px, 2.7vw, 30px);
+    font-weight: bold;
+}
 .botao:hover {
     background-color: #009611;
 }
@@ -600,13 +607,17 @@ h1 {
     justify-content: center;   
     text-decoration: none;    
     width: 100%;
-    /* height: 30%; */
+    /* height: 40%; */
     font-size: 1.2vw;
     letter-spacing: 1px;
     margin: 2% 0 2% 0;
-    color: #000000;             
-    border: 2px solid #000000;
+    color: #000000;
+    border: #000000;         
 }
+
+/* Fim da tela de escolha do adm */
+
+
 /* popup de acesso negado */
 
 
@@ -688,7 +699,7 @@ body.paineldecriaracoes-pagina {
     height: auto;
     margin: 0;
     padding: 0;
-    background-color: #3b6791;
+    background-color: #913b3b;
     font-family: Verdana, Geneva, sans-serif;
     box-sizing: border-box;
 }
