@@ -4,12 +4,6 @@
     box-sizing: border-box;
     /* Não tirar esse justify-content pvr */
     justify-content: space-evenly; 
-
-
-}
-header{
-    width: 100vw;
-    height: 10vh;
 }
 
 /*Login*/
@@ -19,7 +13,7 @@ header{
     max-height: 100vh;
     min-width: 100%;
     min-height: 100%;
-    background-color: #356394;
+    background-color: #134070;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,7 +35,7 @@ header{
 }
 
 #login-container-logo-formulario > img {
-    width: 300px;
+    width: 250px;
     margin-bottom: 70px;
     text-align: center;    
 }
@@ -118,6 +112,11 @@ header{
 }
 
 /*Fim do Login*/
+
+header{
+    width: 100vw;
+    height: 10vh;
+}
 
 .header-painel-pesquisador {
     background-color: #386492;
