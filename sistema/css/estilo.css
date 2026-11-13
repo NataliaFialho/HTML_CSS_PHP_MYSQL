@@ -306,12 +306,16 @@ body {
 }
 
 .formatacao-div .logo-embrapa {
+    align-self: center;
     width: min(340px, 72vw);
-    margin: 0 0 14px;
+    margin: 0 auto 14px;
 }
 
 .formatacao-div .logo-embrapa img {
     display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
 
 .formatacao-div .botao {
@@ -349,6 +353,10 @@ body {
 .formatacao-div .botao:focus-visible {
     outline: 3px solid #f0ad32;
     outline-offset: 4px;
+}
+
+.formatacao-div > .botao-sair-cargos {
+    order: 1;
 }
 
 @media (max-width: 600px) {
