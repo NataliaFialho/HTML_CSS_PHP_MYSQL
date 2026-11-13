@@ -1,42 +1,47 @@
-<div class="popupvalidacao-overlay"
+<div class="popupdeacessonegado-overlay"
      id="popupdesativar-overlay"
      style="display: none;">
 
-    <section class="popupvalidacao-container"
+    <section class="popupdeacessonegado-container"
              role="alertdialog"
              aria-modal="true"
              aria-labelledby="popupdesativar-titulo">
 
-        <div class="popupvalidacao-icone">
+        <div class="popupdeacessonegado-icone">
             <img src="../imagens/atencao.png"
                  alt="Atenção"
-                 class="popupvalidacao-icone-imagem">
+                 class="popupdeacessonegado-icone-imagem">
         </div>
 
-        <h1 class="popupvalidacao-titulo"
+        <h2 class="popupdeacessonegado-titulo"
             id="popupdesativar-titulo">
-            Confirmar Validação?
-        </h1>
+            Aprovar Ação?
+        </h2>
 
-        <p class="popupvalidacao-mensagem">
-            Essa ação não poderá ser desfeita.
-        </p>
+        <div class="popupconfirmarinvaliacao-div--validador">
+            <p class="popupdeacessonegado-mensagem">
+                A ação será marcada como aprovada.
+            </p>
+        </div>
 
-        <div class="popupvalidacao-botoes">
+        <div class="popupdeacessonegadoacao-btn">
+
             <button type="button"
-                    class="popupvalidacao-btn-cancelar"
+                    class="button-desativar"
                     id="popupdesativar-cancelar">
                 Cancelar
             </button>
 
             <button type="button"
-                    class="popupvalidacao-btn-confirmar"
+                    class="button-desativar"
                     id="popupdesativar-confirmar--validador">
                 Confirmar
             </button>
+
         </div>
     </section>
 </div>
+
 <script>
 (function () {
 
