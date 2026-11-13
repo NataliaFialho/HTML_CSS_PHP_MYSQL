@@ -235,10 +235,11 @@ body {
 
 .painel-minhas-acoes-subcabecalho{
     display: flex;
-    height: 15vh;
+    height: 10vh;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    font-size: 22px;
+    background-color: #f2f5f8;
 }
 .painel-minhas-acoes-subcabecalho h2{
     margin: 0;
@@ -1700,7 +1701,7 @@ body.cadastrocategoria-pagina {
 .gerenciacategoria-btn-cancelar,
 .gerenciacategoria-btn-salvar {
     width: 113px;
-    min-height: 27px;
+    min-height: 35px;
     padding: 6px 12px;
     display: inline-flex;
     align-items: center;
@@ -1714,6 +1715,7 @@ body.cadastrocategoria-pagina {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+    margin-right: 41.5px;
 }
 
 .gerenciacategoria-btn-desativar,
@@ -1809,10 +1811,11 @@ body.cadastrocategoria-pagina {
 }
 
 .usuario-lista-voltar {
-    width: min(100%, 900px);
+    width: 100%;
     margin: 0 auto 16px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: right;
+    margin-top: 30px;
 }
 
 .usuario-card-dados {
