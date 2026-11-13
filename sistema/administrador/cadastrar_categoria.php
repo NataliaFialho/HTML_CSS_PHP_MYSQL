@@ -1,6 +1,8 @@
 <?php
-session_start();
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+$matriculaOperador = exigirCargo($pdo, 1);
 
 $nomeCategoria = '';
 $mensagemSucesso = '';
@@ -11,57 +13,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($nomeCategoria === '') {
         $mensagemErro = 'Informe o nome da categoria.';
-    } elseif ((function_exists('mb_strlen') ? mb_strlen($nomeCategoria, 'UTF-8') : strlen($nomeCategoria)) > 50) {
+    } elseif (mb_strlen($nomeCategoria, 'UTF-8') > 50) {
         $mensagemErro = 'O nome da categoria deve ter no máximo 50 caracteres.';
     } else {
         try {
-            $consulta = $pdo->prepare(
-                'SELECT id FROM categoria WHERE nome = :nome LIMIT 1'
-            );
+            $consulta = $pdo->prepare('SELECT id FROM categoria WHERE nome = :nome LIMIT 1');
             $consulta->execute([':nome' => $nomeCategoria]);
 
             if ($consulta->fetch()) {
                 $mensagemErro = 'Essa categoria já está cadastrada.';
             } else {
-                if (!isset($_SESSION['matricula'])) {
-                    http_response_code(401);
-                    $mensagemErro = 'É necessário estar autenticado para cadastrar categorias.';
-                } else {
-                    $permissaoStmt = $pdo->prepare(
-                        'SELECT 1 FROM usuario_cargo
-                         WHERE matricula = :matricula AND id_cargo = 1
-                         LIMIT 1'
-                    );
-                    $permissaoStmt->execute([
-                        ':matricula' => $_SESSION['matricula']
-                    ]);
+                $pdo->beginTransaction();
 
-                    if (!$permissaoStmt->fetchColumn()) {
-                        http_response_code(403);
-                        $mensagemErro = 'Somente administradores podem cadastrar categorias.';
-                    } else {
-                        $pdo->beginTransaction();
+                $cadastro = $pdo->prepare('INSERT INTO categoria (nome) VALUES (:nome)');
+                $cadastro->execute([':nome' => $nomeCategoria]);
 
-                        try {
-                            $cadastro = $pdo->prepare(
-                                'INSERT INTO categoria (nome) VALUES (:nome)'
-                            );
-                            $cadastro->execute([':nome' => $nomeCategoria]);
-                            $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
-                            $logStmt->execute([':operacao' => 'Administrador cadastrou uma nova categoria de ação: ' . $nomeCategoria, ':matricula' => $_SESSION['matricula'], ':tabela' => 'categoria']);
-                            $pdo->commit();
-                            $mensagemSucesso = 'Categoria cadastrada com sucesso!';
-                            $nomeCategoria = '';
-                        } catch (Throwable $e) {
-                            if ($pdo->inTransaction()) {
-                                $pdo->rollBack();
-                            }
-                            throw $e;
-                        }
-                    }
-                }
+                $operacaoLog = mb_substr('Administrador cadastrou uma nova categoria de ação: ' . $nomeCategoria, 0, 100, 'UTF-8');
+
+                $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
+                $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $matriculaOperador, ':tabela' => 'categoria']);
+
+                $pdo->commit();
+                $mensagemSucesso = 'Categoria cadastrada com sucesso!';
+                $nomeCategoria = '';
             }
-        } catch (PDOException $e) {
+        } catch (Throwable $e) {
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
             error_log('Erro ao cadastrar categoria: ' . $e->getMessage());
             $mensagemErro = 'Não foi possível cadastrar a categoria. Tente novamente.';
         }
@@ -73,10 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar categoria de ação</title>
+    <title>Cadastrar categoria</title>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body class="cadastrocategoria-pagina">
+    
+    <?php if ($mensagemSucesso !== ''): ?>
+        <?php include __DIR__ . '/../popup_categoria_criada.php'; ?>
+    <?php endif; ?>
 
     <header class="cadastrocategoria-cabecalho">
         <img src="../imagens/logo-embrapa.png"
@@ -98,13 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <section class="cadastrocategoria-painel">
             <form class="cadastrocategoria-formulario" method="POST" action="">
-
-                <?php if ($mensagemSucesso !== ''): ?>
-                    <p class="cadastrocategoria-mensagem cadastrocategoria-sucesso" role="status">
-                        <?= htmlspecialchars($mensagemSucesso, ENT_QUOTES, 'UTF-8') ?>
-                    </p>
-                <?php endif; ?>
-
                 <?php if ($mensagemErro !== ''): ?>
                     <p class="cadastrocategoria-mensagem cadastrocategoria-erro" role="alert">
                         <?= htmlspecialchars($mensagemErro, ENT_QUOTES, 'UTF-8') ?>
@@ -123,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     required>
 
                 <div class="cadastrocategoria-botoes">
-                    <button type="reset" class="cadastrocategoria-btn-cancelar" onclick="history.back()">
+                    <button type="button" class="cadastrocategoria-btn-cancelar" onclick="window.location.href='tela_escolha.php'">
                         Cancelar
                     </button>
                     <button type="submit" class="cadastrocategoria-btn-confirmar">

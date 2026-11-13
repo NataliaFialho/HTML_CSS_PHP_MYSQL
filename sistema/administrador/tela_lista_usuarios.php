@@ -1,7 +1,25 @@
 <?php
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+exigirCargo($pdo, 1);
 
 $mensagemErro = '';
+$mensagemSucesso = '';
+
+if (($_GET['desativado'] ?? '') === '1') {
+    $mensagemSucesso = 'Usuário desativado com sucesso!';
+}
+
+$errosLista = [
+    'matricula' => 'Matrícula inválida.',
+    'proprio'   => 'Você não pode desativar o seu próprio usuário.',
+    'usuario'   => 'Usuário não encontrado ou já desativado.',
+    'banco'     => 'Não foi possível desativar o usuário. Tente novamente.',
+];
+if (isset($_GET['erro'], $errosLista[$_GET['erro']])) {
+    $mensagemErro = $errosLista[$_GET['erro']];
+}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     http_response_code(405);
@@ -50,6 +68,12 @@ try {
     </section>
 
     <main class="gerenciacategoria-area-principal">
+        <?php if ($mensagemSucesso !== ''): ?>
+            <p class="gerenciacategoria-mensagem gerenciacategoria-sucesso" role="status">
+                <?= htmlspecialchars($mensagemSucesso, ENT_QUOTES, 'UTF-8') ?>
+            </p>
+        <?php endif; ?>
+
         <?php if ($mensagemErro !== ''): ?>
             <p class="gerenciacategoria-mensagem gerenciacategoria-erro" role="alert">
                 <?= htmlspecialchars($mensagemErro, ENT_QUOTES, 'UTF-8') ?>

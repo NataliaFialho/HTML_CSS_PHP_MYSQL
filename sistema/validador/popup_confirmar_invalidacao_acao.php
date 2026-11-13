@@ -1,4 +1,3 @@
-
 <div class="popupdeacessonegado-overlay"
      id="popup-invalidacao-overlay"
      style="display: none;">
@@ -21,6 +20,7 @@
 
         <div class="popupconfirmarinvaliacao-div--validador">
             <p class="popupdeacessonegado-mensagem">
+                Essa ação será reprovada e não terá mais valor.
             </p>
         </div>
 
@@ -77,7 +77,7 @@
             const campoStatus = document.createElement('input');
             campoStatus.type = 'hidden';
             campoStatus.name = 'novo_status';
-            campoStatus.value = 'Reprovado';
+            campoStatus.value = 'Reprovada';
 
             formulario.appendChild(campoStatus);
 

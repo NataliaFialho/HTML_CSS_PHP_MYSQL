@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
+
+$matriculaOperador = exigirCargo($pdo, 1);
 
 $mensagemSucesso = '';
 $mensagemErro = '';
@@ -17,48 +20,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ? mb_strlen($novoNome, 'UTF-8')
                     : strlen($novoNome);
 
-                if ($novoNome === '') {
-                    $mensagemErro = 'Informe o nome da categoria.';
-                } elseif ($tamanhoNome > 50) {
-                    $mensagemErro = 'O nome deve ter no máximo 50 caracteres.';
+                if ($novoNome === '') {$mensagemErro = 'Informe o nome da categoria.';
+                } elseif ($tamanhoNome > 50) {$mensagemErro = 'O nome deve ter no máximo 50 caracteres.';
                 } else {
-                    $verifica = $pdo->prepare(
-                        'SELECT id FROM categoria WHERE nome = :nome AND id <> :id LIMIT 1'
-                    );
-                    $verifica->execute([
-                        ':nome' => $novoNome,
-                        ':id' => $idCategoria
-                    ]);
+                    $verifica = $pdo->prepare('SELECT id FROM categoria WHERE nome = :nome AND id <> :id LIMIT 1');
+                    $verifica->execute([':nome' => $novoNome, ':id' => $idCategoria]);
 
-                    if ($verifica->fetch()) {
-                        $mensagemErro = 'Já existe outra categoria com esse nome.';
+                    if ($verifica->fetch()) {$mensagemErro = 'Já existe outra categoria com esse nome.';
                     } else {
-                        $atualiza = $pdo->prepare(
-                            'UPDATE categoria SET nome = :nome WHERE id = :id'
-                        );
-                        $atualiza->execute([
-                            ':nome' => $novoNome,
-                            ':id' => $idCategoria
+                        $pdo->beginTransaction();
+                        $atualiza = $pdo->prepare('UPDATE categoria SET nome = :nome WHERE id = :id');
+                        $atualiza->execute([':nome' => $novoNome, ':id' => $idCategoria]);
+                        $operacaoLog = 'Administrador editou a categoria: ' . $novoNome;
+
+                    if (function_exists('mb_substr'))
+                        {$operacaoLog = mb_substr($operacaoLog, 0, 100, 'UTF-8');
+                    } 
+                    else {$operacaoLog = substr($operacaoLog, 0, 100);
+                    }
+                        $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
+                        $logStmt->execute([
+                            ':operacao' => $operacaoLog,
+                            ':matricula' => $matriculaOperador,
+                            ':tabela' => 'categoria'
                         ]);
 
+                        $pdo->commit();
                         $mensagemSucesso = 'Categoria editada com sucesso!';
                     }
                 }
             } elseif ($acao === 'desativar') {
+                $nomeStmt = $pdo->prepare('SELECT nome FROM categoria WHERE id = :id');
+                $nomeStmt->execute([':id' => $idCategoria]);
+                $nomeCategoria = (string) $nomeStmt->fetchColumn();
+
+                $pdo->beginTransaction();
                 $desativa = $pdo->prepare(
                     'UPDATE categoria SET status = 0 WHERE id = :id AND status = 1'
                 );
                 $desativa->execute([':id' => $idCategoria]);
 
                 if ($desativa->rowCount() > 0) {
+                    $operacaoLog = mb_substr('Administrador desativou a categoria: ' . $nomeCategoria, 0, 100, 'UTF-8');
+                    $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())'
+                    );
+                    $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $matriculaOperador, ':tabela' => 'categoria',]);
+                    $pdo->commit();
                     $mensagemSucesso = 'Categoria desativada com sucesso!';
                 } else {
+                    $pdo->rollBack();
                     $mensagemErro = 'A categoria não foi encontrada ou já está desativada.';
                 }
             } else {
                 $mensagemErro = 'Operação inválida.';
             }
-        } catch (PDOException $e) {
+        } catch (Throwable $e) {
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
             error_log('Erro ao gerenciar categoria: ' . $e->getMessage());
             $mensagemErro = 'Não foi possível realizar a operação. Tente novamente.';
         }
