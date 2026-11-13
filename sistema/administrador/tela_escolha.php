@@ -9,7 +9,7 @@
 <body>
 <header class="paineldecriaracoes-cabecalho">
         <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
-        <h1 class="paineldecriaracoes-titulo-pesquisador">ADMINISTRADOR</h1>
+        <h1 class="paineldecriaracoes-titulo-pesquisador">Administrador</h1>
         <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
         </form>
         
@@ -20,21 +20,21 @@
     <main class="conteudo-principal">
 
     <section class="card-painel">
-        <h2 class="card-titulo">USUÁRIOS</h2>
+        <h2 class="card-titulo">Usuários</h2>
         <div class="card-botoes">
 
-            <a href="tela_cadastrar_usuario.php" class="botao">ADICIONAR</a>
-            <a href="tela_lista_usuarios.php" class="botao">LISTAR</a>
+            <a href="tela_cadastrar_usuario.php" class="botao">Adicionar</a>
+            <a href="tela_lista_usuarios.php" class="botao">Listar</a>
 
         </div>
     </section>
 
     <section class="card-painel">
-        <h2 class="card-titulo">AÇÕES</h2>
+        <h2 class="card-titulo">Ações</h2>
         <div class="card-botoes">
 
-            <a href="cadastrar_categoria.php" class="botao">ADICIONAR</a>
-            <a href="gerenciar_categorias.php" class="botao">LISTAR</a>
+            <a href="cadastrar_categoria.php" class="botao">Adicionar</a>
+            <a href="gerenciar_categorias.php" class="botao">Listar</a>
 
         </div>
     </section>
