@@ -1,14 +1,9 @@
 <?php
-session_start();
-require_once '../conexao.php'; 
+require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
 
-// 1. Só entra quem está logado
-if (!isset($_SESSION['matricula'])) {
-    header('Location: login.php'); // ajuste para sua tela de login
-    exit;
-}
+$matricula = exigirCargo($pdo, 4);
 
-// 2. Busca as ações DESTA matrícula
 $sql = "SELECT a.id, a.titulo, a.descricao, a.data, a.status, c.nome AS categoria_nome
         FROM acao a
         INNER JOIN categoria c ON c.id = a.id_categoria
@@ -16,14 +11,16 @@ $sql = "SELECT a.id, a.titulo, a.descricao, a.data, a.status, c.nome AS categori
         ORDER BY a.data DESC, a.id DESC";
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute([$_SESSION['matricula']]);
+$stmt->execute([$matricula]);
 $acoes = $stmt->fetchAll();
 
-// 3. Status do banco -> classe de CSS
 $classes = [
     'Em Análise' => 'analise',
     'Aprovada'   => 'aprovada',
-    'Negada'     => 'negada',
+    'Reprovada'  => 'reprovada',
+    'Aprovado'   => 'aprovada',
+    'Reprovado'  => 'reprovada',
+    'Negada'     => 'reprovada',
 ];
 ?>
 
@@ -33,12 +30,12 @@ $classes = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../sistema/css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <title>Minhas Ações</title>
 </head>
 <body>    
     <header class="paineldecriaracoes-cabecalho">
-        <img src="..//imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
+        <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
         <button type="button" class="paineldecriaracoes-btn-sair" onclick="window.location.href='../tela_dois_cargos.php'">Sair</button>
     </header>
@@ -74,22 +71,6 @@ $classes = [
 
     </div>
 
-
-
-<!-- 
-    <div class="painel-minhas-acoes-container-card">
-        <div class="painel-minhas-acoes-card-pesquisa">
-            <h3 class="card-titulo">Título</h3>
-            <p class="card-categoria"></p>
-            <p class="card-data"></p>
-
-            <p class="card-descricao">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ut sunt, et exercitationem necessitatibus nihil fugit soluta labore iusto eum eos quo aperiam tenetur hic assumenda est eveniet minus. Et.
-            </p>
-            
-            <p class="card-status"></p>
-        </div>
-    </div> -->
 
 </body>
 </html>

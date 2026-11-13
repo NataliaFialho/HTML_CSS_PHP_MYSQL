@@ -1,20 +1,51 @@
 <?php
-require_once '../conexao.php';
+require_once __DIR__ . '/../conexao.php';
+require_once __DIR__ . '/../auth.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao_id'], $_POST['novo_status'])) {
-    $acao_id = $_POST['acao_id'];
-    $novo_status = $_POST['novo_status'];
+$matriculaValidador = exigirCargo($pdo, 2);
 
-    if (in_array($novo_status, ['Aprovado', 'Reprovado'])) {
+$erroAtualizacao = '';
+$erroBusca = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $acao_id = filter_var($_POST['acao_id'] ?? '', FILTER_VALIDATE_INT);
+    $novo_status = $_POST['novo_status'] ?? '';
+
+    if ($acao_id !== false && in_array($novo_status, ['Aprovada', 'Reprovada'], true)) {
         try {
-            $sqlUpdate = "UPDATE acao SET status = :status WHERE id = :id";
-            $stmtUpdate = $pdo->prepare($sqlUpdate);
+            $pdo->beginTransaction();
+
+            // Só altera ações que ainda estão em análise
+            $stmtUpdate = $pdo->prepare("UPDATE acao SET status = :status WHERE id = :id AND status = 'Em Análise'");
             $stmtUpdate->execute([
                 ':status' => $novo_status,
                 ':id' => $acao_id
             ]);
+
+            if ($stmtUpdate->rowCount() > 0) {
+                $stmtTitulo = $pdo->prepare('SELECT titulo FROM acao WHERE id = :id');
+                $stmtTitulo->execute([':id' => $acao_id]);
+                $tituloAcao = (string) $stmtTitulo->fetchColumn();
+
+                $verbo = $novo_status === 'Aprovada' ? 'aprovou' : 'reprovou';
+                $operacaoLog = mb_substr('Validador ' . $verbo . ' a ação: ' . $tituloAcao, 0, 100, 'UTF-8');
+
+                $logStmt = $pdo->prepare('INSERT INTO log (operacao, matricula_usuario, tabela_afetada, data_hora) VALUES (:operacao, :matricula, :tabela, NOW())');
+                $logStmt->execute([':operacao' => $operacaoLog, ':matricula' => $matriculaValidador, ':tabela' => 'acao']);
+
+                $pdo->commit();
+                header('Location: validar.php');
+                exit;
+            }
+
+            $pdo->rollBack();
+            $erroAtualizacao = 'Essa ação não está mais em análise ou não foi encontrada.';
         } catch (PDOException $e) {
-            $erroAtualizacao = "Erro ao atualizar status: " . $e->getMessage();
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+            error_log('Erro ao atualizar status da ação: ' . $e->getMessage());
+            $erroAtualizacao = 'Não foi possível atualizar o status da ação. Tente novamente.';
         }
     }
 }
@@ -31,14 +62,15 @@ try {
                  FROM acao a
                  JOIN categoria c ON a.id_categoria = c.id
                  JOIN usuarios u ON a.matricula_pesquisador = u.matricula
-                 ORDER BY a.data DESC";
+                 ORDER BY (a.status = 'Em Análise') DESC, a.data DESC, a.id DESC";
                  
     $stmtAcoes = $pdo->prepare($sqlAcoes);
     $stmtAcoes->execute();
     $acoes = $stmtAcoes->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $acoes = [];
-    $erroBusca = "Erro ao carregar ações: " . $e->getMessage();
+    error_log('Erro ao carregar ações: ' . $e->getMessage());
+    $erroBusca = 'Não foi possível carregar as ações.';
 }
 ?>
 
@@ -78,9 +110,9 @@ try {
                 <?php foreach ($acoes as $acao): ?>
                     <?php 
                         $statusClass = 'validaracao-status-em-analise';
-                        if ($acao['status'] === 'Aprovado') {
+                        if ($acao['status'] === 'Aprovada' || $acao['status'] === 'Aprovado') {
                             $statusClass = 'validaracao-status-aprovado';
-                        } elseif ($acao['status'] === 'Reprovado') {
+                        } elseif ($acao['status'] === 'Reprovada' || $acao['status'] === 'Reprovado') {
                             $statusClass = 'validaracao-status-reprovado';
                         }
                     ?>
@@ -101,7 +133,7 @@ try {
 
                             <?php if ($acao['status'] === 'Em Análise'): ?>
                                 <form method="POST" class="validaracao-acoes-card">
-                                    <input type="hidden" name="acao_id" value="<?= $acao['id'] ?>">
+                                    <input type="hidden" name="acao_id" value="<?= (int) $acao['id'] ?>">
 
                                     <button
                                         type="button"
