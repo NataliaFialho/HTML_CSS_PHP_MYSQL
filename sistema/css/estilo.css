@@ -2812,7 +2812,7 @@ h1 {
 /* tela painel_criar_acao */
 
 /* ==========================================
-   NOVA AÇÃO - CONFIGURAÇÕES GERAIS
+   NOVA AÇÃO - CONFIGURAÇÕES GERAIS*/
 
 body.paineldecriaracoes-pagina {
     margin: 0;
@@ -2831,7 +2831,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   CABEÇALHO
+   CABEÇALHO*/
 
 .paineldecriaracoes-cabecalho {
     width: 100%;
@@ -2895,7 +2895,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   BARRA MINHAS AÇÕES
+   BARRA MINHAS AÇÕES*/
 
 .paineldecriaracoes-barra-titulo {
     width: 100%;
@@ -2921,7 +2921,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   BARRA NOVA AÇÃO
+   BARRA NOVA AÇÃO*/
 
 .paineldecriaracoes-barra-nova-acao {
     width: 100%;
@@ -2947,7 +2947,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   CONTEÚDO PRINCIPAL
+   CONTEÚDO PRINCIPAL*/
 
 .paineldecriaracoes-conteudo {
     width: 100%;
@@ -2964,7 +2964,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   FORMULÁRIO
+   FORMULÁRIO*/
 
 .paineldecriaracoes-formulario {
     width: 100%;
@@ -2987,7 +2987,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   LINHA SUPERIOR
+   LINHA SUPERIOR*/
 
 .paineldecriaracoes-linha-superior {
     width: 100%;
@@ -3014,7 +3014,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   ESTILIZAÇÃO DOS CAMPOS
+   ESTILIZAÇÃO DOS CAMPOS*/
 
 .paineldecriaracoes-campo-titulo,
 .paineldecriaracoes-campo-data,
@@ -3079,7 +3079,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   AVISOS
+   AVISOS*/
 
 .paineldecriaracoes-aviso-categorias {
     width: 100%;
@@ -3100,7 +3100,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   ÁREA DOS BOTÕES
+   ÁREA DOS BOTÕES*/
 
 .paineldecriaracoes-btn {
     width: 100%;
@@ -3161,7 +3161,7 @@ body.paineldecriaracoes-pagina {
 
 
 /* ==========================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE*/
 
 @media (max-width: 650px) {
 
@@ -3239,6 +3239,8 @@ body.paineldecriaracoes-pagina {
     .paineldecriaracoes-btn-cancelar,
     .paineldecriaracoes-btn-confirmar {
         width: 100%;
+    }
+
 /*PADRÃO VISUAL ADMINISTRADOR*/
 
 body.painel-administrador-pagina,
@@ -4019,7 +4021,7 @@ body.cadastrocategoria-pagina {
 
 .gerenciacategoria-pagina .popupdeacessonegadoacao-btn #popupdesativar-cancelar:hover {
     background: #bd3535;
-}
+}}
 
 @media (max-width: 700px) {
     .painel-administrador-pagina .conteudo-principal {
