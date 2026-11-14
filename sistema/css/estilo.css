@@ -2650,3 +2650,923 @@ h1 {
     box-sizing: border-box;
     z-index: 100000;
 }
+
+
+/*PADRÃO VISUAL ADMINISTRADOR*/
+
+body.painel-administrador-pagina,
+body.cadastrocategoria-pagina,
+body.paineldecadastrarusuarios-pagina,
+body.gerenciacategoria-pagina {
+    min-height: 100vh;
+    margin: 0;
+    background: #f3f6f8;
+    color: #34495e;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body.painel-administrador-pagina *,
+body.cadastrocategoria-pagina *,
+body.paineldecadastrarusuarios-pagina *,
+body.gerenciacategoria-pagina * {
+    box-sizing: border-box;
+}
+
+.painel-administrador-pagina .paineldecriaracoes-cabecalho,
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-cabecalho,
+.gerenciacategoria-pagina .paineldecriaracoes-cabecalho,
+.cadastrocategoria-pagina .cadastrocategoria-cabecalho,
+.gerenciacategoria-pagina .gerenciacategoria-cabecalho {
+    width: 100%;
+    min-height: 82px;
+    padding: 10px clamp(14px, 2.5vw, 30px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #3b6791;
+}
+
+.painel-administrador-pagina .paineldecriaracoes-logo,
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-logo,
+.gerenciacategoria-pagina .paineldecriaracoes-logo,
+.cadastrocategoria-pagina .cadastrocategoria-logo,
+.gerenciacategoria-pagina .gerenciacategoria-logo {
+    width: clamp(105px, 16vw, 145px);
+    height: 58px;
+    flex-shrink: 0;
+    object-fit: contain;
+    background: transparent;
+}
+
+.painel-administrador-pagina .paineldecriaracoes-titulo-pesquisador,
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-titulo-pesquisador,
+.gerenciacategoria-pagina .paineldecriaracoes-titulo-pesquisador,
+.cadastrocategoria-pagina .cadastrocategoria-titulo-administrador,
+.gerenciacategoria-pagina .gerenciacategoria-titulo-administrador {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(20px, 2.7vw, 30px);
+    font-weight: 700;
+}
+
+.painel-administrador-pagina .cadastrocategoria-btn-sair,
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-btn-sair,
+.gerenciacategoria-pagina .paineldecriaracoes-btn-sair,
+.cadastrocategoria-pagina .cadastrocategoria-btn-sair,
+.gerenciacategoria-pagina .gerenciacategoria-btn-sair {
+    width: clamp(85px, 13vw, 110px);
+    min-height: 42px;
+    height: auto;
+    margin-left: auto;
+    padding: 9px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    background: #16864e;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.painel-administrador-pagina .cadastrocategoria-btn-sair:hover,
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-btn-sair:hover,
+.gerenciacategoria-pagina .paineldecriaracoes-btn-sair:hover,
+.cadastrocategoria-pagina .cadastrocategoria-btn-sair:hover,
+.gerenciacategoria-pagina .gerenciacategoria-btn-sair:hover {
+    background: #116b3e;
+    transform: translateY(-1px);
+}
+
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-barra-titulo,
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-barra-nova-acao,
+.gerenciacategoria-pagina .paineldecriaracoes-barra-titulo,
+.gerenciacategoria-pagina .paineldecriaracoes-barra-nova-acao,
+.cadastrocategoria-pagina .cadastrocategoria-faixa-titulo,
+.gerenciacategoria-pagina .gerenciacategoria-faixa-titulo {
+    width: 100%;
+    min-height: 62px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-bottom: 1px solid #e3eaf0;
+}
+
+.paineldecadastrarusuarios-pagina .paineldecriaracoes-titulo-nova-acao,
+.gerenciacategoria-pagina .paineldecriaracoes-titulo-nova-acao,
+.cadastrocategoria-pagina .cadastrocategoria-titulo-acoes,
+.gerenciacategoria-pagina .gerenciacategoria-titulo-acoes {
+    margin: 0;
+    color: #234b70;
+    font-size: clamp(21px, 2.5vw, 29px);
+    font-weight: 700;
+    text-align: center;
+}
+
+.painel-administrador-pagina .conteudo-principal {
+    width: min(1000px, calc(100% - 40px));
+    min-height: calc(100vh - 82px);
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 58px) 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: center;
+    gap: 24px;
+}
+
+.painel-administrador-pagina .card-painel {
+    min-width: 0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid #dce5eb;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(31, 57, 76, 0.09);
+}
+
+.painel-administrador-pagina .card-titulo {
+    margin: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e5edf2;
+    color: #234b70;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.painel-administrador-pagina .card-botoes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.painel-administrador-pagina .card-botoes .botao {
+    min-height: 46px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    background: #16864e;
+    box-shadow: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.painel-administrador-pagina .card-botoes .botao:hover {
+    background: #116b3e;
+    transform: translateY(-1px);
+}
+
+body.cadastrocategoria-pagina {
+    background: #f3f6f8;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-area-principal {
+    width: min(900px, calc(100% - 40px));
+    min-height: 0;
+    margin: 34px auto;
+    padding: 0 0 24px;
+    overflow: hidden;
+    border: 1px solid #dce5eb;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(31, 57, 76, 0.1);
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-barra-adicionar {
+    width: 100%;
+    min-height: 58px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0;
+    background: #16864e;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-barra-adicionar h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-painel {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 30px clamp(20px, 5vw, 56px) 12px;
+    display: flex;
+    align-items: stretch;
+    border-radius: 0;
+    background: #fff;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-formulario {
+    width: 100%;
+    min-height: 230px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 14px;
+    border: 1px solid #dce5eb;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(24, 49, 74, 0.08);
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    clip: auto;
+    color: #234b70;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: normal;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-campo-nome {
+    width: 100%;
+    min-height: 46px;
+    margin: 0;
+    padding: 10px 14px;
+    border: 1px solid #cbd8e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #34495e;
+    font-family: inherit;
+    font-size: 15px;
+    text-align: left;
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-campo-nome::placeholder {
+    color: #8293a1;
+    opacity: 1;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-campo-nome:focus {
+    border-color: #16864e;
+    box-shadow: 0 0 0 3px rgba(22, 134, 78, 0.12);
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-mensagem {
+    width: 100%;
+    margin: 0 0 4px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-erro {
+    background: #ffe6e6;
+    color: #b00020;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-botoes {
+    width: 100%;
+    height: auto;
+    margin-top: 18px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-btn-cancelar,
+.cadastrocategoria-pagina .cadastrocategoria-btn-confirmar {
+    width: auto;
+    min-width: 135px;
+    min-height: 42px;
+    padding: 9px 22px;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-btn-cancelar {
+    background: #d94b4b;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-btn-cancelar:hover {
+    background: #bd3535;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-btn-confirmar {
+    background: #16864e;
+}
+
+.cadastrocategoria-pagina .cadastrocategoria-btn-confirmar:hover {
+    background: #116b3e;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrodeusuario-formulario {
+    width: min(680px, calc(100% - 40px));
+    margin: 34px auto;
+    padding: clamp(20px, 4vw, 34px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 15px;
+    border: 1px solid #dce5eb;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(31, 57, 76, 0.1);
+}
+
+.paineldecadastrarusuarios-pagina .cadastrodeusuario-formulario > input {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 14px;
+    border: 1px solid #cbd8e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #34495e;
+    font: inherit;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrodeusuario-formulario > input:focus {
+    border-color: #16864e;
+    outline: 3px solid rgba(22, 134, 78, 0.12);
+}
+
+.paineldecadastrarusuarios-pagina .cadastrousuario-checkbox {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border: 1px solid #dce5eb;
+    border-radius: 10px;
+    background: #f8fafb;
+}
+
+.paineldecadastrarusuarios-pagina #cargos-disponiveis {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 24px;
+}
+
+.paineldecadastrarusuarios-pagina #cargos-disponiveis label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #34495e;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrousuario-checkbox input[type="checkbox"] {
+    flex: 0 0 18px;
+    width: 18px;
+    min-height: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #16864e;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrodeusuario-buttons {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrousuario-cancelbutton,
+.paineldecadastrarusuarios-pagina .cadastrousuario-submitbutton {
+    width: auto;
+    min-width: 145px;
+    min-height: 42px;
+    padding: 9px 20px;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrousuario-cancelbutton {
+    background: #d94b4b;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrousuario-cancelbutton:hover {
+    background: #bd3535;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrousuario-submitbutton {
+    background: #16864e;
+}
+
+.paineldecadastrarusuarios-pagina .cadastrousuario-submitbutton:hover {
+    background: #116b3e;
+}
+
+.paineldecadastrarusuarios-pagina .editarusuario-mensagem,
+.paineldecadastrarusuarios-pagina #aviso-lista,
+.paineldecadastrarusuarios-pagina #erro-cargos {
+    width: min(680px, calc(100% - 40px));
+    margin: 18px auto;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background: #ffe6e6;
+    color: #b00020;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.gerenciacategoria-pagina {
+    border: 0;
+    color: #34495e;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-area-principal {
+    width: 100%;
+    min-height: calc(100vh - 144px);
+    padding: 34px 20px 42px;
+    background: #f3f6f8;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-lista {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gerenciacategoria-pagina .usuario-lista-voltar {
+    width: min(900px, 100%);
+    margin: 0 auto 18px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-card {
+    width: 100%;
+    min-height: 90px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    border: 1px solid #dce5eb;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(31, 57, 76, 0.07);
+    transition: box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-card:hover {
+    border-color: #b8d3e2;
+    box-shadow: 0 6px 16px rgba(31, 57, 76, 0.11);
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-card-inativa {
+    background: #f0f2f4;
+    box-shadow: none;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-nome,
+.gerenciacategoria-pagina .usuario-card-nome {
+    margin: 0;
+    color: #234b70;
+    font-size: 15px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-acoes-card,
+.gerenciacategoria-pagina .gerenciacategoria-acoes-edicao,
+.gerenciacategoria-pagina .usuario-card-acoes {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-btn-desativar,
+.gerenciacategoria-pagina .gerenciacategoria-btn-editar,
+.gerenciacategoria-pagina .gerenciacategoria-btn-cancelar,
+.gerenciacategoria-pagina .gerenciacategoria-btn-salvar,
+.gerenciacategoria-pagina .usuario-lista-voltar .gerenciacategoria-btn-editar {
+    width: auto;
+    min-width: 112px;
+    min-height: 38px;
+    padding: 9px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-btn-desativar,
+.gerenciacategoria-pagina .gerenciacategoria-btn-cancelar {
+    background: #d94b4b;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-btn-desativar:hover,
+.gerenciacategoria-pagina .gerenciacategoria-btn-cancelar:hover {
+    background: #bd3535;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-btn-editar,
+.gerenciacategoria-pagina .gerenciacategoria-btn-salvar,
+.gerenciacategoria-pagina .usuario-lista-voltar .gerenciacategoria-btn-editar {
+    background: #16864e;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-btn-editar:hover,
+.gerenciacategoria-pagina .gerenciacategoria-btn-salvar:hover,
+.gerenciacategoria-pagina .usuario-lista-voltar .gerenciacategoria-btn-editar:hover {
+    background: #116b3e;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-btn-desativar:disabled,
+.gerenciacategoria-pagina .usuario-card-acoes button:disabled {
+    background: #8b969e;
+    cursor: not-allowed;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-status-inativa {
+    margin-right: auto;
+    color: #7b8790;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-form-edicao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-label-edicao {
+    color: #234b70;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-input-edicao {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid #cbd8e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #34495e;
+    font: inherit;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-input-edicao:focus {
+    border-color: #16864e;
+    outline: 3px solid rgba(22, 134, 78, 0.12);
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-mensagem,
+.gerenciacategoria-pagina .gerenciacategoria-vazio {
+    width: min(900px, 100%);
+    margin: 0 auto 18px;
+    padding: 13px 16px;
+    border: 1px solid #dce5eb;
+    border-radius: 9px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-sucesso {
+    color: #08751a;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-erro {
+    color: #b00020;
+}
+
+.gerenciacategoria-pagina .gerenciacategoria-vazio {
+    color: #667784;
+}
+
+.gerenciacategoria-pagina .usuario-card {
+    min-height: 120px;
+}
+
+.gerenciacategoria-pagina .usuario-card-dados {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.gerenciacategoria-pagina .usuario-card-dados:hover .usuario-card-nome {
+    color: #16864e;
+}
+
+.gerenciacategoria-pagina .usuario-card-email,
+.gerenciacategoria-pagina .usuario-card-matricula,
+.gerenciacategoria-pagina .usuario-card-funcoes {
+    margin: 0;
+    color: #586b79;
+    font-size: 13px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.gerenciacategoria-pagina .usuario-card-email {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.gerenciacategoria-pagina .usuario-card-funcoes {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.gerenciacategoria-pagina .usuario-card-matricula {
+    grid-column: 2;
+    grid-row: 1;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.popupusuarioeditado-overlay,
+.popupusuariosucesso-overlay,
+.gerenciacategoria-pagina .popupdeacessonegado-overlay {
+    backdrop-filter: blur(2px);
+    background: rgba(22, 39, 53, 0.48);
+}
+
+.popupusuarioeditado-container,
+.popupusuariosucesso-container,
+.gerenciacategoria-pagina .popupdeacessonegado-container {
+    width: min(480px, calc(100% - 32px));
+    max-width: 480px;
+    min-height: 0;
+    padding: 30px 28px;
+    border: 1px solid #dce5eb;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 14px 40px rgba(20, 43, 60, 0.2);
+    color: #34495e;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.popupusuarioeditado-icone,
+.popupusuariosucesso-icone,
+.gerenciacategoria-pagina .popupdeacessonegado-icone {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 18px;
+}
+
+.popupusuarioeditado-icone-imagem,
+.popupusuariosucesso-icone-imagem,
+.gerenciacategoria-pagina .popupdeacessonegado-icone-imagem {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.popupusuarioeditado-titulo,
+.popupusuariosucesso-titulo,
+.gerenciacategoria-pagina .popupdeacessonegado-titulo {
+    margin: 0 0 12px;
+    color: #234b70;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.popupusuarioeditado-mensagem,
+.popupusuariosucesso-mensagem,
+.gerenciacategoria-pagina .popupdeacessonegado-mensagem {
+    margin: 0 0 22px;
+    color: #586b79;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.popupusuarioeditado-btn,
+.popupusuariosucesso-btn,
+.gerenciacategoria-pagina .popupdeacessonegadoacao-btn button,
+.gerenciacategoria-pagina .button-desativar {
+    min-width: 130px;
+    min-height: 40px;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 8px;
+    background: #16864e;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popupusuarioeditado-btn:hover,
+.popupusuariosucesso-btn:hover,
+.gerenciacategoria-pagina .popupdeacessonegadoacao-btn button:hover,
+.gerenciacategoria-pagina .button-desativar:hover {
+    background: #116b3e;
+}
+
+.gerenciacategoria-pagina .popupdeacessonegadoacao-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.gerenciacategoria-pagina .popupdeacessonegadoacao-btn #popupdesativar-cancelar {
+    background: #d94b4b;
+}
+
+.gerenciacategoria-pagina .popupdeacessonegadoacao-btn #popupdesativar-cancelar:hover {
+    background: #bd3535;
+}
+
+@media (max-width: 700px) {
+    .painel-administrador-pagina .conteudo-principal {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        padding: 24px 0;
+        gap: 16px;
+    }
+
+    .painel-administrador-pagina .card-painel {
+        padding: 20px;
+    }
+
+    .paineldecadastrarusuarios-pagina .paineldecriaracoes-cabecalho,
+    .gerenciacategoria-pagina .paineldecriaracoes-cabecalho,
+    .cadastrocategoria-pagina .cadastrocategoria-cabecalho,
+    .gerenciacategoria-pagina .gerenciacategoria-cabecalho {
+        min-height: 68px;
+        padding: 8px 12px;
+        gap: 10px;
+    }
+
+    .paineldecadastrarusuarios-pagina .paineldecriaracoes-logo,
+    .gerenciacategoria-pagina .paineldecriaracoes-logo,
+    .cadastrocategoria-pagina .cadastrocategoria-logo,
+    .gerenciacategoria-pagina .gerenciacategoria-logo {
+        width: 92px;
+        height: 48px;
+    }
+
+    .paineldecadastrarusuarios-pagina .paineldecriaracoes-titulo-pesquisador,
+    .gerenciacategoria-pagina .paineldecriaracoes-titulo-pesquisador,
+    .cadastrocategoria-pagina .cadastrocategoria-titulo-administrador,
+    .gerenciacategoria-pagina .gerenciacategoria-titulo-administrador {
+        font-size: 17px;
+    }
+
+    .paineldecadastrarusuarios-pagina .paineldecriaracoes-btn-sair,
+    .gerenciacategoria-pagina .paineldecriaracoes-btn-sair,
+    .cadastrocategoria-pagina .cadastrocategoria-btn-sair,
+    .gerenciacategoria-pagina .gerenciacategoria-btn-sair {
+        width: 66px;
+        min-height: 38px;
+        padding: 7px;
+        font-size: 11px;
+    }
+
+    .paineldecadastrarusuarios-pagina .cadastrodeusuario-formulario {
+        width: calc(100% - 28px);
+        margin: 22px auto;
+        padding: 18px 14px;
+    }
+
+    .paineldecadastrarusuarios-pagina .cadastrodeusuario-buttons {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .paineldecadastrarusuarios-pagina .cadastrousuario-cancelbutton,
+    .paineldecadastrarusuarios-pagina .cadastrousuario-submitbutton {
+        width: 100%;
+    }
+
+    .cadastrocategoria-pagina .cadastrocategoria-area-principal {
+        width: calc(100% - 24px);
+        margin: 20px auto;
+    }
+
+    .cadastrocategoria-pagina .cadastrocategoria-painel {
+        padding: 20px 14px 8px;
+    }
+
+    .cadastrocategoria-pagina .cadastrocategoria-formulario {
+        min-height: 0;
+        padding: 18px 14px;
+    }
+
+    .cadastrocategoria-pagina .cadastrocategoria-botoes {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .cadastrocategoria-pagina .cadastrocategoria-btn-cancelar,
+    .cadastrocategoria-pagina .cadastrocategoria-btn-confirmar {
+        width: 100%;
+    }
+
+    .gerenciacategoria-pagina .gerenciacategoria-area-principal {
+        min-height: calc(100vh - 120px);
+        padding: 22px 12px 30px;
+    }
+
+    .gerenciacategoria-pagina .gerenciacategoria-card {
+        padding: 16px 14px;
+    }
+
+    .gerenciacategoria-pagina .gerenciacategoria-acoes-card,
+    .gerenciacategoria-pagina .gerenciacategoria-acoes-edicao,
+    .gerenciacategoria-pagina .usuario-card-acoes {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    .gerenciacategoria-pagina .usuario-card-dados {
+        grid-template-columns: 1fr;
+        row-gap: 8px;
+    }
+
+    .gerenciacategoria-pagina .usuario-card-email,
+    .gerenciacategoria-pagina .usuario-card-funcoes,
+    .gerenciacategoria-pagina .usuario-card-matricula {
+        grid-column: 1;
+        grid-row: auto;
+        text-align: left;
+        white-space: normal;
+    }
+
+    .gerenciacategoria-pagina .gerenciacategoria-btn-desativar,
+    .gerenciacategoria-pagina .gerenciacategoria-btn-editar,
+    .gerenciacategoria-pagina .gerenciacategoria-btn-cancelar,
+    .gerenciacategoria-pagina .gerenciacategoria-btn-salvar {
+        min-width: 105px;
+    }
+
+    .popupusuarioeditado-container,
+    .popupusuariosucesso-container,
+    .gerenciacategoria-pagina .popupdeacessonegado-container {
+        padding: 24px 18px;
+    }
+
+    .gerenciacategoria-pagina .popupdeacessonegadoacao-btn {
+        flex-wrap: wrap;
+    }
+}
+
+/*PADRÃO VISUAL ADMINISTRADOR */
