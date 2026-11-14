@@ -90,7 +90,7 @@ try {
     </header>
 
     <section class="validaracao-faixa-titulo">
-        <h2 class="validaracao-titulo-acoes">VALIDAR AÇÕES</h2>
+        <h2 class="validaracao-titulo-acoes">Validar Ações</h2>
     </section>
 
     <main class="validaracao-area-principal">
@@ -105,7 +105,11 @@ try {
             <?php endif; ?>
 
             <?php if (empty($acoes)): ?>
-                <p style="margin: 20px; font-weight: bold;">Nenhuma ação cadastrada no momento.</p>
+                <div class="validaracao-estado-vazio">
+                    <div class="validaracao-vazio-icone">✓</div>
+                    <h3 class="validaracao-vazio-titulo">Nenhuma ação pendente</h3>
+                    <p class="validaracao-vazio-texto">No momento, não há registros aguardando validação. Está tudo em dia por aqui!</p>
+                </div>
             <?php else: ?>
                 <?php foreach ($acoes as $acao): ?>
                     <?php 
@@ -158,7 +162,7 @@ try {
         </section>
     </main>
 
-<?php include __DIR__ . '/popup_confirmar_validacao.php'; ?>    
-<?php include __DIR__ . '/popup_confirmar_invalidacao_acao.php'; ?>    
+    <?php include __DIR__ . '/popup_confirmar_validacao.php'; ?>
+    <?php include __DIR__ . '/popup_confirmar_invalidacao_acao.php'; ?>
 </body>
 </html>

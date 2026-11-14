@@ -15,7 +15,7 @@
 
         <h2 class="popupdeacessonegado-titulo"
             id="popup-invalidacao-titulo">
-            Confirmar invalidação?
+            Reprovar Ação?
         </h2>
 
         <div class="popupconfirmarinvaliacao-div--validador">

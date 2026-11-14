@@ -15,10 +15,10 @@
 
         <h2 class="popupdeacessonegado-titulo"
             id="popupdesativar-titulo">
-            Confirmar Validação?
+            Aprovar Ação?
         </h2>
 
-        <div class="popupconfirmarinvalidacao-div--validador">
+        <div class="popupconfirmarinvaliacao-div--validador">
             <p class="popupdeacessonegado-mensagem">
                 A ação será marcada como aprovada.
             </p>
