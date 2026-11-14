@@ -530,9 +530,6 @@ body {
 }
 /* tela_escolha.php */
 
-/* popup de acesso negado */
-
-
 /* popup confirmar desativacao */
  
 .popup-confirmar-desativacao {
@@ -1295,6 +1292,593 @@ body.paineldecriaracoes-pagina {
 }
 
 /* POPUP DE CADASTRO DE USUARIO REALIZADO COM SUCESSO */
+
+/* tela painel_pesquisador */
+
+.body-painel-pesquisador * {
+    padding: 0;
+    box-sizing: border-box;}
+
+.body-painel-pesquisador {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f7f9;
+    min-height: 100vh;
+    color: #003b70;
+}
+
+
+.container-do-painel {
+    width: 100%;
+    min-height: calc(100vh - 90px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 35px 25px 60px;
+
+    background: transparent;
+}
+
+
+.painel-dos-botoes {
+    width: 100%;
+    max-width: 900px;
+
+    min-height: 570px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #ffffff;
+
+    border: 1px solid #d9e3eb;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0, 50, 80, 0.08);
+
+    padding: 45px 30px;
+}
+
+
+.btns-painel-pesquisador {
+    width: 100%;
+    max-width: 430px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 30px;
+}
+
+/* TÍTULO AÇÕES */
+
+.titulo-acoes-pesquisador {
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 32px;
+    font-weight: bold;
+    color: #003b70;
+
+    margin-bottom: 65px;
+}
+
+
+.btns-estilizacao-pesquisador {
+    width: 100%;
+    min-height: 85px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #138c50,
+        #00713b
+    );
+
+    color: #ffffff;
+
+    text-decoration: none;
+    text-align: center;
+
+    font-size: 21px;
+    font-weight: bold;
+
+    border: 1px solid #006b35;
+    border-radius: 18px;
+
+    box-shadow: 0 9px 20px rgba(0, 80, 45, 0.15);
+
+    transition: 0.3s ease;
+}
+
+.btns-estilizacao-pesquisador:hover {
+    background: linear-gradient(
+        135deg,
+        #087943,
+        #005c30
+    );
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 25px rgba(0, 80, 45, 0.23);
+}
+
+.btns-estilizacao-pesquisador:active {
+    transform: scale(0.98);
+}
+
+
+
+@media (max-width: 600px) {
+
+    .paineldecriaracoes-titulo-pesquisador {
+        font-size: 17px;
+    }
+
+    .container-do-painel {
+        min-height: calc(100vh - 85px);
+        padding: 20px 15px;
+    }
+
+    .painel-dos-botoes {
+        min-height: 450px;
+        padding: 30px 20px;
+    }
+
+    .btns-painel-pesquisador {
+        gap: 20px;
+    }
+
+    .titulo-acoes-pesquisador {
+        font-size: 25px;
+        margin-bottom: 40px;
+    }
+
+    .btns-estilizacao-pesquisador {
+        min-height: 70px;
+        font-size: 17px;
+    }
+}
+
+
+/* tela painel_criar_acao */
+
+/* ==========================================
+   NOVA AÇÃO - CONFIGURAÇÕES GERAIS*/
+
+body.paineldecriaracoes-pagina {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f3f7f9;
+    color: #003b70;
+}
+
+.paineldecriaracoes-pagina * {
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   CABEÇALHO*/
+
+.paineldecriaracoes-cabecalho {
+    width: 100%;
+    min-height: 85px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 10px 32px;
+    gap: 30px;
+
+    background: #3d688f;
+}
+
+/* LOGOTIPO */
+
+.paineldecriaracoes-logo {
+    width: 110px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+/* TÍTULO PESQUISADOR */
+
+.paineldecriaracoes-titulo-pesquisador {
+    margin: 0;
+
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+/* BOTÃO SAIR */
+
+.paineldecriaracoes-btn-sair {
+    margin-left: auto;
+
+    min-width: 110px;
+    padding: 15px 25px;
+
+    background: #087c43;
+    color: #ffffff;
+
+    border: 1px solid #006b38;
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.paineldecriaracoes-btn-sair:hover {
+    background: #005f32;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   BARRA MINHAS AÇÕES*/
+
+.paineldecriaracoes-barra-titulo {
+    width: 100%;
+
+    padding: 22px 20px 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: transparent;
+}
+
+.paineldecriaracoes-titulo-acoes {
+    margin: 0;
+
+    color: #003b70;
+    font-size: 27px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   BARRA NOVA AÇÃO*/
+
+.paineldecriaracoes-barra-nova-acao {
+    width: 100%;
+
+    padding: 12px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: transparent;
+}
+
+.paineldecriaracoes-titulo-nova-acao {
+    margin: 0;
+
+    color: #087c43;
+    font-size: 20px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL*/
+
+.paineldecriaracoes-conteudo {
+    width: 100%;
+    min-height: calc(100vh - 190px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 15px 20px 50px;
+
+    background: transparent;
+}
+
+
+/* ==========================================
+   FORMULÁRIO*/
+
+.paineldecriaracoes-formulario {
+    width: 100%;
+    max-width: 950px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #d9e3eb;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(0, 50, 80, 0.08);
+}
+
+
+/* ==========================================
+   LINHA SUPERIOR*/
+
+.paineldecriaracoes-linha-superior {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+/* CAMPO TÍTULO */
+
+.paineldecriaracoes-campo-titulo {
+    flex: 1;
+    min-width: 0;
+}
+
+/* CAMPO DATA */
+
+.paineldecriaracoes-campo-data {
+    width: 230px;
+    flex-shrink: 0;
+}
+
+
+/* ==========================================
+   ESTILIZAÇÃO DOS CAMPOS*/
+
+.paineldecriaracoes-campo-titulo,
+.paineldecriaracoes-campo-data,
+.paineldecriaracoes-campo-descricao,
+.paineldecriaracoes-campo-categoria {
+
+    min-height: 50px;
+
+    padding: 13px 16px;
+
+    background: #f8fafb;
+    color: #003b70;
+
+    border: 1px solid #cbd8e2;
+    border-radius: 10px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+/* DESCRIÇÃO */
+
+.paineldecriaracoes-campo-descricao {
+    width: 100%;
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+/* CATEGORIA */
+
+.paineldecriaracoes-campo-categoria {
+    width: 100%;
+
+    cursor: pointer;
+}
+
+/* PLACEHOLDERS */
+
+.paineldecriaracoes-formulario input::placeholder,
+.paineldecriaracoes-formulario textarea::placeholder {
+    color: #8494a2;
+}
+
+/* FOCO DOS CAMPOS */
+
+.paineldecriaracoes-campo-titulo:focus,
+.paineldecriaracoes-campo-data:focus,
+.paineldecriaracoes-campo-descricao:focus,
+.paineldecriaracoes-campo-categoria:focus {
+
+    border-color: #087c43;
+
+    background: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(8, 124, 67, 0.10);
+}
+
+
+/* ==========================================
+   AVISOS*/
+
+.paineldecriaracoes-aviso-categorias {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    background: #fff4e5;
+    color: #8a5100;
+
+    border: 1px solid #f0d5a8;
+    border-left: 4px solid #e6a23c;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   ÁREA DOS BOTÕES*/
+
+.paineldecriaracoes-btn {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 25px;
+
+    margin-top: 5px;
+}
+
+/* CONFIGURAÇÃO GERAL DOS BOTÕES */
+
+.paineldecriaracoes-btn-cancelar,
+.paineldecriaracoes-btn-confirmar {
+
+    width: 45%;
+    min-height: 48px;
+
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+/* CANCELAR */
+
+.paineldecriaracoes-btn-cancelar {
+    background: #dc3545;
+}
+
+.paineldecriaracoes-btn-cancelar:hover {
+    background: #b02a37;
+    transform: translateY(-2px);
+}
+
+/* CONFIRMAR */
+
+.paineldecriaracoes-btn-confirmar {
+    background: #087c43;
+}
+
+.paineldecriaracoes-btn-confirmar:hover {
+    background: #005f32;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE*/
+
+@media (max-width: 650px) {
+
+    /* CABEÇALHO */
+
+    .paineldecriaracoes-cabecalho {
+        min-height: 75px;
+        padding: 10px 15px;
+        gap: 12px;
+    }
+
+    .paineldecriaracoes-logo {
+        width: 75px;
+        height: 50px;
+    }
+
+    .paineldecriaracoes-titulo-pesquisador {
+        font-size: 17px;
+    }
+
+    .paineldecriaracoes-btn-sair {
+        min-width: auto;
+        padding: 11px 17px;
+        font-size: 12px;
+    }
+
+    /* TÍTULOS */
+
+    .paineldecriaracoes-titulo-acoes {
+        font-size: 23px;
+    }
+
+    .paineldecriaracoes-titulo-nova-acao {
+        font-size: 18px;
+    }
+
+    /* CONTEÚDO */
+
+    .paineldecriaracoes-conteudo {
+        padding: 15px 15px 35px;
+    }
+
+    /* FORMULÁRIO */
+
+    .paineldecriaracoes-formulario {
+        padding: 22px 18px;
+        gap: 17px;
+
+        border-radius: 15px;
+    }
+
+    /* CAMPOS */
+
+    .paineldecriaracoes-linha-superior {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .paineldecriaracoes-campo-titulo,
+    .paineldecriaracoes-campo-data {
+        width: 100%;
+    }
+
+    .paineldecriaracoes-campo-descricao {
+        min-height: 110px;
+    }
+
+    /* BOTÕES */
+
+    .paineldecriaracoes-btn {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .paineldecriaracoes-btn-cancelar,
+    .paineldecriaracoes-btn-confirmar {
+        width: 100%;
+    }}
 
 /* CADASTRO DE CATEGORIA DE AÇÃO */
 
@@ -2653,594 +3237,6 @@ h1 {
     z-index: 100000;
 }
 
-
-/* tela painel_pesquisador */
-
-.body-painel-pesquisador * {
-    padding: 0;
-    box-sizing: border-box;}
-
-.body-painel-pesquisador {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f3f7f9;
-    min-height: 100vh;
-    color: #003b70;
-}
-
-
-.container-do-painel {
-    width: 100%;
-    min-height: calc(100vh - 90px);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 35px 25px 60px;
-
-    background: transparent;
-}
-
-
-.painel-dos-botoes {
-    width: 100%;
-    max-width: 900px;
-
-    min-height: 570px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: #ffffff;
-
-    border: 1px solid #d9e3eb;
-    border-radius: 18px;
-
-    box-shadow: 0 8px 25px rgba(0, 50, 80, 0.08);
-
-    padding: 45px 30px;
-}
-
-
-.btns-painel-pesquisador {
-    width: 100%;
-    max-width: 430px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 30px;
-}
-
-/* TÍTULO AÇÕES */
-
-.titulo-acoes-pesquisador {
-    width: 100%;
-
-    text-align: center;
-
-    font-size: 32px;
-    font-weight: bold;
-    color: #003b70;
-
-    margin-bottom: 65px;
-}
-
-
-.btns-estilizacao-pesquisador {
-    width: 100%;
-    min-height: 85px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: linear-gradient(
-        135deg,
-        #138c50,
-        #00713b
-    );
-
-    color: #ffffff;
-
-    text-decoration: none;
-    text-align: center;
-
-    font-size: 21px;
-    font-weight: bold;
-
-    border: 1px solid #006b35;
-    border-radius: 18px;
-
-    box-shadow: 0 9px 20px rgba(0, 80, 45, 0.15);
-
-    transition: 0.3s ease;
-}
-
-.btns-estilizacao-pesquisador:hover {
-    background: linear-gradient(
-        135deg,
-        #087943,
-        #005c30
-    );
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 12px 25px rgba(0, 80, 45, 0.23);
-}
-
-.btns-estilizacao-pesquisador:active {
-    transform: scale(0.98);
-}
-
-
-
-@media (max-width: 600px) {
-
-    .paineldecriaracoes-titulo-pesquisador {
-        font-size: 17px;
-    }
-
-    .container-do-painel {
-        min-height: calc(100vh - 85px);
-        padding: 20px 15px;
-    }
-
-    .painel-dos-botoes {
-        min-height: 450px;
-        padding: 30px 20px;
-    }
-
-    .btns-painel-pesquisador {
-        gap: 20px;
-    }
-
-    .titulo-acoes-pesquisador {
-        font-size: 25px;
-        margin-bottom: 40px;
-    }
-
-    .btns-estilizacao-pesquisador {
-        min-height: 70px;
-        font-size: 17px;
-    }
-}
-
-
-/* tela painel_criar_acao */
-
-/* ==========================================
-   NOVA AÇÃO - CONFIGURAÇÕES GERAIS*/
-
-body.paineldecriaracoes-pagina {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    background: #f3f7f9;
-    color: #003b70;
-}
-
-.paineldecriaracoes-pagina * {
-    box-sizing: border-box;
-}
-
-
-/* ==========================================
-   CABEÇALHO*/
-
-.paineldecriaracoes-cabecalho {
-    width: 100%;
-    min-height: 85px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 10px 32px;
-    gap: 30px;
-
-    background: #3d688f;
-}
-
-/* LOGOTIPO */
-
-.paineldecriaracoes-logo {
-    width: 110px;
-    height: 65px;
-
-    object-fit: contain;
-}
-
-/* TÍTULO PESQUISADOR */
-
-.paineldecriaracoes-titulo-pesquisador {
-    margin: 0;
-
-    color: #ffffff;
-    font-size: 28px;
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-/* BOTÃO SAIR */
-
-.paineldecriaracoes-btn-sair {
-    margin-left: auto;
-
-    min-width: 110px;
-    padding: 15px 25px;
-
-    background: #087c43;
-    color: #ffffff;
-
-    border: 1px solid #006b38;
-    border-radius: 25px;
-
-    font-size: 14px;
-    font-weight: bold;
-
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.paineldecriaracoes-btn-sair:hover {
-    background: #005f32;
-    transform: translateY(-2px);
-}
-
-
-/* ==========================================
-   BARRA MINHAS AÇÕES*/
-
-.paineldecriaracoes-barra-titulo {
-    width: 100%;
-
-    padding: 22px 20px 10px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: transparent;
-}
-
-.paineldecriaracoes-titulo-acoes {
-    margin: 0;
-
-    color: #003b70;
-    font-size: 27px;
-    font-weight: bold;
-
-    text-align: center;
-}
-
-
-/* ==========================================
-   BARRA NOVA AÇÃO*/
-
-.paineldecriaracoes-barra-nova-acao {
-    width: 100%;
-
-    padding: 12px 20px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: transparent;
-}
-
-.paineldecriaracoes-titulo-nova-acao {
-    margin: 0;
-
-    color: #087c43;
-    font-size: 20px;
-    font-weight: bold;
-
-    text-align: center;
-}
-
-
-/* ==========================================
-   CONTEÚDO PRINCIPAL*/
-
-.paineldecriaracoes-conteudo {
-    width: 100%;
-    min-height: calc(100vh - 190px);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 15px 20px 50px;
-
-    background: transparent;
-}
-
-
-/* ==========================================
-   FORMULÁRIO*/
-
-.paineldecriaracoes-formulario {
-    width: 100%;
-    max-width: 950px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 22px;
-
-    padding: 35px;
-
-    background: #ffffff;
-
-    border: 1px solid #d9e3eb;
-    border-radius: 20px;
-
-    box-shadow: 0 8px 25px rgba(0, 50, 80, 0.08);
-}
-
-
-/* ==========================================
-   LINHA SUPERIOR*/
-
-.paineldecriaracoes-linha-superior {
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-
-    gap: 20px;
-}
-
-/* CAMPO TÍTULO */
-
-.paineldecriaracoes-campo-titulo {
-    flex: 1;
-    min-width: 0;
-}
-
-/* CAMPO DATA */
-
-.paineldecriaracoes-campo-data {
-    width: 230px;
-    flex-shrink: 0;
-}
-
-
-/* ==========================================
-   ESTILIZAÇÃO DOS CAMPOS*/
-
-.paineldecriaracoes-campo-titulo,
-.paineldecriaracoes-campo-data,
-.paineldecriaracoes-campo-descricao,
-.paineldecriaracoes-campo-categoria {
-
-    min-height: 50px;
-
-    padding: 13px 16px;
-
-    background: #f8fafb;
-    color: #003b70;
-
-    border: 1px solid #cbd8e2;
-    border-radius: 10px;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-
-    outline: none;
-
-    transition: 0.3s ease;
-}
-
-/* DESCRIÇÃO */
-
-.paineldecriaracoes-campo-descricao {
-    width: 100%;
-    min-height: 120px;
-
-    resize: vertical;
-}
-
-/* CATEGORIA */
-
-.paineldecriaracoes-campo-categoria {
-    width: 100%;
-
-    cursor: pointer;
-}
-
-/* PLACEHOLDERS */
-
-.paineldecriaracoes-formulario input::placeholder,
-.paineldecriaracoes-formulario textarea::placeholder {
-    color: #8494a2;
-}
-
-/* FOCO DOS CAMPOS */
-
-.paineldecriaracoes-campo-titulo:focus,
-.paineldecriaracoes-campo-data:focus,
-.paineldecriaracoes-campo-descricao:focus,
-.paineldecriaracoes-campo-categoria:focus {
-
-    border-color: #087c43;
-
-    background: #ffffff;
-
-    box-shadow: 0 0 0 3px rgba(8, 124, 67, 0.10);
-}
-
-
-/* ==========================================
-   AVISOS*/
-
-.paineldecriaracoes-aviso-categorias {
-    width: 100%;
-
-    padding: 14px 18px;
-
-    background: #fff4e5;
-    color: #8a5100;
-
-    border: 1px solid #f0d5a8;
-    border-left: 4px solid #e6a23c;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-
-/* ==========================================
-   ÁREA DOS BOTÕES*/
-
-.paineldecriaracoes-btn {
-    width: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 25px;
-
-    margin-top: 5px;
-}
-
-/* CONFIGURAÇÃO GERAL DOS BOTÕES */
-
-.paineldecriaracoes-btn-cancelar,
-.paineldecriaracoes-btn-confirmar {
-
-    width: 45%;
-    min-height: 48px;
-
-    padding: 12px 25px;
-
-    border: none;
-    border-radius: 10px;
-
-    color: #ffffff;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-/* CANCELAR */
-
-.paineldecriaracoes-btn-cancelar {
-    background: #dc3545;
-}
-
-.paineldecriaracoes-btn-cancelar:hover {
-    background: #b02a37;
-    transform: translateY(-2px);
-}
-
-/* CONFIRMAR */
-
-.paineldecriaracoes-btn-confirmar {
-    background: #087c43;
-}
-
-.paineldecriaracoes-btn-confirmar:hover {
-    background: #005f32;
-    transform: translateY(-2px);
-}
-
-
-/* ==========================================
-   RESPONSIVIDADE*/
-
-@media (max-width: 650px) {
-
-    /* CABEÇALHO */
-
-    .paineldecriaracoes-cabecalho {
-        min-height: 75px;
-        padding: 10px 15px;
-        gap: 12px;
-    }
-
-    .paineldecriaracoes-logo {
-        width: 75px;
-        height: 50px;
-    }
-
-    .paineldecriaracoes-titulo-pesquisador {
-        font-size: 17px;
-    }
-
-    .paineldecriaracoes-btn-sair {
-        min-width: auto;
-        padding: 11px 17px;
-        font-size: 12px;
-    }
-
-    /* TÍTULOS */
-
-    .paineldecriaracoes-titulo-acoes {
-        font-size: 23px;
-    }
-
-    .paineldecriaracoes-titulo-nova-acao {
-        font-size: 18px;
-    }
-
-    /* CONTEÚDO */
-
-    .paineldecriaracoes-conteudo {
-        padding: 15px 15px 35px;
-    }
-
-    /* FORMULÁRIO */
-
-    .paineldecriaracoes-formulario {
-        padding: 22px 18px;
-        gap: 17px;
-
-        border-radius: 15px;
-    }
-
-    /* CAMPOS */
-
-    .paineldecriaracoes-linha-superior {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .paineldecriaracoes-campo-titulo,
-    .paineldecriaracoes-campo-data {
-        width: 100%;
-    }
-
-    .paineldecriaracoes-campo-descricao {
-        min-height: 110px;
-    }
-
-    /* BOTÕES */
-
-    .paineldecriaracoes-btn {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .paineldecriaracoes-btn-cancelar,
-    .paineldecriaracoes-btn-confirmar {
-        width: 100%;
-    }
-
 /*PADRÃO VISUAL ADMINISTRADOR*/
 
 body.painel-administrador-pagina,
@@ -4021,7 +4017,7 @@ body.cadastrocategoria-pagina {
 
 .gerenciacategoria-pagina .popupdeacessonegadoacao-btn #popupdesativar-cancelar:hover {
     background: #bd3535;
-}}
+}
 
 @media (max-width: 700px) {
     .painel-administrador-pagina .conteudo-principal {
