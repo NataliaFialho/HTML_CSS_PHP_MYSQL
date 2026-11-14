@@ -3570,3 +3570,440 @@ body.cadastrocategoria-pagina {
 }
 
 /*PADRÃO VISUAL ADMINISTRADOR */
+
+.painel-administrador-pagina .conteudo-principal {
+    width: min(1120px, calc(100% - 48px));
+    min-height: calc(100vh - 82px);
+    height: auto;
+    margin: 0 auto;
+    padding: clamp(28px, 4vw, 54px) 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(24px, 3vw, 38px);
+}
+
+.painel-administrador-pagina .card-painel {
+    width: 100%;
+    min-width: 0;
+    min-height: 490px;
+    height: auto;
+    margin: 0;
+    padding: clamp(24px, 3vw, 38px) 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 26px;
+    border: 1px solid #dce5eb;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(31, 57, 76, 0.10);
+}
+
+.painel-administrador-pagina .card-titulo {
+    width: 100%;
+    margin: 0;
+    padding: 0 0 18px;
+    border-bottom: 1px solid #e5edf2;
+    color: #234b70;
+    font-size: clamp(25px, 2.5vw, 32px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.painel-administrador-pagina .card-botoes {
+    width: min(88%, 390px);
+    height: auto;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 22px;
+}
+
+.painel-administrador-pagina .card-botoes .botao {
+    width: 100%;
+    min-height: 76px;
+    height: auto;
+    margin: 0;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 10px;
+    background: #16864e;
+    box-shadow: 0 3px 8px rgba(20, 90, 55, 0.15);
+    color: #ffffff;
+    font-size: clamp(16px, 1.35vw, 19px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.painel-administrador-pagina .card-botoes .botao:hover {
+    background: #116b3e;
+    box-shadow: 0 5px 12px rgba(20, 90, 55, 0.2);
+    transform: translateY(-2px);
+}
+
+.modal-desativacao {
+    padding: 18px;
+    background: rgba(22, 39, 53, 0.48);
+    backdrop-filter: blur(2px);
+}
+
+.modal-desativacao-conteudo {
+    width: min(460px, 100%);
+    max-width: 460px;
+    min-height: 0;
+    padding: 30px 28px;
+    border: 1px solid #dce5eb;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 14px 40px rgba(20, 43, 60, 0.20);
+    color: #34495e;
+    animation: aparecerPopup 0.25s ease;
+}
+
+.modal-desativacao-conteudo .icone-erro {
+    margin-bottom: 16px;
+}
+
+.modal-desativacao-conteudo .icone-erro img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+}
+
+.modal-desativacao-conteudo h1 {
+    margin: 0 0 12px;
+    color: #234b70;
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.3;
+}
+
+.modal-desativacao-conteudo p {
+    margin: 0;
+    color: #586b79;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.modal-desativacao-conteudo .botoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modal-desativacao-conteudo .botoes button {
+    width: auto;
+    min-width: 130px;
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.modal-desativacao-conteudo .botoes button:first-child {
+    background: #d94b4b;
+}
+
+.modal-desativacao-conteudo .botoes button:first-child:hover {
+    background: #bd3535;
+}
+
+.modal-desativacao-conteudo .botoes button:last-child {
+    background: #16864e;
+}
+
+.modal-desativacao-conteudo .botoes button:last-child:hover {
+    background: #116b3e;
+}
+
+.popupusuarioeditado-overlay,
+.popupusuariosucesso-overlay,
+.popupacaosucesso-overlay,
+.popup-acao-sucesso-overlay,
+.popupdeacessonegado-overlay,
+.popupvalidacao-overlay {
+    background: rgba(22, 39, 53, 0.48);
+    backdrop-filter: blur(2px);
+}
+
+.popupusuarioeditado-container,
+.popupusuariosucesso-container,
+.popupacaosucesso-container,
+.popup-acao-sucesso-container,
+.popupdeacessonegado-container,
+.popupvalidacao-container,
+.popup-confirmar-desativacao {
+    width: min(460px, calc(100% - 32px));
+    max-width: 460px;
+    min-height: 0;
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    border: 1px solid #dce5eb;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 14px 40px rgba(20, 43, 60, 0.20);
+    box-sizing: border-box;
+    color: #34495e;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.popupusuarioeditado-icone,
+.popupusuariosucesso-icone,
+.popupacaosucesso-icone,
+.popup-acao-sucesso-icone,
+.popupdeacessonegado-icone,
+.popupvalidacao-icone,
+.icone-atencao,
+.icone-erro {
+    width: 66px;
+    height: 66px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popupusuarioeditado-icone-imagem,
+.popupusuariosucesso-icone-imagem,
+.popupdeacessonegado-icone-imagem,
+.popupvalidacao-icone-imagem,
+.icone-atencao img,
+.icone-erro img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.popupacaosucesso-icone svg,
+.popup-acao-sucesso-icone svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.popupusuarioeditado-titulo,
+.popupusuariosucesso-titulo,
+.popupacaosucesso-titulo,
+.popup-acao-sucesso-titulo,
+.popupdeacessonegado-titulo,
+.popupvalidacao-titulo,
+.modal-desativacao-conteudo h1,
+.popup-confirmar-desativacao h1 {
+    margin: 0 0 12px;
+    color: #234b70;
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.popupusuarioeditado-mensagem,
+.popupusuariosucesso-mensagem,
+.popupacaosucesso-mensagem,
+.popup-acao-sucesso-mensagem,
+.popupdeacessonegado-mensagem,
+.popupvalidacao-mensagem,
+.mensagem-popup-confirmar,
+.popup-confirmar-desativacao p {
+    margin: 0 0 22px;
+    color: #586b79;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.popupusuarioeditado-btn,
+.popupusuariosucesso-btn,
+.popupacaosucesso-btn,
+.popup-acao-sucesso-btn,
+.popupdeacessonegado-btn,
+.popupvalidacao-btn-cancelar,
+.popupvalidacao-btn-confirmar,
+.button-desativar,
+.botao-cancelar-popup-confirmar,
+.botao-desativar-popup-confirmar {
+    width: auto;
+    min-width: 130px;
+    min-height: 42px;
+    height: auto;
+    margin: 0;
+    padding: 10px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.3;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.popupusuarioeditado-btn,
+.popupusuariosucesso-btn,
+.popupacaosucesso-btn,
+.popup-acao-sucesso-btn,
+.popupdeacessonegado-btn,
+.popupvalidacao-btn-confirmar,
+#popupdesativar-confirmar,
+#popupdesativar-confirmar--validador,
+.button-desativar:not(#popupdesativar-cancelar),
+.botao-desativar-popup-confirmar {
+    background: #16864e;
+}
+
+.popupusuarioeditado-btn:hover,
+.popupusuariosucesso-btn:hover,
+.popupacaosucesso-btn:hover,
+.popup-acao-sucesso-btn:hover,
+.popupdeacessonegado-btn:hover,
+.popupvalidacao-btn-confirmar:hover,
+#popupdesativar-confirmar:hover,
+#popupdesativar-confirmar--validador:hover,
+.button-desativar:not(#popupdesativar-cancelar):hover,
+.botao-desativar-popup-confirmar:hover {
+    background: #116b3e;
+}
+
+.popupvalidacao-btn-cancelar,
+#popupdesativar-cancelar,
+#popup-invalidacao-cancelar,
+.button-desativar#popupdesativar-cancelar,
+.botao-cancelar-popup-confirmar,
+.modal-desativacao-conteudo .botoes button:first-child {
+    background: #d94b4b;
+}
+
+.popupvalidacao-btn-cancelar:hover,
+#popupdesativar-cancelar:hover,
+#popup-invalidacao-cancelar:hover,
+.button-desativar#popupdesativar-cancelar:hover,
+.botao-cancelar-popup-confirmar:hover,
+.modal-desativacao-conteudo .botoes button:first-child:hover {
+    background: #bd3535;
+}
+
+.popupdeacessonegadoacao-btn,
+.popupvalidacao-botoes,
+.botoes-popup-confirmar,
+.popupdeacessonegado-container .popupdeacessonegadoacao-btn {
+    width: 100%;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.popupdeacessonegado-container .popupconfirmarinvaliacao-div--validador,
+.popupdeacessonegado-container .popupconfirmarinvalidacao-div--validador {
+    margin: 0 0 20px;
+    color: #586b79;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.popup-confirmar-desativacao {
+    color: #34495e;
+}
+
+.popup-confirmar-desativacao .icone-atencao {
+    margin-bottom: 16px;
+}
+
+.popup-confirmar-desativacao .icone-atencao img {
+    width: 66px;
+    height: 66px;
+}
+
+.popup-confirmar-desativacao .botoes-popup-confirmar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+@media (max-width: 700px) {
+    .painel-administrador-pagina .conteudo-principal {
+        width: calc(100% - 28px);
+        min-height: 0;
+        grid-template-columns: 1fr;
+        padding: 22px 0 30px;
+        gap: 18px;
+    }
+
+    .painel-administrador-pagina .card-painel {
+        min-height: 350px;
+        padding: 22px 18px;
+        gap: 20px;
+    }
+
+    .painel-administrador-pagina .card-botoes {
+        width: min(92%, 420px);
+        gap: 14px;
+    }
+
+    .painel-administrador-pagina .card-botoes .botao {
+        min-height: 64px;
+        font-size: 16px;
+    }
+
+    .modal-desativacao-conteudo,
+    .popupusuarioeditado-container,
+    .popupusuariosucesso-container,
+    .popupacaosucesso-container,
+    .popup-acao-sucesso-container,
+    .popupdeacessonegado-container,
+    .popupvalidacao-container,
+    .popup-confirmar-desativacao {
+        width: min(460px, calc(100% - 24px));
+        padding: 22px 18px;
+    }
+
+    .modal-desativacao-conteudo .botoes,
+    .popupdeacessonegadoacao-btn,
+    .popupvalidacao-botoes,
+    .botoes-popup-confirmar {
+        flex-wrap: wrap;
+    }
+
+    .modal-desativacao-conteudo .botoes button,
+    .popupusuarioeditado-btn,
+    .popupusuariosucesso-btn,
+    .popupacaosucesso-btn,
+    .popup-acao-sucesso-btn,
+    .popupdeacessonegado-btn,
+    .popupvalidacao-btn-cancelar,
+    .popupvalidacao-btn-confirmar,
+    .button-desativar {
+        min-width: 115px;
+    }
+}
