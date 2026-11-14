@@ -177,7 +177,11 @@ $idEmEdicao = filter_input(INPUT_GET, 'editar', FILTER_VALIDATE_INT) ?: 0;
                                     <span class="gerenciacategoria-status-inativa">DESATIVADA</span>
                                 <?php endif; ?>
 
-                                <a href="?editar=<?= $id ?>" class="gerenciacategoria-btn-editar">EDITAR</a>
+                                <?php if ($ativa): ?>
+                                    <a href="?editar=<?= $id ?>" class="gerenciacategoria-btn-editar">EDITAR</a>
+                                    <?php else: ?>
+                                        <span class="gerenciacategoria-btn-editar gerenciacategoria-btn-desabilitado" aria-disabled="true">EDITAR</span>
+                                    <?php endif; ?>
                             </div>
                         <?php endif; ?>
                     </article>

@@ -4532,6 +4532,14 @@ body.cadastrocategoria-pagina {
     gap: 12px;
 }
 
+.gerenciacategoria-btn-desabilitado {
+    background-color: #b5bcc4;
+    color: #f2f4f6;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0;
+}
+
 @media (max-width: 700px) {
     .painel-administrador-pagina .conteudo-principal {
         width: calc(100% - 28px);
