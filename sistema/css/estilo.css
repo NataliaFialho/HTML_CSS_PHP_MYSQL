@@ -136,17 +136,25 @@ header{
     margin-left: 2%;
 }
 
-.btn-sair-painel-pesquisador{
-    width: 5%;
-    height: 50%;
-    border-radius: 40%;
-    background-color: green;
-    color: white;
-    border: 0;
+a.btn-sair-painel-pesquisador{
+    width: clamp(85px, 13vw, 110px);
+    height: 52px;
+    min-height: 0;
     margin-left: auto;
-    margin-right: 5%;
-    align-content:center;
-    text-align: center;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 30px;      /* pílula */
+    background: #19c42e;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 160ms ease;
     
     
 }
@@ -212,7 +220,7 @@ header{
     
 }
 
-button{
+/* button{
     display: block;
     width: 100%;
     height: 50%;
@@ -222,7 +230,7 @@ button{
     border: 0;
     margin-left: auto;
     margin-right: 5%;
-}
+} */
 
 
 body {
@@ -4595,4 +4603,73 @@ body.cadastrocategoria-pagina {
     .button-desativar {
         min-width: 115px;
     }
+}
+.body-painel-pesquisador .paineldecriaracoes-cabecalho {
+    width: 100%;
+    min-height: 82px;
+    padding: 10px clamp(14px, 2.5vw, 30px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #3b6791;
+}
+
+.body-painel-pesquisador a.btn-sair-painel-pesquisador {
+    width: clamp(85px, 13vw, 110px);
+    height: auto;
+    min-height: 42px;
+    margin-left: auto;
+    padding: 9px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    background: #16864e;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.body-painel-pesquisador a.btn-sair-painel-pesquisador:hover {
+    background: #116b3e;
+    transform: translateY(-1px);
+}
+
+.btn-sair-painel-pesquisador,
+.paineldecriaracoes-btn-sair,
+.cadastrocategoria-btn-sair,
+.gerenciacategoria-btn-sair,
+.btn-sair-padrao,
+.validaracao-btn-sair {
+    width: clamp(85px, 13vw, 110px);
+    height: auto;
+    min-height: 42px;
+    margin: 0 0 0 auto;
+    padding: 9px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px;
+    background: #16864e;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-sair-painel-pesquisador:hover,
+.paineldecriaracoes-btn-sair:hover,
+.cadastrocategoria-btn-sair:hover,
+.gerenciacategoria-btn-sair:hover,
+.btn-sair-padrao:hover,
+.validaracao-btn-sair:hover {
+    background: #116b3e;
 }

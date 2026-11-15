@@ -20,7 +20,7 @@ exigirCargo($pdo, 4);
     <header class="paineldecriaracoes-cabecalho">
         <img src="../imagens/logo-embrapa.png" alt="Embrapa Gado de Corte" class="paineldecriaracoes-logo">
         <h1 class="paineldecriaracoes-titulo-pesquisador">PESQUISADOR</h1>
-        <a href="../tela_dois_cargos.php" class="cadastrocategoria-btn-sair">Sair</a>
+        <a href="../tela_dois_cargos.php" class="btn-sair-painel-pesquisador">Sair</a>
     </header>
 
     <main class="container-do-painel">
